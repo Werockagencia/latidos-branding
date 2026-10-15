@@ -80,7 +80,8 @@ async function ruta01() {
   const dot = r01.dotPath;
 
   const gesture = [r01.ribbon, r01.stem, r01.wave];
-  const gestureMono = await monoFrom([r01.stem, r01.wave], [r01.ribbon], 0.011);
+  // el vector de We Rock ya trae la separación entre cinta y trazo: a una tinta se usan sus formas tal cual
+  const gestureMono = r01.stem + r01.wave + r01.ribbon;
 
   const word = { layers: [
     { id: 'gesto-acento', role: 'a', d: r01.ribbon },
