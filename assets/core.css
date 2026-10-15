@@ -25,6 +25,7 @@ h1, h2, h3 { text-wrap: balance; } p { text-wrap: pretty; }
 }
 @media (min-width: 720px) { .topbar { padding: 16px 48px; } }
 .topbar.solid { background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); --top-fg: var(--fg); }
+.topbar.solid.oncover { background: color-mix(in srgb, var(--cover-bg, var(--bg)) 92%, transparent); box-shadow: 0 1px 0 var(--cover-line, var(--line)); --top-fg: var(--cover-fg, var(--fg)); }
 .topbar a { text-decoration: none; }
 .topbar .brand { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
 .topbar .brand .lg { width: auto; height: 22px; }
@@ -36,10 +37,10 @@ h1, h2, h3 { text-wrap: balance; } p { text-wrap: pretty; }
 @media (min-width: 900px) { .topbar .lbl { display: inline; } }
 
 /* ---------- portada de ruta ---------- */
-.cover { min-height: 100svh; position: relative; display: grid; align-items: end; padding: 110px 0 44px; overflow: hidden; background: var(--cover-bg, var(--bg)); color: var(--cover-fg, var(--fg)); }
-.cover .art { position: absolute; inset: 0; display: grid; place-items: center; padding: 18vh 10vw 26vh; }
-.cover .art { grid-template: minmax(0, 1fr) / minmax(0, 1fr); }
-.cover .art .lg { width: 100%; height: 100%; max-width: 980px; justify-self: center; }
+.cover { min-height: 100svh; position: relative; display: flex; flex-direction: column; padding: 96px 0 40px; overflow: hidden; background: var(--cover-bg, var(--bg)); color: var(--cover-fg, var(--fg)); }
+.cover .art { position: relative; flex: 1 1 auto; display: grid; place-items: center; padding: 4vh 16px 6vh; min-height: 240px; }
+@media (min-width: 720px) { .cover .art { padding: 6vh 8vw 8vh; } }
+.cover .art .lg { width: min(980px, 100%); height: auto; max-height: 50vh; }
 .cover .meta { position: relative; display: grid; gap: 18px; border-top: 1px solid var(--cover-line, var(--line)); padding-top: 22px; }
 @media (min-width: 900px) { .cover .meta { grid-template-columns: 1fr 1.4fr 1fr; align-items: end; } }
 .cover .num { font-family: 'Sora'; font-size: clamp(54px, 8vw, 104px); line-height: .85; font-weight: 300; letter-spacing: -.04em; }
@@ -158,7 +159,7 @@ h1, h2, h3 { text-wrap: balance; } p { text-wrap: pretty; }
   .mock.w4 { grid-column: span 4; aspect-ratio: 16 / 10.4; }
   .mock.w6 { grid-column: span 6; aspect-ratio: 21 / 9; }
 }
-@media (max-width: 759px) { .mock.w6 { aspect-ratio: 4 / 3.4; } }
+@media (max-width: 759px) { .mock.w6 { aspect-ratio: 4 / 3.4; } .mock.w2 { aspect-ratio: 3 / 3.9; } }
 .mock > .lbl { position: absolute; left: 16px; top: 14px; z-index: 6; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: var(--mlbl, rgba(0,0,0,.55)); }
 .abs { position: absolute; }
 .mock .light { position: absolute; inset: 0; pointer-events: none; z-index: 5;
@@ -206,4 +207,4 @@ textarea.note:focus, .react button:focus-visible, .btn:focus-visible { outline: 
 html.shot .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
 html.shot * { animation: none !important; }
 html.shot .cover { min-height: 900px; }
-html.shot .cover .art { padding: 160px 9vw 280px; }
+

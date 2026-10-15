@@ -166,125 +166,111 @@
 
     // portada
     h += `<header class="cover" id="top"><div class="art">${logo(r, 'primary', C.cover.c)}</div>
-      <div class="wrap meta rv"><div class="num">${C.num}</div><div><div class="eyebrow" style="color:inherit;opacity:.7">Ruta creativa ${C.num} · Latidos</div><h1>${C.name}</h1></div>
-      <div style="display:grid;gap:14px"><p>${C.tagline}</p><span class="scroll">Desliza para ver el manual ↓</span></div></div></header>`;
+      <div class="wrap meta rv"><div class="num">${C.num}</div><div><div class="eyebrow" style="color:inherit;opacity:.7">Opción ${C.num} · Latidos</div><h1>${C.name}</h1></div>
+      <div style="display:grid;gap:14px"><p>${C.tagline}</p><span class="scroll">Desliza para conocerla ↓</span></div></div></header>`;
 
-    // 01 racional
-    h += `<section class="sec" id="racional"><div class="wrap">${head('01', 'Racional', C.concept.intro)}
+    // 01 la idea
+    h += `<section class="sec" id="idea"><div class="wrap">${head('01', 'La idea', C.concept.intro)}
       <div class="concept"><div class="rv">${C.concept.text.map((p, i) => (i === 0 ? `<p class="lead">${p}</p><div style="height:30px"></div>` : `<p>${p}</p>`)).join('')}
         <div class="kw">${C.concept.keywords.map((w) => `<span>${w}</span>`).join('')}</div>
-        <div class="adjust"><div class="eyebrow">De la referencia aprobada al maestro</div><ul>${C.concept.adjust.map((a) => `<li>${a}</li>`).join('')}</ul>
-          <div class="ref-vs"><figure><div class="box"><img src="${C.concept.ref}" alt="Referencia aprobada" loading="lazy"></div>Referencia aprobada</figure><figure><div class="box" style="background:${P.bg}">${logo(r, 'primary', C.light)}</div>Maestro vectorial</figure></div></div>
+        <div class="adjust"><div class="eyebrow">En qué se inspira</div><ul>${C.concept.inspired.map((x) => `<li>${x}</li>`).join('')}</ul>
+          <div class="ref-vs"><figure><div class="box"><img src="${C.concept.ref}" alt="Boceto aprobado" loading="lazy"></div>Boceto aprobado</figure><figure><div class="box" style="background:${P.bg}">${logo(r, 'primary', C.light)}</div>Versión final</figure></div></div>
       </div><div class="stage rv" style="background:${C.concept.stage.bg}">${logo(r, C.concept.stage.v || 'symbol', C.concept.stage.c)}</div></div></div></section>`;
 
-    // 02 logotipo y versiones
-    h += `<section class="sec alt" id="logo"><div class="wrap">${head('02', 'Logotipo', C.logoIntro)}
+    // 02 el logo
+    h += `<section class="sec alt" id="logo"><div class="wrap">${head('02', 'El logo', C.logoIntro)}
       <div class="tile hero-logo rv edge" style="background:${P.bg}">${logo(r, 'primary', C.light, { style: 'max-height:100%' })}<div class="cap" style="color:${P.ink}"><span>Versión principal</span><span>${C.primaryLabel}</span></div></div>
       <div style="height:24px"></div>
       <div class="grid g3">${[
         ['horizontal', 'Horizontal', C.hUse, P.bg, C.light, true],
         ['symbol', C.symLabel || 'Símbolo', C.symUse, P.pri, C.dark, false],
-        ['wordmark', C.wordLabel || 'Logotipo', C.wordUse, P.bg2, C.light, true],
+        ['wordmark', C.wordLabel || 'Solo el nombre', C.wordUse, P.bg2, C.light, true],
       ].map(([v, n, d, bg, c, wide]) => `<div class="rv"><div class="tile ver ${wide ? 'wide' : ''} edge" style="background:${bg}">${logo(r, v, c, { style: 'max-height:100%' })}</div><div class="ver-meta"><b>${n}</b><span class="muted">${d}</span></div></div>`).join('')}</div>
       </div></section>`;
 
-    // 03 monocromo y negativo
+    // 03 a un solo color
     const monoTiles = [
-      ['primaryM', 'Monocromo positivo', P.bg, mono(C.monoInk), 'Una tinta · impresión económica, sellos, documentos'],
-      ['primary', 'Negativo a color', P.pri, C.dark, 'Sobre el color principal'],
-      ['primaryM', 'Monocromo negativo', C.negBg, mono(P.bg), 'Una tinta calada · grabado, vinilo, bordado'],
-      ['symbolM', 'Símbolo · una tinta', P.bg, mono(C.monoInk), 'Favicons, sellos, piezas muy pequeñas'],
-      ['horizontalM', 'Horizontal · una tinta', P.bg2, mono(C.monoInk), 'Firmas, membretes, documentos'],
-      ['symbolM', 'Símbolo · calado', P.acc, mono(C.onAcc || P.ink), 'Sobre el acento, solo en piezas de apoyo'],
+      ['primaryM', 'Un solo color', P.bg, mono(C.monoInk), 'Para impresos sencillos, sellos y documentos'],
+      ['primary', 'Sobre fondo de color', P.pri, C.dark, 'Sobre el color principal de la marca'],
+      ['primaryM', 'Un color sobre oscuro', C.negBg, mono(P.bg), 'Para grabados, bordados y vinilos'],
+      ['symbolM', 'Símbolo a un color', P.bg, mono(C.monoInk), 'Para piezas muy pequeñas'],
+      ['horizontalM', 'Horizontal a un color', P.bg2, mono(C.monoInk), 'Para firmas y papelería'],
+      ['symbolM', 'Sobre el color de acento', P.acc, mono(C.onAcc || P.ink), 'Solo en piezas de apoyo'],
     ];
-    h += `<section class="sec" id="mono"><div class="wrap">${head('03', 'Monocromo y negativo', C.monoIntro)}
+    h += `<section class="sec" id="color-unico"><div class="wrap">${head('03', 'A un solo color', C.monoIntro)}
       <div class="grid g3">${monoTiles.map(([v, n, bg, c, d]) => `<div class="rv"><div class="tile ver ${v.startsWith('symbol') ? '' : 'wide'} edge" style="background:${bg}">${logo(r, v, c, { style: 'max-height:100%' })}</div><div class="ver-meta"><b>${n}</b><span class="muted">${d}</span></div></div>`).join('')}</div>
       </div></section>`;
 
-    // 04 construcción, área de seguridad, tamaños mínimos
-    h += `<section class="sec alt" id="construccion"><div class="wrap">${head('04', 'Área de seguridad', `Proporción, aire mínimo y tamaños de reproducción. <em>x</em> = ${C.xLabel}.`)}
-      <div class="build"><div class="tile stage rv edge" style="background:${P.bg}">${buildSvg(r, C)}<div class="cap" style="color:${P.ink}"><span>Área de seguridad = 1x</span><span>${C.xLabel}</span></div></div>
+    // 04 espacio y tamaño
+    h += `<section class="sec alt" id="espacio"><div class="wrap">${head('04', 'Espacio y tamaño', 'Para que el logo se vea siempre limpio, necesita aire a su alrededor y un tamaño mínimo para leerse bien.')}
+      <div class="build"><div class="tile stage rv edge" style="background:${P.bg}">${buildSvg(r, C)}<div class="cap" style="color:${P.ink}"><span>Espacio libre alrededor del logo</span></div></div>
         <div class="grid rv" style="align-content:start">
-          <div class="card pad"><div class="eyebrow">Área de seguridad</div><p style="margin:.6em 0 0">Ningún texto, imagen o borde invade el espacio equivalente a <b>1x</b> alrededor de la marca. En piezas pequeñas o digitales se admite un mínimo de <b>0,5x</b>.</p></div>
-          <div class="card pad"><div class="eyebrow" style="margin-bottom:18px">Tamaños mínimos</div><div class="minsizes">${C.min.map(([v, wpx, txt]) => `<figure><div style="width:${wpx}px">${logo(r, v, C.light)}</div><figcaption>${txt}</figcaption></figure>`).join('')}</div>
+          <div class="card pad"><div class="eyebrow">Espacio libre</div><p style="margin:.6em 0 0">Ningún texto, foto o borde debe entrar en el recuadro que rodea al logo. Ese aire es lo que lo hace verse profesional.</p></div>
+          <div class="card pad"><div class="eyebrow" style="margin-bottom:18px">Tamaño mínimo</div><div class="minsizes">${C.min.map(([v, wpx, txt]) => `<figure><div style="width:${wpx}px">${logo(r, v, C.light)}</div><figcaption>${txt}</figcaption></figure>`).join('')}</div>
             <p class="small muted" style="margin:18px 0 0">${C.minNote}</p></div>
         </div></div>
       <div style="height:clamp(48px,7vw,90px)"></div>
-      <div class="sec-head rv" style="margin-bottom:32px"><div class="sec-num">Fondos</div><h3 class="sec-title" style="font-size:clamp(28px,3.6vw,46px)">Fondos permitidos</h3><p class="sec-desc">La marca se apoya siempre en planos de su propia paleta o en imágenes con una zona tranquila y contraste suficiente.</p></div>
+      <div class="sec-head rv" style="margin-bottom:32px"><div class="sec-num">Fondos</div><h3 class="sec-title" style="font-size:clamp(28px,3.6vw,46px)">Sobre qué fondos va</h3><p class="sec-desc">El logo luce mejor sobre los colores de su propia paleta.</p></div>
       <div class="grid g4">${C.backs.map((b) => `<div class="rv"><div class="tile ver wide ${b.ok ? 'ok' : 'no'}" style="background:${b.bg};${b.edge ? 'box-shadow:inset 0 0 0 1px var(--line)' : ''}">${logo(r, b.v || 'primary', b.c, { style: 'max-height:100%' })}</div><div class="dont-cap"><b>${b.n}</b><span class="muted">${b.d}</span></div></div>`).join('')}</div>
       </div></section>`;
 
-    // 05 color
-    h += `<section class="sec" id="color"><div class="wrap">${head('05', 'Paleta cromática', C.colorIntro)}
+    // 05 colores
+    h += `<section class="sec" id="colores"><div class="wrap">${head('05', 'Colores', C.colorIntro)}
       <div class="swatches">${C.palette.map((c) => `<div class="sw rv"><div class="chip" style="background:${c.hex};color:${onColor(c.hex)};${lum(c.hex) > 0.85 ? 'box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)' : ''}"><span class="role">${c.role}</span><span class="nm">${c.name}</span></div>
-        <dl><dt>HEX</dt><dd><button class="copy" data-copy="${c.hex}" title="Copiar">${c.hex}</button></dd><dt>RGB</dt><dd>${rgb(c.hex).join(' · ')}</dd><dt>CMYK*</dt><dd>${cmyk(c.hex)}</dd></dl><div class="use">${c.use}</div></div>`).join('')}</div>
-      <div class="ratio rv">${C.palette.map((c) => `<div style="flex:${c.share};background:${c.hex};color:${onColor(c.hex)};${lum(c.hex) > 0.85 ? 'box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)' : ''}">${c.share}%</div>`).join('')}</div>
-      <p class="small muted" style="margin-top:14px">Proporción sugerida de uso en piezas de marca. *CMYK aproximado por conversión matemática: se ajusta con prueba de color en imprenta (y referencia Pantone en la fase de manual).</p>
-      <div class="eyebrow rv" style="margin-top:44px">Contraste para texto (WCAG 2.1)</div>
-      <div class="pairs rv">${C.pairs.map(([fg, bg]) => { const k = contrast(fg, bg); return `<div class="pair" style="background:${bg};color:${fg};${lum(bg) > 0.85 ? 'box-shadow:inset 0 0 0 1px var(--line)' : ''}"><b>Aa ${k.toFixed(1)}:1</b><span>${grade(k)}</span></div>`; }).join('')}</div>
+        <dl><dt>Código</dt><dd><button class="copy" data-copy="${c.hex}" title="Copiar">${c.hex}</button></dd></dl><div class="use">${c.use}</div></div>`).join('')}</div>
+      <div class="eyebrow rv" style="margin-top:36px">Cuánto se usa cada color</div>
+      <div class="ratio rv" style="margin-top:12px">${C.palette.map((c) => `<div style="flex:${c.share};background:${c.hex};color:${onColor(c.hex)};${lum(c.hex) > 0.85 ? 'box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)' : ''}">${c.share}%</div>`).join('')}</div>
       </div></section>`;
 
     // 06 tipografía
     const T = C.type;
     h += `<section class="sec alt" id="tipografia"><div class="wrap">${head('06', 'Tipografía', T.intro)}
       <div class="type-grid">
-        <div class="card pad specimen rv"><div class="eyebrow">Principal · títulos y voz de marca</div><div class="aa sora" style="font-weight:${T.dW}">Aa</div>
+        <div class="card pad specimen rv"><div class="eyebrow">Para títulos</div><div class="aa sora" style="font-weight:${T.dW}">Aa</div>
           <div class="abc sora" style="font-weight:${T.dW}">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz<br>0123456789 &amp; ¡!¿?</div>
-          <div class="weights sora">${[300, 400, 500, 600, 700].map((w) => `<span style="font-weight:${w}">${({ 300: 'Light', 400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold' })[w]}</span>`).join('')}</div>
-          <div class="meta"><span><b style="color:var(--fg)">Sora</b> — geométrica, abierta, contemporánea</span><span>SIL Open Font License 1.1 · Google Fonts</span></div></div>
-        <div class="card pad specimen rv"><div class="eyebrow">Secundaria · textos, datos y descriptor</div><div class="aa" style="font-family:Manrope;font-weight:500">Aa</div>
+          <div class="meta"><span><b style="color:var(--fg)">Sora</b> — moderna, clara y con personalidad</span></div></div>
+        <div class="card pad specimen rv"><div class="eyebrow">Para textos</div><div class="aa" style="font-family:Manrope;font-weight:500">Aa</div>
           <div class="abc" style="font-family:Manrope">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz<br>0123456789 &amp; ¡!¿?</div>
-          <div class="weights" style="font-family:Manrope">${[400, 500, 600, 700, 800].map((w) => `<span style="font-weight:${w}">${({ 400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold', 800: 'ExtraBold' })[w]}</span>`).join('')}</div>
-          <div class="meta"><span><b style="color:var(--fg)">Manrope</b> — humanista técnica, muy legible</span><span>SIL Open Font License 1.1 · Google Fonts</span></div></div>
+          <div class="meta"><span><b style="color:var(--fg)">Manrope</b> — cómoda de leer en cualquier pantalla o papel</span></div></div>
       </div>
       <div style="height:24px"></div>
       <div class="card pad hier rv">
-        <div class="row"><span class="tag">H1 · Sora ${T.h1}</span><div class="sora" style="font-weight:${T.dW};font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:-.035em">${T.sample.h}</div></div>
-        <div class="row"><span class="tag">H2 · Sora Regular<br>28/34 · −1,5%</span><div class="sora" style="font-size:clamp(21px,2.4vw,28px);line-height:1.22;letter-spacing:-.015em">${T.sample.s}</div></div>
-        <div class="row"><span class="tag">Texto · Manrope Regular<br>16/26</span><div style="max-width:62ch">${T.sample.p}</div></div>
-        <div class="row"><span class="tag">Etiqueta · Manrope SemiBold<br>12 · +18% · mayúsculas</span><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:${C.acc_ink || 'inherit'}">${T.sample.l}</div></div>
-        <div class="row"><span class="tag">Descriptor de marca</span><div class="muted small">El logotipo “Latidos” es lettering dibujado a medida (no es una fuente) y se usa siempre desde los archivos maestros. “EXPERIENCIAS CORPORATIVAS” va en Manrope Medium, espaciado amplio y convertido a contornos: nunca se recompone a mano.</div></div>
+        <div class="row"><span class="tag">Título</span><div class="sora" style="font-weight:${T.dW};font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:-.035em">${T.sample.h}</div></div>
+        <div class="row"><span class="tag">Subtítulo</span><div class="sora" style="font-size:clamp(21px,2.4vw,28px);line-height:1.22;letter-spacing:-.015em">${T.sample.s}</div></div>
+        <div class="row"><span class="tag">Texto</span><div style="max-width:62ch">${T.sample.p}</div></div>
+        <div class="row"><span class="tag">Detalle</span><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600">${T.sample.l}</div></div>
       </div></div></section>`;
 
-    // 07 usos incorrectos
+    // 07 lo que no se debe hacer
     const D = C.dont;
     const donts = [
-      ['Deformar', 'No estirar ni comprimir', logo(r, 'primary', C.light, { style: 'max-height:100%;transform:scaleX(1.4) scaleY(.78)' })],
-      ['Rotar', 'Siempre horizontal', logo(r, 'primary', C.light, { style: 'max-height:100%;transform:rotate(-16deg)' })],
-      ['Recolorear', 'Solo tintas de la paleta', logo(r, 'primary', D.wrong, { style: 'max-height:100%' })],
-      ['Degradados y efectos', 'Tintas planas, sin sombras', logo(r, 'primary', C.light, { style: 'max-height:100%;filter:drop-shadow(6px 8px 0 rgba(0,0,0,.35))' })],
-      ['Bajo contraste', 'Evitar fondos que la apaguen', logo(r, 'primaryM', mono(D.low), { style: 'max-height:100%' })],
-      ['Recomponer', 'No mover ni reescalar sus partes', `<div style="display:grid;gap:6%;justify-items:center;align-content:center;width:100%;height:100%"><div style="width:${D.recompose || 34}%;transform:rotate(12deg)">${logo(r, 'symbol', C.light)}</div><div style="width:80%">${logo(r, 'wordmark', C.light)}</div></div>`],
+      ['Deformar', 'No estirarlo ni aplastarlo', logo(r, 'primary', C.light, { style: 'max-height:100%;transform:scaleX(1.4) scaleY(.78)' })],
+      ['Inclinar', 'Siempre derecho', logo(r, 'primary', C.light, { style: 'max-height:100%;transform:rotate(-16deg)' })],
+      ['Cambiar colores', 'Solo con los colores de la marca', logo(r, 'primary', D.wrong, { style: 'max-height:100%' })],
+      ['Agregar efectos', 'Sin sombras ni brillos', logo(r, 'primary', C.light, { style: 'max-height:100%;filter:drop-shadow(6px 8px 0 rgba(0,0,0,.35))' })],
+      ['Poco contraste', 'Evitar fondos que lo apaguen', logo(r, 'primaryM', mono(D.low), { style: 'max-height:100%' })],
+      ['Desarmar', 'No mover ni cambiar sus partes', `<div style="display:grid;gap:6%;justify-items:center;align-content:center;width:100%;height:100%"><div style="width:${D.recompose || 34}%;transform:rotate(12deg)">${logo(r, 'symbol', C.light)}</div><div style="width:80%">${logo(r, 'wordmark', C.light)}</div></div>`],
     ];
-    h += `<section class="sec" id="incorrectos"><div class="wrap">${head('07', 'Usos incorrectos', 'Para que la marca se reconozca siempre igual, estos son los errores que más se repiten en producción.')}
+    h += `<section class="sec" id="evitar"><div class="wrap">${head('07', 'Lo que no se debe hacer', 'Así la marca se reconoce siempre igual, en cualquier lugar.')}
       <div class="grid g3">${donts.map(([n, d, svg], i) => `<div class="rv"><div class="tile dont" style="background:${i === 4 ? D.lowBg : P.bg2}">${svg}</div><div class="dont-cap"><b>${n}</b><span class="muted">${d}</span></div></div>`).join('')}</div>
       </div></section>`;
 
-    // 08 aplicaciones
-    h += `<section class="sec dark" id="aplicaciones"><div class="wrap">${head('08', 'Aplicaciones', C.mockIntro)}
+    // 08 así se vería
+    h += `<section class="sec dark" id="aplicaciones"><div class="wrap">${head('08', 'Así se vería', C.mockIntro)}
       <div class="mocks">${C.mocks.map(([type, span, label, over]) => { const t = { ...C.mock, ...(over || {}) }; return `<div class="mock ${span} rv" style="--surf:${t.surf};--mlbl:${t.lbl || 'rgba(0,0,0,.5)'}"><span class="lbl">${label}</span>${M[type](t)}<div class="light"></div></div>`; }).join('')}</div>
-      <p class="small muted" style="margin-top:18px">Mockups ilustrativos para visualizar la identidad en uso: no son archivos maestros. Nombres, cargos y textos son de ejemplo.</p>
+      <p class="small muted" style="margin-top:18px">Imágenes de ejemplo para imaginar la marca en uso. Nombres y textos son ilustrativos.</p>
       </div></section>`;
 
-    // 09 descargas
-    h += `<section class="sec alt" id="descargas"><div class="wrap">${head('09', 'Archivos', 'Maestros vectoriales en tintas planas, organizados por capas (Símbolo · Logotipo · Descriptor). Se abren y editan directamente en Adobe Illustrator.')}
-      <div class="grid g2 rv"><div class="dl">
-        <a href="descargas/Latidos_${C.slug}.zip" download><span><b>Paquete completo de la ruta</b><br><span class="muted small">16 SVG + PDF vectorial</span></span><small>ZIP ↓</small></a>
-        <a href="descargas/pdf/Latidos_${C.slug}_Maestros.pdf" target="_blank" rel="noopener"><span><b>Maestros en PDF vectorial</b><br><span class="muted small">Una versión por página · editable en Illustrator</span></span><small>PDF ↗</small></a>
-      </div><div class="card pad"><div class="eyebrow">Nota técnica</div><p style="margin:.6em 0 0" class="small">Lettering convertido a contornos (Sora y Manrope, licencia OFL). Sin degradados, sin trazos abiertos: solo rellenos planos listos para impresión, corte o bordado. Los colores se entregan en HEX/RGB; los valores CMYK y Pantone se calibran en la fase de manual definitivo.</p></div></div>
-      <div class="files rv">${C.files.map((f) => `<a href="descargas/svg/${f}" target="_blank" rel="noopener">${f.replace(`Latidos_${C.slug}_`, '').replace('.svg', '')} · SVG</a>`).join('')}</div>
-      </div></section>`;
-
-    // 10 opinión
-    h += `<section class="sec" id="opinion"><div class="wrap">${head('10', 'Tu opinión', 'Cuéntanos qué sientes con esta ruta. Tus notas se guardan en este dispositivo y puedes enviarlas por WhatsApp en un toque.')}
+    // 09 opinión
+    h += `<section class="sec" id="opinion"><div class="wrap">${head('09', 'Tu opinión', 'Cuéntanos qué sientes con esta opción y envíanoslo por WhatsApp en un toque.')}
       <div class="fb rv"><div><p class="lead">¿Latidos se siente así?</p><p class="muted">“Me gusta el símbolo pero no el color” es justo el tipo de comentario que nos ayuda a definir la dirección final.</p></div>
         <div><div class="react" role="group" aria-label="Reacción">${['💛 Me encanta', '✏️ Con ajustes', '🤔 No me convence'].map((x) => `<button type="button" aria-pressed="false" data-r="${x}">${x}</button>`).join('')}</div>
-          <textarea class="note" id="note" placeholder="Lo que más me gusta… lo que cambiaría… (símbolo, color, tipografía, sensación)"></textarea>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn wa" type="button" id="wa1">Enviar mi opinión por WhatsApp</button><a class="btn ghost" href="index.html#comparativa">Ver comparativa →</a></div>
+          <textarea class="note" id="note" placeholder="Lo que más me gusta… lo que cambiaría…"></textarea>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn wa" type="button" id="wa1">Enviar mi opinión por WhatsApp</button><a class="btn ghost" href="index.html#comparativa">Comparar las 3 opciones →</a></div>
           <div class="saved" id="saved"></div></div></div></div></section>`;
 
     h += `<div class="wrap"><div class="next">${C.nav.map((n) => `<a href="${n.href}" style="background:${n.bg};color:${n.fg}"><small>${n.small}</small><strong>${n.title}</strong></a>`).join('')}</div>
-      <div class="foot"><span>Latidos · Propuesta de identidad · Ronda 01</span><span>We Rock Agencia · Octubre 2026 · Documento confidencial</span></div></div>`;
+      <div class="foot"><span>Latidos · Propuesta de identidad</span><span>We Rock Agencia · Octubre 2026</span></div></div>`;
 
     $('#app').insertAdjacentHTML('beforeend', h);
     wireFeedback(r);
@@ -313,7 +299,7 @@
         ${sb ? `<circle cx="${fw(sb[0] + sb[2] / 2)}" cy="${fw(sb[1] + sb[3] / 2)}" r="${fw(Math.max(sb[2], sb[3]) / 2)}"/>` : ''}
       </g>
       <g style="--l-p:${C.light.p};--l-a:${C.light.a};--l-w:${C.light.w};--l-d:${C.light.d}"><use href="#${r}-primary" width="${W}" height="${H}"/></g>
-      ${[[-X, -X], [W, -X], [-X, H], [W, H]].map(([a, b]) => `<rect x="${fw(a)}" y="${fw(b)}" width="${fw(X)}" height="${fw(X)}" fill="${G.mod}"/><text x="${fw(a + X / 2)}" y="${fw(b + X * 0.66)}" text-anchor="middle" font-size="${fw(X * 0.5)}" font-family="Sora" font-weight="500" fill="${G.modInk}">x</text>`).join('')}
+      ${[[-X, -X], [W, -X], [-X, H], [W, H]].map(([a, b]) => `<rect x="${fw(a)}" y="${fw(b)}" width="${fw(X)}" height="${fw(X)}" fill="${G.mod}"/>`).join('')}
       <rect x="${fw(wb[0] + wb[2] + X * 0.15)}" y="${fw(xh)}" width="${fw(X * 0.12)}" height="${fw(X)}" fill="${G.mod}"/>
     </svg>`;
   }
@@ -334,7 +320,7 @@
     btns.forEach((b) => b.addEventListener('click', () => { data.r = data.r === b.dataset.r ? '' : b.dataset.r; paint(); save(); }));
     let tm; note.addEventListener('input', () => { data.note = note.value; clearTimeout(tm); tm = setTimeout(save, 350); });
     $('#wa1').addEventListener('click', () => {
-      const txt = `*Latidos — Ruta ${CUR.num} · ${CUR.name}*\nReacción: ${data.r || '—'}${data.note ? `\n${data.note}` : ''}`;
+      const txt = `*Latidos — Opción ${CUR.num} · ${CUR.name}*\nReacción: ${data.r || '—'}${data.note ? `\n${data.note}` : ''}`;
       window.open(`https://wa.me/${WA}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
     });
   }
@@ -349,7 +335,15 @@
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -6% 0px' });
     document.querySelectorAll('.rv:not(.in)').forEach((el) => io.observe(el));
     const bar = $('.topbar');
-    if (bar) { const on = () => bar.classList.toggle('solid', scrollY > window.innerHeight * 0.75); on(); addEventListener('scroll', on, { passive: true }); }
+    if (bar) {
+      const cover = $('.cover');
+      const on = () => {
+        const over = !!cover && scrollY < cover.offsetHeight - bar.offsetHeight;
+        bar.classList.toggle('solid', scrollY > 8);
+        bar.classList.toggle('oncover', over && scrollY > 8);
+      };
+      on(); addEventListener('scroll', on, { passive: true });
+    }
     document.addEventListener('click', (e) => {
       const b = e.target.closest('[data-copy]');
       if (!b) return;
