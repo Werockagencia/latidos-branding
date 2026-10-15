@@ -8,7 +8,7 @@ require(path.join(ROOT, 'assets/logos.js'));
 const L = window.LATIDOS_LOGOS;
 
 // favicons: símbolo en negativo sobre el color principal
-const FAV = { r1: ['#0B1B3B', { a: '#C6FF3D', w: '#F8F5F0', p: '#F8F5F0' }], r2: ['#0E5554', { p: '#F5F0E8', a: '#F2A66D' }], r3: ['#3046C5', { p: '#F7F8FA', a: '#FF6B63' }] };
+const FAV = { r1: ['#0B1B3B', { a: '#C6FF3D', w: '#F8F5F0', p: '#F8F5F0' }], r2: ['#3A1B4F', { p: '#F4F2F8', a: '#4DF0C1' }], r3: ['#3046C5', { p: '#F7F8FA', a: '#FF6B63' }] };
 for (const [r, [bg, c]] of Object.entries(FAV)) {
   const s = L[r].symbol, [, , w, h] = s.box, S = Math.max(w, h) * 1.42;
   const tx = (S - w) / 2, ty = (S - h) / 2;

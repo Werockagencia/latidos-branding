@@ -13,10 +13,10 @@
 <link rel="stylesheet" href="assets/core.css">
 <style>
   :root {
-    --bg: #F5F0E8; --bg2: #ECE5D9; --fg: #252B31; --muted: #5E666D; --line: rgba(37, 43, 49, .13); --card: #FBF8F3;
-    --acc: #F2A66D; --acc-ink: #0E5554; --on-acc: #252B31; --r: 28px;
-    --dk: #0E5554; --dk-fg: #F5F0E8; --dk-line: rgba(245, 240, 232, .16); --dk-muted: #B9CFCB; --dk-card: #135f5e;
-    --cover-bg: #0E5554; --cover-fg: #F5F0E8; --cover-line: rgba(245, 240, 232, .22); --top-fg: #F5F0E8;
+    --bg: #F4F2F8; --bg2: #EAE7F1; --fg: #1C1426; --muted: #645E70; --line: rgba(28, 20, 38, .13); --card: #FFFFFF;
+    --acc: #4DF0C1; --acc-ink: #3A1B4F; --on-acc: #1C1426; --r: 28px;
+    --dk: #3A1B4F; --dk-fg: #F4F2F8; --dk-line: rgba(244, 242, 248, .16); --dk-muted: #C9BEDB; --dk-card: #46245f;
+    --cover-bg: #3A1B4F; --cover-fg: #F4F2F8; --cover-line: rgba(244, 242, 248, .22); --top-fg: #F4F2F8;
   }
   .cover .art { padding: 17vh 12vw 28vh; }
   .sec.dark .sec-num b { color: var(--acc); }
@@ -32,12 +32,12 @@
 <script src="assets/logos.js"></script>
 <script src="assets/latidos.js"></script>
 <script>
-const light = { p: '#0E5554', w: '#0E5554', a: '#F2A66D', d: '#252B31' };
-const dark = { p: '#F5F0E8', w: '#F5F0E8', a: '#F2A66D', d: '#F5F0E8' };
+const light = { p: '#3A1B4F', w: '#3A1B4F', a: '#4DF0C1', d: '#3A1B4F' };
+const dark = { p: '#F4F2F8', w: '#F4F2F8', a: '#4DF0C1', d: '#F4F2F8' };
 LAT.renderRoute({
   r: 'r2', num: '02', name: 'Conexión', short: 'Conexión', slug: 'Ruta02_Conexion',
   tagline: 'Un círculo de cuatro fuerzas que se acercan. El punto de encuentro no está quieto: se mueve hacia las personas.',
-  colors: { bg: '#F5F0E8', bg2: '#ECE5D9', pri: '#0E5554', acc: '#F2A66D', ink: '#252B31' },
+  colors: { bg: '#F4F2F8', bg2: '#EAE7F1', pri: '#3A1B4F', acc: '#4DF0C1', ink: '#1C1426' },
   light, dark, cover: { c: dark },
   concept: {
     intro: 'Puntos de encuentro y fuerzas que convergen, en un símbolo que funciona solo.',
@@ -45,56 +45,56 @@ LAT.renderRoute({
       'Toda experiencia corporativa es, en el fondo, un círculo: un espacio común al que cada persona llega desde un lugar distinto.',
       'El símbolo divide ese círculo en cuatro segmentos que se acercan sin tocarse. Entre ellos queda un espacio vivo, una estrella de luz en el centro: el instante en que las fuerzas convergen.',
       'El centro está ligeramente desplazado. Esa asimetría es intencional: el punto de encuentro nunca es neutro, se inclina hacia donde está la energía del grupo. Por eso el símbolo se percibe en movimiento aunque sea una forma cerrada.',
-      'El filete albaricoque recorre dos de los segmentos y dibuja una L en el espacio negativo: la marca aparece justo cuando las partes se reúnen. El petróleo profundo da solidez y calma; el albaricoque, la calidez humana de un buen encuentro.',
+      'El filete menta recorre dos de los segmentos y dibuja una L en el espacio negativo: la marca aparece justo cuando las partes se reúnen. La ciruela profunda aporta una seriedad contemporánea, lejos del azul corporativo de siempre; la menta eléctrica, la chispa digital de un encuentro que se siente actual.',
     ],
-    keywords: ['Encuentro', 'Convergencia', 'Equilibrio', 'Calidez', 'Confianza'],
+    keywords: ['Encuentro', 'Convergencia', 'Equilibrio', 'Modernidad', 'Confianza'],
     adjust: [
       'Símbolo vectorizado fiel a la silueta aprobada: cuatro segmentos, cruce desplazado y filetes de acento.',
-      'Acento en <b>tinta plana</b> albaricoque; los segmentos en petróleo profundo.',
+      'Paleta renovada en esta ronda: segmentos en <b>ciruela profunda</b> y filetes en <b>menta eléctrica</b>, tintas planas.',
       'Logotipo en <b>Sora Medium</b> con tracking +22: más aire para equilibrar el peso del círculo y transmitir calma.',
       'Descriptor en Manrope Medium, justificado al ancho exacto del logotipo.',
       'Monocromo: los filetes de acento se separan con una línea de aire y la L sigue leyéndose a una tinta.',
     ],
     ref: 'assets/ref/ruta-02.webp',
-    stage: { bg: '#0E5554', c: dark },
+    stage: { bg: '#3A1B4F', c: dark },
   },
   logoIntro: 'Símbolo + logotipo en composición vertical. El círculo funciona solo con la misma fuerza: es la pieza más reconocible del sistema.',
   primaryLabel: 'Vertical', hUse: 'Web, encabezados, firma de correo, documentos', symUse: 'Avatar, favicon, sellos, señalización', wordLabel: 'Logotipo + descriptor', wordUse: 'Textos legales, merch, espacios angostos',
   monoIntro: 'Versiones a una sola tinta para impresión económica, grabado, vinilo y bordado. Los filetes se separan con una línea de aire para que la L se lea sin color.',
-  monoInk: '#252B31', negBg: '#252B31', onAcc: '#252B31',
+  monoInk: '#3A1B4F', negBg: '#1C1426', onAcc: '#1C1426',
   xLabel: 'altura de x de “Latidos”', xRatio: 0.70,
-  build: { zone: 'rgba(242,166,109,.16)', guide: '#8a8f93', mod: '#F2A66D', modInk: '#252B31' },
+  build: { zone: 'rgba(77,240,193,.2)', guide: '#8a8f93', mod: '#4DF0C1', modInk: '#1C1426' },
   min: [['primary', 110, 'Vertical · mín. 25 mm / 110 px'], ['horizontal', 140, 'Horizontal · mín. 32 mm / 140 px'], ['symbol', 22, 'Símbolo · mín. 6 mm / 20 px']],
   minNote: 'Por debajo de esos tamaños se usa el símbolo solo o el logotipo sin descriptor. El círculo se reconoce incluso a 16 px (favicon).',
   backs: [
-    { n: 'Arena suave', d: 'Fondo principal', bg: '#F5F0E8', c: light, ok: true, edge: true },
-    { n: 'Petróleo profundo', d: 'Negativo a color', bg: '#0E5554', c: dark, ok: true },
-    { n: 'Grafito', d: 'Negativo con acento', bg: '#252B31', c: dark, ok: true },
-    { n: 'Albaricoque', d: 'El acento desaparece sobre sí mismo', bg: '#F2A66D', c: light, ok: false },
+    { n: 'Niebla', d: 'Fondo principal', bg: '#F4F2F8', c: light, ok: true, edge: true },
+    { n: 'Ciruela profunda', d: 'Negativo a color', bg: '#3A1B4F', c: dark, ok: true },
+    { n: 'Noche', d: 'Negativo con acento', bg: '#1C1426', c: dark, ok: true },
+    { n: 'Menta eléctrica', d: 'El acento desaparece sobre sí mismo', bg: '#4DF0C1', c: light, ok: false },
   ],
-  colorIntro: 'Profundidad y calidez: un petróleo sereno que inspira confianza, un albaricoque que acerca y dos neutros sobrios que ordenan.',
+  colorIntro: 'Una paleta contemporánea: ciruela profunda con carácter, menta eléctrica como acento digital, un fondo niebla luminoso y un negro violáceo para el contraste.',
   palette: [
-    { name: 'Petróleo profundo', role: 'Principal', hex: '#0E5554', share: 35, use: 'Símbolo, logotipo, fondos institucionales y titulares.' },
-    { name: 'Albaricoque', role: 'Acento cálido', hex: '#F2A66D', share: 10, use: 'Filetes del símbolo, llamados a la acción, detalles e íconos. No para texto sobre claro.' },
-    { name: 'Arena suave', role: 'Fondo', hex: '#F5F0E8', share: 45, use: 'Fondo editorial de impresos y pantallas; da calidez frente al blanco puro.' },
-    { name: 'Grafito', role: 'Soporte y contraste', hex: '#252B31', share: 10, use: 'Textos largos, descriptor, tablas y fondos oscuros alternos.' },
+    { name: 'Ciruela profunda', role: 'Principal', hex: '#3A1B4F', share: 35, use: 'Símbolo, logotipo, fondos de marca y titulares.' },
+    { name: 'Menta eléctrica', role: 'Acento digital', hex: '#4DF0C1', share: 10, use: 'Filetes del símbolo, llamados a la acción, datos y detalles. No para texto sobre claro.' },
+    { name: 'Niebla', role: 'Fondo', hex: '#F4F2F8', share: 45, use: 'Fondo de pantallas e impresos: un blanco con un leve tono violeta que acompaña a la ciruela.' },
+    { name: 'Noche', role: 'Soporte y contraste', hex: '#1C1426', share: 10, use: 'Textos largos, tablas, escenarios y fondos oscuros alternos.' },
   ],
-  pairs: [['#252B31', '#F5F0E8'], ['#F5F0E8', '#0E5554'], ['#0E5554', '#F5F0E8'], ['#252B31', '#F2A66D'], ['#F2A66D', '#252B31']],
+  pairs: [['#1C1426', '#F4F2F8'], ['#F4F2F8', '#3A1B4F'], ['#3A1B4F', '#F4F2F8'], ['#1C1426', '#4DF0C1'], ['#4DF0C1', '#1C1426']],
   type: {
     intro: 'Sora en peso medio y espaciado abierto para la voz de marca; Manrope para todo lo que se lee de corrido.',
     dW: 500, h1: 'Medium<br>64/66 · −2%',
     sample: { h: 'Donde las personas convergen.', s: 'Creamos puntos de encuentro que acercan equipos, clientes y aliados alrededor de una misma experiencia.', p: 'Diseñamos cada encuentro desde la pregunta correcta: ¿qué tiene que pasar entre estas personas? Formato, lugar, ritmo y detalle se ponen al servicio de esa conexión, para que el evento no termine cuando se apagan las luces.', l: 'Experiencias corporativas · 2026' },
   },
-  dont: { wrong: { p: '#1E88E5', w: '#1E88E5', a: '#E53935', d: '#1E88E5' }, low: '#CFC6B8', lowBg: '#E4DCCF', recompose: 30 },
+  dont: { wrong: { p: '#1E88E5', w: '#1E88E5', a: '#E53935', d: '#1E88E5' }, low: '#CDC8D8', lowBg: '#E3E0EA', recompose: 30 },
   mockIntro: 'La identidad aplicada a los momentos clave de una experiencia corporativa: antes, durante y después del encuentro.',
-  mock: { r: 'r2', pri: '#0E5554', acc: '#F2A66D', bg: '#F5F0E8', bg2: '#ECE5D9', ink: '#252B31', dk: '#252B31', c: light, ci: dark, surf: '#DDD3C4', headline: 'Donde las personas convergen', lbl: 'rgba(37,43,49,.55)', stageW: 34, deckLogoW: 30, deckSymOp: .95, wall: '#E5DCCD', accC: LAT.mono('#252B31'), signR: '999px 999px 10px 10px', signLogoW: 100, badgeLogoW: 88 },
+  mock: { r: 'r2', pri: '#3A1B4F', acc: '#4DF0C1', bg: '#F4F2F8', bg2: '#EAE7F1', ink: '#1C1426', dk: '#1C1426', c: light, ci: dark, surf: '#DCD8E6', headline: 'Donde las personas convergen', lbl: 'rgba(28,20,38,.55)', stageW: 34, deckLogoW: 30, deckSymOp: .95, wall: '#E6E2EE', accC: LAT.mono('#1C1426'), signR: '999px 999px 10px 10px', signLogoW: 100, badgeLogoW: 88 },
   mocks: [
     ['stage', 'w6', 'Pantalla de escenario', { lbl: 'rgba(255,255,255,.6)' }],
     ['deck', 'w4', 'Portada de presentación'],
     ['avatar', 'w2', 'Avatar · redes'],
     ['badge', 'w2', 'Credencial'],
     ['sign', 'w2', 'Señalización'],
-    ['invite', 'w2', 'Invitación digital', { surf2: '#F2A66D', lbl: 'rgba(37,43,49,.6)' }],
+    ['invite', 'w2', 'Invitación digital', { surf2: '#4DF0C1', lbl: 'rgba(28,20,38,.6)' }],
   ],
   nav: [
     { href: 'ruta-03-personas-en-movimiento.html', small: 'Siguiente · Ruta 03', title: 'Personas en movimiento →', bg: '#3046C5', fg: '#F7F8FA' },

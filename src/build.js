@@ -8,6 +8,7 @@ const sharp = require('sharp');
 const potrace = require('potrace');
 const { xform, bbox, setText, font, contours, ser, n2 } = require('./geom');
 const r01 = require('./r01');
+const r03 = require('./r03');
 
 const ROOT = path.join(__dirname, '..');
 const DESC = 'EXPERIENCIAS CORPORATIVAS';
@@ -48,28 +49,26 @@ function descriptor(width, capH, fontName = 'manrope-500') {
 /** Versión monotinta: el acento se separa de la forma principal con una línea de aire. */
 async function monoFrom(mainDs, accDs, gapRatio = 0.012) {
   const b = unionBox([...mainDs, ...accDs]);
-  const PX = 2600, sc = PX / b[2], H = Math.round(b[3] * sc) + 40, W = PX + 40;
+  const PX = 5200, sc = PX / b[2], H = Math.round(b[3] * sc) + 40, W = PX + 40;
   const svg = (ds) => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="${b[0] - 20 / sc} ${b[1] - 20 / sc} ${W / sc} ${H / sc}"><rect x="-1e5" y="-1e5" width="2e5" height="2e5" fill="#fff"/>${ds.map((d) => `<path d="${d}" fill="#000"/>`).join('')}</svg>`);
   const gray = async (buf, sigma = 0) => {
     let im = sharp(buf).flatten({ background: '#fff' }).greyscale();
     if (sigma) im = im.blur(sigma);
     return im.extractChannel(0).raw().toBuffer();
   };
-  const gap = gapRatio * PX;
-  const main = await gray(svg(mainDs));
-  const mainFat = await gray(svg(mainDs), gap);
+  // la forma principal se conserva vectorial exacta; solo el acento se recorta con una línea de aire de ancho constante
+  const gapU = (gapRatio * PX) / sc; // en unidades del dibujo
+  const stroked = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="${b[0] - 20 / sc} ${b[1] - 20 / sc} ${W / sc} ${H / sc}"><rect x="-1e5" y="-1e5" width="2e5" height="2e5" fill="#fff"/>${mainDs.map((d) => `<path d="${d}" fill="#000" stroke="#000" stroke-width="${gapU * 2}" stroke-linejoin="round"/>`).join('')}</svg>`);
+  const mainFat = await gray(stroked);
   const acc = await gray(svg(accDs));
   const out = Buffer.alloc(W * H);
-  for (let i = 0; i < out.length; i++) {
-    const isMain = main[i] < 128, isAcc = acc[i] < 128, nearMain = mainFat[i] < 240;
-    out[i] = isMain || (isAcc && !nearMain) ? 0 : 255;
-  }
-  const png = await sharp(out, { raw: { width: W, height: H, channels: 1 } }).blur(1.2).threshold(128).png().toBuffer();
+  for (let i = 0; i < out.length; i++) out[i] = acc[i] < 128 && mainFat[i] >= 128 ? 0 : 255;
+  const png = await sharp(out, { raw: { width: W, height: H, channels: 1 } }).png().toBuffer();
   const d = await new Promise((ok, ko) => {
-    const t = new potrace.Potrace({ turdSize: 200, alphaMax: 1.1, optCurve: true, optTolerance: 0.4 });
+    const t = new potrace.Potrace({ turdSize: 400, alphaMax: 1.0, optCurve: true, optTolerance: 0.25 });
     t.loadImage(png, (e) => (e ? ko(e) : ok(t.getPathTag().match(/ d="([^"]+)"/)[1])));
   });
-  return xform(d, 1 / sc, b[0] - 20 / sc, b[1] - 20 / sc);
+  return mainDs.join('') + xform(d, 1 / sc, b[0] - 20 / sc, b[1] - 20 / sc);
 }
 
 // ------------------------------------------------------------------ ruta 01 · Pulso creativo
@@ -233,7 +232,10 @@ ${colors.bg ? `  <rect id="Fondo" x="${vb[0]}" y="${vb[1]}" width="${vb[2]}" hei
     primaryM: stacked(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 27)) }), horizontalM: horizontal(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 27)) }), symbolM: group([['simbolo', s2.symMono]]), wordmarkM: wordOnly(mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 27)) }),
   };
   // 03
-  const s3 = symbolComp('2');
+  // símbolo redibujado a mano (curvas pulidas) en lugar del trazado automático
+  const s3 = { sym: { layers: [{ id: 'simbolo-acento', role: 'a', d: r03.formAcc }, { id: 'forma-1', role: 'p', d: r03.formA }, { id: 'forma-2', role: 'p', d: r03.formB }] } };
+  s3.sym.box = unionBox([r03.formA, r03.formAcc, r03.formB]);
+  s3.symMono = { layers: [{ id: 'simbolo', role: 'm', d: await monoFrom([r03.formA, r03.formB], [r03.formAcc], 0.012) }], box: s3.sym.box };
   const w3 = wordSora('sora-600', -22);
   const P3 = { desc: (w) => descriptor(w, 28), symH: 0.48, gap: 0.065, descGap: 0.055, descW: 0.96, hSym: 1.15, hGap: 0.22, symDx: -0.02 };
   R.r3 = {
@@ -249,7 +251,7 @@ ${colors.bg ? `  <rect id="Fondo" x="${vb[0]}" y="${vb[1]}" width="${vb[2]}" hei
   // archivos maestros
   const PAL = {
     r1: { slug: 'Ruta01_PulsoCreativo', p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B', bg: '#F8F5F0', inv: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0', bg: '#0B1B3B' }, mono: '#0B1B3B', neg: '#F8F5F0', negBg: '#0B1B3B' },
-    r2: { slug: 'Ruta02_Conexion', p: '#0E5554', w: '#0E5554', a: '#F2A66D', d: '#252B31', bg: '#F5F0E8', inv: { p: '#F5F0E8', w: '#F5F0E8', a: '#F2A66D', d: '#F5F0E8', bg: '#0E5554' }, mono: '#252B31', neg: '#F5F0E8', negBg: '#252B31' },
+    r2: { slug: 'Ruta02_Conexion', p: '#3A1B4F', w: '#3A1B4F', a: '#4DF0C1', d: '#3A1B4F', bg: '#F4F2F8', inv: { p: '#F4F2F8', w: '#F4F2F8', a: '#4DF0C1', d: '#F4F2F8', bg: '#3A1B4F' }, mono: '#3A1B4F', neg: '#F4F2F8', negBg: '#1C1426' },
     r3: { slug: 'Ruta03_PersonasEnMovimiento', p: '#3046C5', w: '#171923', a: '#FF6B63', d: '#171923', bg: '#F7F8FA', inv: { p: '#F7F8FA', w: '#F7F8FA', a: '#FF6B63', d: '#F7F8FA', bg: '#3046C5' }, mono: '#171923', neg: '#F7F8FA', negBg: '#171923' },
   };
   const LBL = { primary: 'Principal', horizontal: 'Horizontal', symbol: 'Simbolo', wordmark: 'Logotipo' };
