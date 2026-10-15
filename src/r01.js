@@ -32,3 +32,16 @@ const tidos = t + i + d + o + s;
 const dot = { cx: 848, cy: 323, r: 32 };
 
 module.exports = { ribbon, stem, wave, tidos, dot };
+
+// v5 · maestro definitivo: vector dibujado por We Rock en Illustrator (src/vector/ruta01-usuario.svg, exportado de 01.ai).
+// Se usa tal cual; se omiten los dos rellenos blancos que tapaban los contrabowls (los huecos ya son transparentes).
+{
+  const svg = require('fs').readFileSync(require('path').join(__dirname, 'vector/ruta01-usuario.svg'), 'utf8');
+  const ps = [...svg.matchAll(/<path[^>]*d="([^"]+)"/g)].map((m) => m[1].trim().replace(/\s+/g, ' '));
+  // orden del archivo: 0 d · 1 o · 2 s · 3 onda · 4 cinta lima · 5 t · 6 asta L · 7 i · 8 punto lima · 9-10 rellenos blancos
+  module.exports = {
+    ribbon: ps[4], stem: ps[6], wave: ps[3],
+    tidos: ps[5] + ps[7] + ps[0] + ps[1] + ps[2],
+    dotPath: ps[8],
+  };
+}

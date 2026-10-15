@@ -75,9 +75,9 @@ async function monoFrom(mainDs, accDs, gapRatio = 0.012) {
 
 // ------------------------------------------------------------------ ruta 01 · Pulso creativo
 async function ruta01() {
-  // letras dibujadas a mano como en la referencia (ver r01.js); el punto de la i va en acento
+  // maestro vectorizado por We Rock en Illustrator (ver r01.js); el punto de la i va en acento
   const letters = r01.tidos;
-  const dot = circle(r01.dot.cx, r01.dot.cy, r01.dot.r);
+  const dot = r01.dotPath;
 
   const gesture = [r01.ribbon, r01.stem, r01.wave];
   const gestureMono = await monoFrom([r01.stem, r01.wave], [r01.ribbon], 0.011);
