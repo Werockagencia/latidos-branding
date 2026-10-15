@@ -75,14 +75,16 @@
   .sw3 dt { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
   .sw3 dd { margin: 4px 0 0; }
 
-  .reco { display: grid; gap: 0; border-radius: var(--r); overflow: hidden; background: #3046C5; color: #F7F8FA; }
+  .reco { display: grid; gap: 0; border-radius: var(--r); overflow: hidden; background: #0B1B3B; color: #F8F5F0; }
   @media (min-width: 900px) { .reco { grid-template-columns: 1fr 1.25fr; } }
-  .reco .art { background: #171923; display: grid; place-items: center; padding: 14%; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 320px; }
+  .reco .art { background: #F8F5F0; display: grid; place-items: center; padding: 14%; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 320px; }
   .reco .art .lg { max-height: 100%; }
   .reco .txt { padding: clamp(28px, 4.5vw, 60px); display: grid; gap: 18px; align-content: start; }
   .reco h3 { font-family: 'Sora'; font-weight: 600; font-size: clamp(30px, 4vw, 52px); line-height: 1; letter-spacing: -.04em; margin: 0; }
   .reco ol { margin: 0; padding-left: 1.2em; display: grid; gap: 10px; }
-  .reco .alt { border-top: 1px solid rgba(255,255,255,.25); padding-top: 18px; font-size: 15px; opacity: .9; }
+  .reco ol li::marker { color: #C6FF3D; font-weight: 700; }
+  .reco .btn { background: #C6FF3D; border-color: #C6FF3D; color: #0B1B3B; justify-self: start; }
+  .reco .alt { border-top: 1px solid rgba(248,245,240,.22); padding-top: 18px; font-size: 15px; opacity: .9; }
 
   .pick { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
   .pick label { cursor: pointer; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; background: var(--card); transition: border-color .2s; }
@@ -146,7 +148,7 @@
   </div></section>
 
   <section class="sec alt" id="comparativa"><div class="wrap">
-    <div class="sec-head rv"><div class="sec-num"><b>02</b> / Comparativa</div><h2 class="sec-title">Comparativa estratégica</h2><p class="sec-desc">Valoración cualitativa de We Rock sobre criterios de identidad corporativa (1 a 5). Es criterio profesional, no un estudio de mercado.</p></div>
+    <div class="sec-head rv"><div class="sec-num"><b>02</b> / Comparativa</div><h2 class="sec-title">Comparativa estratégica</h2><p class="sec-desc">Valoración cualitativa de We Rock sobre criterios de identidad corporativa (1 a 5). No se suman: cada criterio pesa distinto según la estrategia. Es criterio profesional, no un estudio de mercado.</p></div>
     <div class="cmp-wrap rv"><table class="cmp" id="cmp"></table></div>
     <div style="height:28px"></div>
     <div class="sw3" id="sw3"></div>
@@ -157,16 +159,17 @@
     <div class="reco rv">
       <div class="art" id="reco-art"></div>
       <div class="txt">
-        <div class="eyebrow" style="color:inherit;opacity:.75">Ruta 03</div>
-        <h3>Personas en movimiento</h3>
+        <div class="eyebrow" style="color:inherit;opacity:.75">Ruta 01</div>
+        <h3>Pulso creativo</h3>
         <ol>
-          <li><b>Es el símbolo más propio de las tres.</b> Dos formas que se encuentran y crean un espacio nuevo: cuenta exactamente lo que hace Latidos sin caer en corazones, pulsos ni figuras humanas literales.</li>
-          <li><b>Funciona solo.</b> Se reconoce sin el nombre en avatar, credencial, favicon o pantalla, lo que da más libertad para crecer en redes, eventos y producto.</li>
-          <li><b>El nombre se lee sin esfuerzo.</b> El símbolo carga la emoción y el logotipo queda limpio, algo clave cuando la marca se presenta ante áreas de compras y talento humano.</li>
-          <li><b>Su paleta equilibra energía y seriedad.</b> El cobalto se ve corporativo y actual, el coral aporta lo humano y el negro tinta le da sobriedad.</li>
-          <li><b>Es el sistema con más recorrido.</b> El segmento coral (la transformación) puede animarse, recortarse como patrón o marcar momentos clave de cada experiencia.</li>
+          <li><b>Es la firma más memorable.</b> El pulso vive dentro del nombre: la L se convierte en una onda que dibuja la <i>a</i>. Nadie más escribe “Latidos” así, y eso es exactamente lo que una marca de experiencias memorables necesita.</li>
+          <li><b>Cuenta lo que hace Latidos.</b> Una sola línea con tres tiempos —expectativa, clímax y recuerdo— es la curva emocional de un buen encuentro corporativo, sin recurrir a corazones ni electrocardiogramas.</li>
+          <li><b>Nació para moverse.</b> La onda se anima de forma natural en pantallas de escenario, aperturas de evento, video y redes: la marca literalmente late en cada experiencia.</li>
+          <li><b>Su paleta se impone en cualquier recinto.</b> El azul profundo da la confianza que piden compras y gerencia; el lima aporta innovación y se ve desde el fondo de un auditorio.</li>
+          <li><b>Ya funciona en todos los tamaños.</b> El gesto L/a, ahora con curvas pulidas, trabaja como isotipo en avatar, credencial y favicon desde 8 mm.</li>
         </ol>
-        <p class="alt"><b>Si buscan más audacia:</b> la Ruta 01 es la más enérgica y memorable como firma, ideal si Latidos quiere sentirse festiva y disruptiva; su reto es la legibilidad de la <i>a</i> y no tener un símbolo independiente. <b>La Ruta 02</b> es la más serena y fácil de aplicar, aunque su estrella central se parece a recursos visuales muy usados hoy, lo que puede restarle originalidad.</p>
+        <p class="alt"><b>Cómo cuidamos su reto:</b> para que la <i>a</i> se lea siempre, en la ronda de ajustes probaremos el logotipo en tamaños reales y afinaremos la altura y el remate de la onda. <b>Alternativas:</b> la Ruta 03 es la opción si prefieren un símbolo independiente y una lectura más neutra; la Ruta 02, la más serena y fácil de aplicar.</p>
+        <a class="btn" href="ruta-01-pulso-creativo.html">Ver la Ruta 01 completa →</a>
       </div>
     </div>
   </div></section>
@@ -184,7 +187,7 @@
   <section class="sec" id="feedback"><div class="wrap">
     <div class="sec-head rv"><div class="sec-num"><b>05</b> / Decisión</div><h2 class="sec-title">¿Cuál es Latidos?</h2><p class="sec-desc">Elijan una dirección y cuéntennos qué ajustarían. El mensaje llega directo a nuestro WhatsApp.</p></div>
     <div class="fb rv">
-      <div><p class="lead">Una sola ruta pasa a la fase final de ajustes y manual definitivo.</p><p class="muted">También pueden combinar observaciones: “la Ruta 03, pero con el tono energético de la 01” es un comentario perfecto.</p></div>
+      <div><p class="lead">Una sola ruta pasa a la fase final de ajustes y manual definitivo.</p><p class="muted">También pueden combinar observaciones: “la Ruta 01, pero con un símbolo independiente como el de la 03” es un comentario perfecto.</p></div>
       <div>
         <div class="pick" id="pick"></div>
         <textarea class="note" id="note" placeholder="Lo que más nos gusta… lo que cambiaríamos… (símbolo, color, tipografía, sensación)"></textarea>
@@ -230,7 +233,8 @@
 
   // comparativa
   const C = [
-    ['Distinción y recordación', '¿Se recuerda después de verla una vez?', [4, 3, 5], ['Gesto muy propio dentro del nombre.', 'Clara, pero de forma conocida.', 'Silueta única y fácil de recordar.']],
+    ['Energía y movimiento', 'Experiencias memorables, innovación', [5, 2, 4], ['El pulso vive dentro del nombre.', 'Equilibrio sereno, más estático.', 'Movimiento entre dos formas.']],
+    ['Distinción y recordación', '¿Se recuerda después de verla una vez?', [5, 3, 4], ['La firma más propia de las tres.', 'Clara, pero de forma conocida.', 'Silueta única y fácil de recordar.']],
     ['Legibilidad del nombre', '¿Se lee “Latidos” sin esfuerzo?', [3, 5, 5], ['La a construida con la onda puede leerse como “Ltidos”.', 'Lectura inmediata.', 'Lectura inmediata.']],
     ['Rendimiento en tamaño pequeño', 'Favicon, credencial, bordado', [3, 5, 4], ['El gesto pierde la cinta por debajo de 8 mm.', 'El círculo aguanta hasta 16 px.', 'Muy bien desde 7 mm.']],
     ['Símbolo independiente', '¿Funciona sin el nombre?', [2, 5, 5], ['El gesto L/a necesita la palabra.', 'Sí, con mucha presencia.', 'Sí, y cuenta la idea por sí solo.']],
@@ -240,10 +244,10 @@
     ['Originalidad', 'Riesgo de parecerse a otras marcas', [4, 2, 4], ['Baja coincidencia visual.', 'La estrella central recuerda íconos muy usados hoy.', 'Baja coincidencia visual.']],
   ];
   const dots = (n, col) => `<span class="score" style="--c:${col}" aria-label="${n} de 5">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span>`;
-  const tot = R.map((_, i) => C.reduce((a, c) => a + c[2][i], 0));
+  const fit = ['<b>Recomendada.</b> La que mejor encarna energía y experiencias que dejan huella.', 'Alternativa sobria y muy fácil de aplicar.', 'Alternativa con símbolo independiente y lectura neutra.'];
   document.getElementById('cmp').innerHTML = `<thead><tr><th>Criterio</th>${R.map((r) => `<th>${logo(r.k, 'symbol', r.cl)}Ruta ${r.n} · ${r.name}</th>`).join('')}</tr></thead>
     <tbody>${C.map(([n, s, v, notes]) => `<tr><th>${n}<small>${s}</small></th>${v.map((x, i) => `<td>${dots(x, R[i].dot)}<span class="note">${notes[i]}</span></td>`).join('')}</tr>`).join('')}</tbody>
-    <tfoot><tr><th>Total</th>${tot.map((t) => `<td>${t} <span class="muted" style="font-size:14px;font-weight:400">/ 40</span></td>`).join('')}</tr></tfoot>`;
+    <tfoot><tr><th>Lectura estratégica</th>${fit.map((t) => `<td style="font-family:Manrope;font-weight:400;font-size:14.5px">${t}</td>`).join('')}</tr></tfoot>`;
 
   const SW = [
     { best: 'Una marca festiva, audaz y muy enérgica; eventos de lanzamiento, incentivos y activaciones.', plus: 'La firma más memorable como palabra. Alto contraste. Personalidad inmediata.', risk: 'Legibilidad de la a. Sin símbolo autónomo. El lima exige disciplina de uso.' },
@@ -253,7 +257,7 @@
   document.getElementById('sw3').innerHTML = R.map((r, i) => `<div class="card rv"><div class="top" style="background:${r.bg};color:${r.fg}"><b class="sora" style="font-weight:500;font-size:20px;letter-spacing:-.02em">${r.n} · ${r.name}</b>${logo(r.k, 'symbol', r.c)}</div>
     <dl><div><dt>Mejor para</dt><dd>${SW[i].best}</dd></div><div><dt>Fortalezas</dt><dd>${SW[i].plus}</dd></div><div><dt>Riesgos</dt><dd>${SW[i].risk}</dd></div></dl></div>`).join('');
 
-  document.getElementById('reco-art').innerHTML = logo('r3', 'primary', R[2].c);
+  document.getElementById('reco-art').innerHTML = logo('r1', 'primary', R[0].cl);
 
   // decisión
   const key = 'latidos-decision';
