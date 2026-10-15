@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latidos · Identidad visual — Ronda 01</title>
+<meta name="description" content="Latidos · Experiencias corporativas. Tres rutas de identidad visual desarrolladas como mini manuales, con comparativa estratégica y recomendación. Por We Rock Agencia.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/fav-r3.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/core.css">
+<style>
+  :root {
+    --bg: #F4F2EE; --bg2: #EAE7E1; --fg: #15171D; --muted: #5F636C; --line: rgba(21, 23, 29, .12); --card: #FFFFFF;
+    --acc: #15171D; --acc-ink: #15171D; --on-acc: #fff; --r: 20px;
+    --dk: #15171D; --dk-fg: #F4F2EE; --dk-line: rgba(244, 242, 238, .14); --dk-muted: #A2A6AF; --dk-card: #1E2129;
+  }
+  .hero { min-height: 100svh; display: grid; align-content: space-between; gap: 48px; padding: 110px 0 40px; }
+  html.shot .hero { min-height: 900px; }
+  .hero h1 { font-family: 'Sora'; font-weight: 500; font-size: clamp(46px, 8.4vw, 132px); line-height: .92; letter-spacing: -.055em; margin: 0; }
+  .hero h1 em { font-style: normal; color: var(--muted); font-weight: 300; }
+  .hero .sub { display: grid; gap: 22px; }
+  @media (min-width: 900px) { .hero .sub { grid-template-columns: 1fr 1fr; align-items: end; } }
+  .trio { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .trio { grid-template-columns: repeat(3, 1fr); } }
+  .trio a { position: relative; aspect-ratio: 4 / 3.1; border-radius: var(--r); display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; padding: 15% 16% 22%; text-decoration: none; overflow: hidden; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+  .trio a:hover { transform: translateY(-4px); }
+  .trio a .lg { max-height: 100%; }
+  .trio a span { position: absolute; left: 18px; right: 18px; bottom: 14px; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cta-row .btn { padding: 15px 22px; }
+
+  .letter { display: grid; gap: 40px; }
+  @media (min-width: 900px) { .letter { grid-template-columns: 1.1fr 1fr; gap: 90px; } }
+  .letter p { margin: 0 0 1em; max-width: 58ch; }
+  .steps { display: grid; gap: 12px; counter-reset: s; }
+  .steps li { list-style: none; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 18px 0; border-top: 1px solid var(--line); }
+  .steps li::before { counter-increment: s; content: counter(s, decimal-leading-zero); font-family: 'Sora'; font-size: 22px; font-weight: 300; }
+  .steps ul { margin: 0; padding: 0; }
+
+  .route { display: grid; gap: 0; border-radius: var(--r); overflow: hidden; }
+  @media (min-width: 900px) { .route { grid-template-columns: 1.15fr 1fr; min-height: 520px; } }
+  .route .art { display: grid; place-items: center; padding: 12% 14%; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 300px; }
+  .route .art .lg { max-height: 100%; }
+  .route .txt { padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; gap: 18px; }
+  .route .n { font-family: 'Sora'; font-weight: 300; font-size: 64px; line-height: .8; letter-spacing: -.04em; }
+  .route h3 { font-family: 'Sora'; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1; letter-spacing: -.035em; margin: 0; }
+  .route p { margin: 0; opacity: .82; max-width: 44ch; }
+  .route .dots { display: flex; gap: 8px; margin-top: auto; }
+  .route .dots i { width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(255,255,255,.45); }
+  .route .btn { align-self: flex-start; }
+
+  .cmp { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 720px; }
+  .cmp-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--line); background: var(--card); }
+  .cmp th, .cmp td { padding: 16px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .cmp thead th { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .cmp thead th .lg { height: 34px; width: auto; margin-bottom: 10px; }
+  .cmp tbody th { font-weight: 600; width: 26%; }
+  .cmp tbody th small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .cmp tr:last-child td, .cmp tr:last-child th { border-bottom: 0; }
+  .cmp tfoot td, .cmp tfoot th { border-top: 2px solid var(--fg); font-family: 'Sora'; font-weight: 600; font-size: 20px; }
+  .score { display: inline-flex; gap: 5px; vertical-align: middle; }
+  .score i { width: 12px; height: 12px; border-radius: 50%; background: var(--line); }
+  .score i.on { background: var(--c); }
+  .note { display: block; color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.45; }
+
+  .sw3 { display: grid; gap: 16px; }
+  @media (min-width: 900px) { .sw3 { grid-template-columns: repeat(3, 1fr); } }
+  .sw3 .card { display: flex; flex-direction: column; }
+  .sw3 .top { padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .sw3 .top .lg { height: 30px; width: auto; }
+  .sw3 dl { margin: 0; padding: 4px 24px 24px; display: grid; gap: 14px; font-size: 14.5px; }
+  .sw3 dt { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .sw3 dd { margin: 4px 0 0; }
+
+  .reco { display: grid; gap: 0; border-radius: var(--r); overflow: hidden; background: #3046C5; color: #F7F8FA; }
+  @media (min-width: 900px) { .reco { grid-template-columns: 1fr 1.25fr; } }
+  .reco .art { background: #171923; display: grid; place-items: center; padding: 14%; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 320px; }
+  .reco .art .lg { max-height: 100%; }
+  .reco .txt { padding: clamp(28px, 4.5vw, 60px); display: grid; gap: 18px; align-content: start; }
+  .reco h3 { font-family: 'Sora'; font-weight: 600; font-size: clamp(30px, 4vw, 52px); line-height: 1; letter-spacing: -.04em; margin: 0; }
+  .reco ol { margin: 0; padding-left: 1.2em; display: grid; gap: 10px; }
+  .reco .alt { border-top: 1px solid rgba(255,255,255,.25); padding-top: 18px; font-size: 15px; opacity: .9; }
+
+  .pick { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+  .pick label { cursor: pointer; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; background: var(--card); transition: border-color .2s; }
+  .pick label:has(input:checked) { border-color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+  .pick input { accent-color: #15171D; }
+  .pick .lg { height: 30px; width: auto; }
+  .next-steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .next-steps .card { padding: 26px; }
+  .next-steps b { font-family: 'Sora'; font-weight: 500; font-size: 22px; letter-spacing: -.02em; display: block; margin: 10px 0 6px; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span>Latidos</span><span class="lbl">· Identidad · Ronda 01</span></a>
+  <nav aria-label="Rutas"><a href="ruta-01-pulso-creativo.html">01</a><a href="ruta-02-conexion.html">02</a><a href="ruta-03-personas-en-movimiento.html">03</a><a href="#comparativa">⇆<span class="lbl">&nbsp;Comparativa</span></a></nav>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div class="sub rv">
+      <h1>Latidos<br><em>tres rutas para una identidad</em></h1>
+      <div style="display:grid;gap:18px;justify-items:start">
+        <p class="lead" style="font-size:clamp(19px,1.9vw,24px)">Experiencias corporativas que conectan personas, despiertan emociones y dejan huella. Así podría verse la marca que las firma.</p>
+        <div class="cta-row">
+          <a class="btn" href="ruta-01-pulso-creativo.html">Ver Ruta 01</a>
+          <a class="btn" href="ruta-02-conexion.html">Ver Ruta 02</a>
+          <a class="btn" href="ruta-03-personas-en-movimiento.html">Ver Ruta 03</a>
+          <a class="btn ghost" href="#comparativa">Comparativa →</a>
+        </div>
+      </div>
+    </div>
+    <div class="trio rv" id="trio"></div>
+  </section>
+
+  <section class="sec alt" id="carta"><div class="wrap">
+    <div class="sec-head rv"><div class="sec-num"><b>00</b> / Introducción</div><h2 class="sec-title">El siguiente paso</h2><p class="sec-desc">De la propuesta de marca a tres identidades listas para comparar.</p></div>
+    <div class="letter">
+      <div class="rv">
+        <p class="lead">Hola, equipo Latidos.</p><div style="height:24px"></div>
+        <p>En la <a href="https://werockagencia.github.io/propuestas/experienciascorporativas/" target="_blank" rel="noopener">propuesta inicial</a> trazamos el camino para lanzar una marca de experiencias corporativas. Hoy damos el paso más visible: su identidad.</p>
+        <p>Desarrollamos las tres rutas creativas aprobadas respetando sus conceptos y formas originales. Cada una tiene su propia paleta, tipografía, reglas de uso y aplicaciones: son tres universos completos, no variaciones de una misma idea.</p>
+        <p>Los logos se redibujaron como maestros vectoriales a partir de las referencias aprobadas, en tintas planas y con el lettering convertido a contornos. Los ajustes que hicimos están explicados en cada ruta, para que puedan ver exactamente qué cambió y por qué.</p>
+        <p>Al final encontrarán una comparativa estratégica y nuestra recomendación. La decisión es suya: queremos que la tomen con toda la información en la mano.</p>
+        <p style="margin-top:28px"><b>David Higuera</b><br><span class="muted">Dirección creativa · We Rock Agencia</span></p>
+      </div>
+      <div class="rv">
+        <div class="eyebrow" style="margin-bottom:8px">Cómo revisar</div>
+        <ol class="steps" style="margin:0;padding:0">
+          <li><div><b>Recorran cada ruta completa.</b><br><span class="muted">Racional, logotipo, versiones, color, tipografía, reglas y aplicaciones. Unos 5 minutos por ruta.</span></div></li>
+          <li><div><b>Imagínenla en un evento real.</b><br><span class="muted">La pantalla, la credencial, la invitación: ¿cuál se siente como Latidos?</span></div></li>
+          <li><div><b>Lean la comparativa.</b><br><span class="muted">Fortalezas, riesgos y para qué sirve mejor cada dirección.</span></div></li>
+          <li><div><b>Envíennos su elección.</b><br><span class="muted">Un toque al final de esta página la manda por WhatsApp, con sus comentarios.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="rutas"><div class="wrap">
+    <div class="sec-head rv"><div class="sec-num"><b>01</b> / Rutas</div><h2 class="sec-title">Tres direcciones</h2><p class="sec-desc">Cada ruta se abre como un manual de marca propio. Toquen “Ver ruta” para entrar.</p></div>
+    <div class="grid" id="routes" style="gap:24px"></div>
+  </div></section>
+
+  <section class="sec alt" id="comparativa"><div class="wrap">
+    <div class="sec-head rv"><div class="sec-num"><b>02</b> / Comparativa</div><h2 class="sec-title">Comparativa estratégica</h2><p class="sec-desc">Valoración cualitativa de We Rock sobre criterios de identidad corporativa (1 a 5). Es criterio profesional, no un estudio de mercado.</p></div>
+    <div class="cmp-wrap rv"><table class="cmp" id="cmp"></table></div>
+    <div style="height:28px"></div>
+    <div class="sw3" id="sw3"></div>
+  </div></section>
+
+  <section class="sec" id="recomendacion"><div class="wrap">
+    <div class="sec-head rv"><div class="sec-num"><b>03</b> / Recomendación</div><h2 class="sec-title">Nuestra recomendación</h2><p class="sec-desc">La dirección que, en nuestro criterio, construye la marca más sólida a largo plazo.</p></div>
+    <div class="reco rv">
+      <div class="art" id="reco-art"></div>
+      <div class="txt">
+        <div class="eyebrow" style="color:inherit;opacity:.75">Ruta 03</div>
+        <h3>Personas en movimiento</h3>
+        <ol>
+          <li><b>Es el símbolo más propio de las tres.</b> Dos formas que se encuentran y crean un espacio nuevo: cuenta exactamente lo que hace Latidos sin caer en corazones, pulsos ni figuras humanas literales.</li>
+          <li><b>Funciona solo.</b> Se reconoce sin el nombre en avatar, credencial, favicon o pantalla, lo que da más libertad para crecer en redes, eventos y producto.</li>
+          <li><b>El nombre se lee sin esfuerzo.</b> El símbolo carga la emoción y el logotipo queda limpio, algo clave cuando la marca se presenta ante áreas de compras y talento humano.</li>
+          <li><b>Su paleta equilibra energía y seriedad.</b> El cobalto se ve corporativo y actual, el coral aporta lo humano y el negro tinta le da sobriedad.</li>
+          <li><b>Es el sistema con más recorrido.</b> El segmento coral (la transformación) puede animarse, recortarse como patrón o marcar momentos clave de cada experiencia.</li>
+        </ol>
+        <p class="alt"><b>Si buscan más audacia:</b> la Ruta 01 es la más enérgica y memorable como firma, ideal si Latidos quiere sentirse festiva y disruptiva; su reto es la legibilidad de la <i>a</i> y no tener un símbolo independiente. <b>La Ruta 02</b> es la más serena y fácil de aplicar, aunque su estrella central se parece a recursos visuales muy usados hoy, lo que puede restarle originalidad.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec alt" id="descargas"><div class="wrap">
+    <div class="sec-head rv"><div class="sec-num"><b>04</b> / Archivos</div><h2 class="sec-title">Archivos vectoriales</h2><p class="sec-desc">SVG y PDF en tintas planas, organizados por capas y compatibles con Adobe Illustrator. Mockups y presentación no son archivos maestros.</p></div>
+    <div class="dl rv">
+      <a href="descargas/Latidos_Identidad_Ronda01_Todas.zip" download><span><b>Las tres rutas</b><br><span class="muted small">48 SVG + 3 PDF vectoriales</span></span><small>ZIP ↓</small></a>
+      <a href="descargas/Latidos_Ruta01_PulsoCreativo.zip" download><span><b>Ruta 01 · Pulso creativo</b><br><span class="muted small">16 SVG + PDF</span></span><small>ZIP ↓</small></a>
+      <a href="descargas/Latidos_Ruta02_Conexion.zip" download><span><b>Ruta 02 · Conexión</b><br><span class="muted small">16 SVG + PDF</span></span><small>ZIP ↓</small></a>
+      <a href="descargas/Latidos_Ruta03_PersonasEnMovimiento.zip" download><span><b>Ruta 03 · Personas en movimiento</b><br><span class="muted small">16 SVG + PDF</span></span><small>ZIP ↓</small></a>
+    </div>
+  </div></section>
+
+  <section class="sec" id="feedback"><div class="wrap">
+    <div class="sec-head rv"><div class="sec-num"><b>05</b> / Decisión</div><h2 class="sec-title">¿Cuál es Latidos?</h2><p class="sec-desc">Elijan una dirección y cuéntennos qué ajustarían. El mensaje llega directo a nuestro WhatsApp.</p></div>
+    <div class="fb rv">
+      <div><p class="lead">Una sola ruta pasa a la fase final de ajustes y manual definitivo.</p><p class="muted">También pueden combinar observaciones: “la Ruta 03, pero con el tono energético de la 01” es un comentario perfecto.</p></div>
+      <div>
+        <div class="pick" id="pick"></div>
+        <textarea class="note" id="note" placeholder="Lo que más nos gusta… lo que cambiaríamos… (símbolo, color, tipografía, sensación)"></textarea>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn wa" type="button" id="send">Enviar decisión por WhatsApp</button><button class="btn ghost" type="button" id="copy">Copiar texto</button></div>
+        <div class="saved" id="saved"></div>
+      </div>
+    </div>
+    <div style="height:clamp(56px,8vw,100px)"></div>
+    <div class="eyebrow rv" style="margin-bottom:16px">Próximos pasos</div>
+    <div class="next-steps rv">
+      <div class="card"><span class="eyebrow">Paso 1</span><b>Elección</b><span class="muted small">Latidos elige una dirección y comparte sus observaciones.</span></div>
+      <div class="card"><span class="eyebrow">Paso 2</span><b>Ronda de ajustes</b><span class="muted small">Afinamos símbolo, logotipo y color sobre la ruta elegida.</span></div>
+      <div class="card"><span class="eyebrow">Paso 3</span><b>Manual definitivo</b><span class="muted small">Manual de uso, archivos finales, Pantone/CMYK calibrados y plantillas.</span></div>
+      <div class="card"><span class="eyebrow">Recomendado</span><b>Antecedentes de marca</b><span class="muted small">Antes de registrar, una búsqueda de antecedentes fonéticos y gráficos ante la SIC. Ninguna de estas rutas está registrada todavía.</span></div>
+    </div>
+  </div></section>
+
+  <div class="wrap"><div class="foot"><span>Latidos · Propuesta de identidad · Ronda 01</span><span>We Rock Agencia · Octubre 2026 · Documento confidencial</span></div></div>
+</main>
+
+<script src="assets/logos.js"></script>
+<script src="assets/latidos.js"></script>
+<script>
+(function () {
+  const { logo, mono, store, toast, WA } = LAT;
+  const R = [
+    { k: 'r1', n: '01', name: 'Pulso creativo', href: 'ruta-01-pulso-creativo.html', bg: '#0B1B3B', fg: '#F8F5F0', c: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0' }, cl: { p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B' }, pal: ['#0B1B3B', '#C6FF3D', '#F8F5F0', '#A7B0BA'], dot: '#0B1B3B',
+      line: 'Energía, movimiento e innovación. La L se convierte en una onda que dibuja la a: la marca es el gesto.', btn: { bg: '#C6FF3D', fg: '#0B1B3B' }, artBg: '#F8F5F0' },
+    { k: 'r2', n: '02', name: 'Conexión', href: 'ruta-02-conexion.html', bg: '#0E5554', fg: '#F5F0E8', c: { p: '#F5F0E8', w: '#F5F0E8', a: '#F2A66D', d: '#F5F0E8' }, cl: { p: '#0E5554', w: '#0E5554', a: '#F2A66D', d: '#252B31' }, pal: ['#0E5554', '#F2A66D', '#F5F0E8', '#252B31'], dot: '#0E5554',
+      line: 'Puntos de encuentro y fuerzas que convergen. Un círculo de cuatro segmentos con el centro desplazado y una L en el espacio negativo.', btn: { bg: '#F2A66D', fg: '#252B31' }, artBg: '#F5F0E8' },
+    { k: 'r3', n: '03', name: 'Personas en movimiento', href: 'ruta-03-personas-en-movimiento.html', bg: '#3046C5', fg: '#F7F8FA', c: { p: '#F7F8FA', w: '#F7F8FA', a: '#FF6B63', d: '#F7F8FA' }, cl: { p: '#3046C5', w: '#171923', a: '#FF6B63', d: '#171923' }, pal: ['#3046C5', '#FF6B63', '#F7F8FA', '#171923'], dot: '#3046C5',
+      line: 'Transformación y experiencias compartidas. Dos formas que se encuentran y crean un espacio nuevo.', btn: { bg: '#FF6B63', fg: '#171923' }, artBg: '#F7F8FA' },
+  ];
+
+  document.getElementById('trio').innerHTML = R.map((r) => `<a href="${r.href}" style="background:${r.bg};color:${r.fg}">${logo(r.k, 'primary', r.c)}<span><b>Ruta ${r.n}</b><b>${r.name} →</b></span></a>`).join('');
+
+  document.getElementById('routes').innerHTML = R.map((r) => `<article class="route rv" style="background:${r.bg};color:${r.fg}">
+      <div class="art" style="background:${r.artBg}">${logo(r.k, 'primary', r.cl)}</div>
+      <div class="txt"><div class="n">${r.n}</div><h3>${r.name}</h3><p>${r.line}</p>
+        <div class="dots">${r.pal.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
+        <a class="btn" href="${r.href}" style="background:${r.btn.bg};border-color:${r.btn.bg};color:${r.btn.fg}">Ver ruta ${r.n} completa →</a></div>
+    </article>`).join('');
+
+  // comparativa
+  const C = [
+    ['Distinción y recordación', '¿Se recuerda después de verla una vez?', [4, 3, 5], ['Gesto muy propio dentro del nombre.', 'Clara, pero de forma conocida.', 'Silueta única y fácil de recordar.']],
+    ['Legibilidad del nombre', '¿Se lee “Latidos” sin esfuerzo?', [3, 5, 5], ['La a construida con la onda puede leerse como “Ltidos”.', 'Lectura inmediata.', 'Lectura inmediata.']],
+    ['Rendimiento en tamaño pequeño', 'Favicon, credencial, bordado', [3, 5, 4], ['El gesto pierde la cinta por debajo de 8 mm.', 'El círculo aguanta hasta 16 px.', 'Muy bien desde 7 mm.']],
+    ['Símbolo independiente', '¿Funciona sin el nombre?', [2, 5, 5], ['El gesto L/a necesita la palabra.', 'Sí, con mucha presencia.', 'Sí, y cuenta la idea por sí solo.']],
+    ['Calidez y emoción', 'Conectar personas, despertar emociones', [3, 4, 5], ['Más energía que calidez.', 'Calidez serena (albaricoque).', 'La más humana sin ser literal.']],
+    ['Seriedad corporativa', 'Confianza ante compras, gerencia y talento humano', [4, 5, 4], ['Azul profundo muy institucional.', 'La más sobria de las tres.', 'Contemporánea con base sólida.']],
+    ['Versatilidad del sistema', 'Animación, patrones, piezas de evento', [4, 4, 5], ['La onda se anima muy bien.', 'Segmentos modulares.', 'El segmento coral marca momentos.']],
+    ['Originalidad', 'Riesgo de parecerse a otras marcas', [4, 2, 4], ['Baja coincidencia visual.', 'La estrella central recuerda íconos muy usados hoy.', 'Baja coincidencia visual.']],
+  ];
+  const dots = (n, col) => `<span class="score" style="--c:${col}" aria-label="${n} de 5">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span>`;
+  const tot = R.map((_, i) => C.reduce((a, c) => a + c[2][i], 0));
+  document.getElementById('cmp').innerHTML = `<thead><tr><th>Criterio</th>${R.map((r) => `<th>${logo(r.k, 'symbol', r.cl)}Ruta ${r.n} · ${r.name}</th>`).join('')}</tr></thead>
+    <tbody>${C.map(([n, s, v, notes]) => `<tr><th>${n}<small>${s}</small></th>${v.map((x, i) => `<td>${dots(x, R[i].dot)}<span class="note">${notes[i]}</span></td>`).join('')}</tr>`).join('')}</tbody>
+    <tfoot><tr><th>Total</th>${tot.map((t) => `<td>${t} <span class="muted" style="font-size:14px;font-weight:400">/ 40</span></td>`).join('')}</tr></tfoot>`;
+
+  const SW = [
+    { best: 'Una marca festiva, audaz y muy enérgica; eventos de lanzamiento, incentivos y activaciones.', plus: 'La firma más memorable como palabra. Alto contraste. Personalidad inmediata.', risk: 'Legibilidad de la a. Sin símbolo autónomo. El lima exige disciplina de uso.' },
+    { best: 'Una marca serena y consultiva; clientes muy institucionales y comités directivos.', plus: 'La más fácil de aplicar y reproducir. Excelente en tamaños pequeños. Paleta cálida y sobria.', risk: 'La estrella central se parece a recursos visuales frecuentes y puede sentirse menos propia.' },
+    { best: 'Una marca humana y contemporánea que crece en eventos, redes y producto.', plus: 'Símbolo propio que cuenta la idea. Nombre limpio. Sistema con más recorrido.', risk: 'El coral necesita un uso medido para no restar seriedad en piezas institucionales.' },
+  ];
+  document.getElementById('sw3').innerHTML = R.map((r, i) => `<div class="card rv"><div class="top" style="background:${r.bg};color:${r.fg}"><b class="sora" style="font-weight:500;font-size:20px;letter-spacing:-.02em">${r.n} · ${r.name}</b>${logo(r.k, 'symbol', r.c)}</div>
+    <dl><div><dt>Mejor para</dt><dd>${SW[i].best}</dd></div><div><dt>Fortalezas</dt><dd>${SW[i].plus}</dd></div><div><dt>Riesgos</dt><dd>${SW[i].risk}</dd></div></dl></div>`).join('');
+
+  document.getElementById('reco-art').innerHTML = logo('r3', 'primary', R[2].c);
+
+  // decisión
+  const key = 'latidos-decision';
+  const data = store.get(key) || { pick: '', note: '' };
+  const pick = document.getElementById('pick');
+  pick.innerHTML = R.map((r) => `<label><input type="radio" name="pick" value="${r.n}" ${data.pick === r.n ? 'checked' : ''}>${logo(r.k, 'symbol', r.cl)}<span><b>Ruta ${r.n}</b><br><span class="muted small">${r.name}</span></span></label>`).join('');
+  const note = document.getElementById('note'), saved = document.getElementById('saved');
+  note.value = data.note || '';
+  const save = () => { saved.textContent = store.set(key, data) ? 'Guardado en este dispositivo ✓' : ''; };
+  pick.addEventListener('change', (e) => { data.pick = e.target.value; save(); });
+  let tm; note.addEventListener('input', () => { data.note = note.value; clearTimeout(tm); tm = setTimeout(save, 350); });
+  const ruta = (n) => R.find((r) => r.n === n);
+  const per = () => R.map((r) => { const f = store.get(`latidos-fb-${r.k}`); return f && (f.r || f.note) ? `\nRuta ${r.n}: ${f.r || ''}${f.note ? ` — ${f.note}` : ''}` : ''; }).join('');
+  const text = () => `*Latidos — Decisión de identidad (Ronda 01)*\nRuta elegida: ${data.pick ? `${data.pick} · ${ruta(data.pick).name}` : '—'}${data.note ? `\nComentarios: ${data.note}` : ''}${per()}`;
+  document.getElementById('send').addEventListener('click', () => window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text())}`, '_blank', 'noopener'));
+  document.getElementById('copy').addEventListener('click', () => navigator.clipboard && navigator.clipboard.writeText(text()).then(() => toast('Texto copiado'), () => {}));
+
+  LAT.wireCommon();
+})();
+</script>
+</body>
+</html>
