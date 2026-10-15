@@ -1,45 +1,34 @@
-// Ruta 01 · Pulso creativo — reconstrucción vectorial del gesto L/a sobre la referencia aprobada (coordenadas en px de ref/3.webp)
-const { smoothPath, setText } = require('./geom');
+// Ruta 01 · Pulso creativo — maestro redibujado sobre la referencia aprobada (coordenadas en px de ref/3.webp).
+// v4 · medido letra por letra sobre retícula: mismo gesto, misma tipografía y mismas proporciones que el original,
+// con curvas de pocos nodos (tiradores horizontales/verticales en los extremos y tangentes continuas).
 
-// Cinta de acento (se dibuja primero; su borde superior queda oculto bajo el asta y la onda)
-// v3 · dibujo con pocos nodos (extremos con tiradores horizontales/verticales y tangentes continuas en cada unión):
-//  - el interior de la L es una sola curva: asta recta → arco → fondo horizontal, sin remate en gancho
-//  - la onda brota tangente al borde de la cinta (comparten exactamente la misma curva de arranque)
-//  - la punta de la cinta termina oculta dentro de la onda, de modo que el lima se afina sin cortes
-const ribbonV3 = 'M246 430L306 430L308 445L308 472C308 504 334 520 366 520C396 516 414 484 440 456C470 410 560 395 600 412'
-  + 'C588 420 575 431 560 440C510 470 420 566 362 566C300 566 246 520 246 450Z';
-const stemV3 = 'M246 446L246 299L272 299C292 299 308 315 308 335L308 474C284 472 262 462 246 446Z';
-const waveV3 = 'M366 520C392 514 480 368 560 368C610 368 650 415 668 465C682 505 712 560 738 563'
-  + 'C705 563 662 550 640 528C620 508 592 448 575 435C562 425 545 423 528 423C470 423 410 520 366 520Z';
-const ribbonOld = smoothPath([
-  [[246, 430], [306, 430]],
-  [[306, 430], [308, 445], [308, 470], [310, 488], [317, 502], [330, 512], [347, 518], [366, 520], [386, 515], [401, 505], [414, 491], [428, 472], [440, 459], [460, 443], [480, 432], [500, 424], [520, 420], [540, 420], [560, 426], [580, 438], [600, 455]],
-  [[600, 455], [585, 446], [570, 440], [555, 441], [540, 447], [520, 461], [500, 482], [480, 505], [460, 525], [440, 541], [420, 553], [400, 561], [380, 565], [360, 566], [340, 564], [320, 559], [300, 551], [280, 538], [265, 520], [253, 498], [247, 470], [246, 446]],
-]);
+// Asta de la L: esquina superior derecha redondeada; su curva interior es azul y se afina en punta sobre la cinta
+const stem = 'M246 435L246 299L268 299C288 299 305 315 305 336L305 470C305 492 318 510 338.5 516'
+  + 'C310 509 262 480 246 435Z';
 
-// Asta de la L: su borde derecho es el mismo trazo recto de la curva interior; la junta con la cinta es una diagonal cóncava
-const stemOld = smoothPath([
-  [[246, 446], [246, 299]],
-  [[246, 299], [270, 299]],
-  [[270, 299], [285, 302], [297, 310], [305, 321], [308, 336]],
-  [[308, 336], [308, 474]],
-  [[308, 474], [290, 470], [273, 463], [258, 455], [246, 446]],
-]);
+// Cinta de acento: bajo el asta comparte la curva interior; bajo la onda queda oculta y termina en punta
+const ribbon = 'M246 425L300 425L305 470C305 492 318 510 338.5 516C356 519 384 513 408.5 495'
+  + 'C450 455 495 418 531 418C560 418 580 428 592 440'
+  + 'C575 437 550.4 438.4 540 444.3C492.2 471.3 420 566 351 566C290 566 246 530 246 470Z';
 
-// Onda: brota tangente al borde superior de la cinta, corona a la altura de x y baja como asta diagonal de la a
-const waveOld = smoothPath([
-  [[368, 520], [386, 512], [400, 500], [413, 485], [426, 467], [442, 445], [460, 422], [480, 401], [500, 386], [520, 376], [540, 370], [560, 368], [580, 370], [600, 377], [620, 390], [640, 409], [655, 432], [668, 465], [680, 497], [692, 522], [705, 540], [720, 553], [738, 563]],
-  [[738, 563], [715, 563], [695, 560], [678, 555], [660, 546], [640, 528], [625, 505], [612, 482], [600, 460], [588, 445], [575, 435], [560, 429], [540, 424], [520, 424], [500, 428], [480, 436], [460, 447], [440, 461], [428, 473], [414, 492], [401, 506], [386, 516], [368, 520]],
-]);
+// Onda: nace en cuña sobre la cinta, corona a la altura de x y baja como asta diagonal hasta la línea base
+const wave = 'M408.5 495C445.6 428.7 491 368.5 561 368.5C600 368.5 640 412 659 450C672 476 700 545 736 562.5'
+  + 'C700 561 660 548 631 510C616 490 598 456 586 446C574 436 552 425.5 531 425.5C500 425.5 445 462 408.5 495Z';
 
-// "tidos" en Sora Medium: altura de x = 195 px como en la referencia; la i pierde su punto (va en acento)
-function letters(x0 = 690) {
-  const size = 195 / 0.539;
-  const isDot = (c) => Math.max(...c.filter((k) => k.y !== undefined).map((k) => k.y)) < 563 - 195 + 4;
-  const t = setText('sora-500', 'tidos', size, x0, 563, { track: -52, drop: { i: isDot } });
-  const iG = t.glyphs[1];
-  return { ...t, iX: iG.x };
-}
+// "tidos" dibujado como en la referencia (no es una fuente): t de remate recto con brazo solo a la derecha,
+// i con esquina redondeada, d con asta redondeada y bowl elíptico, o elíptica con contraste óptico, s geométrica de terminales diagonales
+const t = 'M702 326L754 326L754 373L799 373L799 415L754 415L754 486C754 508 768 521 790 521L808 521L808 563L780 563C732 563 702 535 702 490Z';
+const i = 'M821 373L840 373C858 373 871 387 871 405L871 563L821 563Z';
+const d = 'M1040 298L1068 298C1084 298 1096 310 1096 326L1096 500C1096 530 1060 567 988 567'
+  + 'C928.9 567 881 522.5 881 467.5C881 412.5 928.9 368 988 368C1010 368 1028 372 1040 380Z'
+  + 'M988 410C955.4 410 929 435.3 929 466.5C929 497.7 955.4 523 988 523C1020.6 523 1047 497.7 1047 466.5C1047 435.3 1020.6 410 988 410Z';
+const o = 'M1225 368.5C1287.1 368.5 1337.5 413 1337.5 468C1337.5 523 1287.1 567.5 1225 567.5C1162.9 567.5 1112.5 523 1112.5 468C1112.5 413 1162.9 368.5 1225 368.5Z'
+  + 'M1225.5 411C1191.3 411 1163.5 436.3 1163.5 467.5C1163.5 498.7 1191.3 524 1225.5 524C1259.7 524 1287.5 498.7 1287.5 467.5C1287.5 436.3 1259.7 411 1225.5 411Z';
+const s = 'M1540 401L1504 428C1490 413 1472 405 1450 405C1420 405 1402 416 1402 431C1404 443 1428 447 1462 453C1508 461 1541 478 1541 505'
+  + 'C1541 545 1497 567.5 1440 567.5C1400 567.5 1368 553 1350 532L1384 509C1398 521 1416 527 1440 527C1470 527 1487 519 1487 507'
+  + 'C1487 494 1468 491 1432 484C1386 476 1350 461 1350 430C1350 393 1392 368.5 1450 368.5C1490 368.5 1522 383 1540 401Z';
 
-void ribbonOld; void stemOld; void waveOld;
-module.exports = { ribbon: ribbonV3, stem: stemV3, wave: waveV3, letters };
+const tidos = t + i + d + o + s;
+const dot = { cx: 848, cy: 323, r: 32 };
+
+module.exports = { ribbon, stem, wave, tidos, dot };

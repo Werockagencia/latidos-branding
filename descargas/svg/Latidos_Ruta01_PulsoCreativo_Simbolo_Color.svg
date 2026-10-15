@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Latidos · Ruta01 · PulsoCreativo · Simbolo · Color · We Rock Agencia · Propuesta de identidad (no constituye registro de marca) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-39.36 -39.36 570.72 345.72" width="570.72" height="345.72">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-39.2 -39.2 568.4 345.4" width="568.4" height="345.4">
   <title>Latidos — Ruta01 · PulsoCreativo · Simbolo · Color</title>
   <g id="Simbolo">
-    <path id="gesto-acento" fill="#C6FF3D" fill-rule="nonzero" d="M0 131L60 131L62 146L62 173C62 205 88 221 120 221C150 217 168 185 194 157C224 111 314 96 354 113C342 121 329 132 314 141C264 171 174 267 116 267C54 267 0 221 0 151Z"/>
-    <path id="gesto-asta" fill="#0B1B3B" fill-rule="nonzero" d="M0 147L0 0L26 0C46 0 62 16 62 36L62 175C38 173 16 163 0 147Z"/>
-    <path id="gesto-onda" fill="#0B1B3B" fill-rule="nonzero" d="M120 221C146 215 234 69 314 69C364 69 404 116 422 166C436 206 466 261 492 264C459 264 416 251 394 229C374 209 346 149 329 136C316 126 299 124 282 124C224 124 164 221 120 221Z"/>
+    <path id="gesto-acento" fill="#C6FF3D" fill-rule="nonzero" d="M0 126L54 126L59 171C59 193 72 211 92.5 217C110 220 138 214 162.5 196C204 156 249 119 285 119C314 119 334 129 346 141C329 138 304.4 139.4 294 145.3C246.2 172.3 174 267 105 267C44 267 0 231 0 171Z"/>
+    <path id="gesto-asta" fill="#0B1B3B" fill-rule="nonzero" d="M0 136L0 0L22 0C42 0 59 16 59 37L59 171C59 193 72 211 92.5 217C64 210 16 181 0 136Z"/>
+    <path id="gesto-onda" fill="#0B1B3B" fill-rule="nonzero" d="M162.5 196C199.6 129.7 245 69.5 315 69.5C354 69.5 394 113 413 151C426 177 454 246 490 263.5C454 262 414 249 385 211C370 191 352 157 340 147C328 137 306 126.5 285 126.5C254 126.5 199 163 162.5 196Z"/>
   </g>
 </svg>

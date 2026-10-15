@@ -228,7 +228,7 @@
     const T = C.type;
     h += `<section class="sec alt" id="tipografia"><div class="wrap">${head('06', 'Tipografía', T.intro)}
       <div class="type-grid">
-        <div class="card pad specimen rv"><div class="eyebrow">Principal · títulos y logotipo</div><div class="aa sora" style="font-weight:${T.dW}">Aa</div>
+        <div class="card pad specimen rv"><div class="eyebrow">Principal · títulos y voz de marca</div><div class="aa sora" style="font-weight:${T.dW}">Aa</div>
           <div class="abc sora" style="font-weight:${T.dW}">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>abcdefghijklmnñopqrstuvwxyz<br>0123456789 &amp; ¡!¿?</div>
           <div class="weights sora">${[300, 400, 500, 600, 700].map((w) => `<span style="font-weight:${w}">${({ 300: 'Light', 400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold' })[w]}</span>`).join('')}</div>
           <div class="meta"><span><b style="color:var(--fg)">Sora</b> — geométrica, abierta, contemporánea</span><span>SIL Open Font License 1.1 · Google Fonts</span></div></div>
@@ -243,7 +243,7 @@
         <div class="row"><span class="tag">H2 · Sora Regular<br>28/34 · −1,5%</span><div class="sora" style="font-size:clamp(21px,2.4vw,28px);line-height:1.22;letter-spacing:-.015em">${T.sample.s}</div></div>
         <div class="row"><span class="tag">Texto · Manrope Regular<br>16/26</span><div style="max-width:62ch">${T.sample.p}</div></div>
         <div class="row"><span class="tag">Etiqueta · Manrope SemiBold<br>12 · +18% · mayúsculas</span><div style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:${C.acc_ink || 'inherit'}">${T.sample.l}</div></div>
-        <div class="row"><span class="tag">Descriptor de marca</span><div class="muted small">“EXPERIENCIAS CORPORATIVAS” va en Manrope Medium, espaciado amplio y convertido a contornos dentro del logotipo: nunca se recompone a mano.</div></div>
+        <div class="row"><span class="tag">Descriptor de marca</span><div class="muted small">El logotipo “Latidos” es lettering dibujado a medida (no es una fuente) y se usa siempre desde los archivos maestros. “EXPERIENCIAS CORPORATIVAS” va en Manrope Medium, espaciado amplio y convertido a contornos: nunca se recompone a mano.</div></div>
       </div></div></section>`;
 
     // 07 usos incorrectos

@@ -9,6 +9,8 @@ const potrace = require('potrace');
 const { xform, bbox, setText, font, contours, ser, n2 } = require('./geom');
 const r01 = require('./r01');
 const r03 = require('./r03');
+const r02w = require('./r02');
+const drawnWord = (d) => ({ layers: [{ id: 'logotipo', role: 'w', d }], box: unionBox([d]) });
 
 const ROOT = path.join(__dirname, '..');
 const DESC = 'EXPERIENCIAS CORPORATIVAS';
@@ -73,19 +75,9 @@ async function monoFrom(mainDs, accDs, gapRatio = 0.012) {
 
 // ------------------------------------------------------------------ ruta 01 · Pulso creativo
 async function ruta01() {
-  const L = r01.letters(676);
-  // la t pierde su brazo izquierdo para que la onda entre limpia (como en la referencia)
-  const f = font('sora-500');
-  const size = 195 / 0.539;
-  const tg = L.glyphs[0];
-  const tcmds = contours(f.charToGlyph('t').getPath(tg.x, 563, size).commands);
-  const stemLeft = Math.min(...tcmds[0].filter((c) => c.x !== undefined).map((c) => c.x));
-  const tClamped = tcmds.map((k, i) => (i === 0 ? k : k.map((c) => (c.x === undefined ? c : { ...c, x: Math.max(c.x, stemLeft) })))).flat();
-  const letters = ser(tClamped) + L.glyphs.slice(1).map((g) => g.d).join('');
-  // punto de la i en acento, centrado sobre el asta
-  const iStem = bbox(L.glyphs[1].d);
-  const dotR = 32.5;
-  const dot = circle(iStem[0] + iStem[2] / 2, 563 - 195 - 46 - dotR + 4, dotR);
+  // letras dibujadas a mano como en la referencia (ver r01.js); el punto de la i va en acento
+  const letters = r01.tidos;
+  const dot = circle(r01.dot.cx, r01.dot.cy, r01.dot.r);
 
   const gesture = [r01.ribbon, r01.stem, r01.wave];
   const gestureMono = await monoFrom([r01.stem, r01.wave], [r01.ribbon], 0.011);
@@ -218,29 +210,29 @@ ${colors.bg ? `  <rect id="Fondo" x="${vb[0]}" y="${vb[1]}" width="${vb[2]}" hei
   const R = {};
   // 01
   const a = await ruta01();
-  const P1 = { desc: (w) => descriptor(w, 22.5), descGap: 0.052, descW: 0.74, descDx: 0.012 };
+  const P1 = { desc: (w) => descriptor(w, 22.4, 'manrope-500'), descGap: 0.027, descW: 0.807, descDx: -0.016 };
   R.r1 = {
     primary: wordOnly(a.word, P1), horizontal: wordH(a.word, P1), symbol: group([['simbolo', a.sym]]), wordmark: wordOnly(a.word, P1, false),
     primaryM: wordOnly(a.wordMono, P1), horizontalM: wordH(a.wordMono, P1), symbolM: group([['simbolo', a.symMono]]), wordmarkM: wordOnly(a.wordMono, P1, false),
   };
   // 02
   const s2 = symbolComp('1');
-  const w2 = wordSora('sora-500', 22);
-  const P2 = { desc: (w) => descriptor(w, 27), symH: 0.42, gap: 0.055, descGap: 0.05, descW: 0.96, hSym: 1.18, hGap: 0.30 };
+  const w2 = drawnWord(r02w.word); // logotipo dibujado como en la referencia
+  const P2 = { desc: (w) => descriptor(w, 29), symH: 0.399, gap: 0.03, descGap: 0.032, descW: 0.963, descDx: 0.002, hSym: 1.18, hGap: 0.30 };
   R.r2 = {
     primary: stacked(s2.sym, w2, P2), horizontal: horizontal(s2.sym, w2, P2), symbol: group([['simbolo', s2.sym]]), wordmark: wordOnly(w2, P2),
-    primaryM: stacked(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 27)) }), horizontalM: horizontal(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 27)) }), symbolM: group([['simbolo', s2.symMono]]), wordmarkM: wordOnly(mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 27)) }),
+    primaryM: stacked(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 29)) }), horizontalM: horizontal(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 29)) }), symbolM: group([['simbolo', s2.symMono]]), wordmarkM: wordOnly(mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 29)) }),
   };
   // 03
   // símbolo redibujado a mano (curvas pulidas) en lugar del trazado automático
   const s3 = { sym: { layers: [{ id: 'simbolo-acento', role: 'a', d: r03.formAcc }, { id: 'forma-1', role: 'p', d: r03.formA }, { id: 'forma-2', role: 'p', d: r03.formB }] } };
   s3.sym.box = unionBox([r03.formA, r03.formAcc, r03.formB]);
   s3.symMono = { layers: [{ id: 'simbolo', role: 'm', d: await monoFrom([r03.formA, r03.formB], [r03.formAcc], 0.012) }], box: s3.sym.box };
-  const w3 = wordSora('sora-600', -22);
-  const P3 = { desc: (w) => descriptor(w, 28), symH: 0.48, gap: 0.065, descGap: 0.055, descW: 0.96, hSym: 1.15, hGap: 0.22, symDx: -0.02 };
+  const w3 = drawnWord(r02w.word3); // logotipo dibujado como en la referencia
+  const P3 = { desc: (w) => descriptor(w, 21.2), symH: 0.467, gap: 0.063, descGap: 0.046, descW: 0.99, hSym: 1.15, hGap: 0.22, symDx: -0.008 };
   R.r3 = {
     primary: stacked(s3.sym, w3, P3), horizontal: horizontal(s3.sym, w3, P3), symbol: group([['simbolo', s3.sym]]), wordmark: wordOnly(w3, P3),
-    primaryM: stacked(s3.symMono, mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 28)) }), horizontalM: horizontal(s3.symMono, mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 28)) }), symbolM: group([['simbolo', s3.symMono]]), wordmarkM: wordOnly(mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 28)) }),
+    primaryM: stacked(s3.symMono, mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 21.2)) }), horizontalM: horizontal(s3.symMono, mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 21.2)) }), symbolM: group([['simbolo', s3.symMono]]), wordmarkM: wordOnly(mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 21.2)) }),
   };
   // r1 mono: descriptor también a una tinta
   for (const k of ['primaryM', 'horizontalM', 'wordmarkM']) R.r1[k].layers.forEach((l) => (l.role = 'm'));
