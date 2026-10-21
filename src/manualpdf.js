@@ -3,7 +3,7 @@ const { execFileSync } = require('child_process');
 const path = require('path'), fs = require('fs');
 const sharp = require('sharp');
 const out = path.resolve(__dirname, '../descargas/Latidos_Manual_de_Marca.pdf');
-execFileSync('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--virtual-time-budget=12000', '--print-to-pdf=' + out, 'http://localhost:8766/manual.html'], { stdio: 'ignore' });
+execFileSync('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', '--virtual-time-budget=12000', '--print-to-pdf=' + out, 'http://localhost:8766/index.html'], { stdio: 'ignore' });
 const T = path.join(__dirname, 'traced');
 fs.readdirSync(T).filter((f) => f.startsWith('man-')).forEach((f) => fs.unlinkSync(path.join(T, f)));
 execFileSync('pdftoppm', ['-png', '-r', '40', out, path.join(T, 'man')]);

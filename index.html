@@ -3,279 +3,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Latidos · Propuesta de identidad</title>
-<meta name="description" content="Latidos · Experiencias corporativas. Tres opciones de identidad para Latidos, con comparación y recomendación. Por We Rock Agencia.">
+<title>Latidos · Manual de marca</title>
+<meta name="description" content="Manual de marca de Latidos · Experiencias corporativas: logo, colores, tipografía, reglas de uso y aplicaciones.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="assets/fav-r3.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/core.css">
 <style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; color: var(--fg); font-family: 'Manrope', system-ui, sans-serif; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+  img, svg { max-width: 100%; }
+  .lg { display: block; width: 100%; height: auto; overflow: visible; }
+  .abs { position: absolute; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 22px; border-radius: 99px; border: 1px solid var(--fg); background: var(--fg); color: var(--bg); text-decoration: none; font-size: 14.5px; font-weight: 700; }
+  .btn.ghost { background: transparent; color: var(--fg); }
+  h2, h3 { text-wrap: balance; } p { text-wrap: pretty; }
   :root {
-    --bg: #F4F2EE; --bg2: #EAE7E1; --fg: #15171D; --muted: #5F636C; --line: rgba(21, 23, 29, .12); --card: #FFFFFF;
-    --acc: #15171D; --acc-ink: #15171D; --on-acc: #fff; --r: 20px;
-    --dk: #15171D; --dk-fg: #F4F2EE; --dk-line: rgba(244, 242, 238, .14); --dk-muted: #A2A6AF; --dk-card: #1E2129;
+    --navy: #0B1B3B; --lime: #C6FF3D; --ivory: #F8F5F0; --steel: #A7B0BA;
+    --bg: #E9E6E0; --bg2: #EFEBE3; --fg: #0B1B3B; --muted: #5A6475; --line: rgba(11, 27, 59, .13); --card: #FFFFFF;
+    --acc: #C6FF3D; --acc-ink: #0B1B3B; --on-acc: #0B1B3B; --r: 14px;
   }
-  .hero { min-height: 100svh; display: grid; align-content: space-between; gap: 48px; padding: 110px 0 40px; }
-  html.shot .hero { min-height: 900px; }
-  .hero h1 { font-family: 'Sora'; font-weight: 500; font-size: clamp(46px, 8.4vw, 132px); line-height: .92; letter-spacing: -.055em; margin: 0; }
-  .hero h1 em { font-style: normal; color: var(--muted); font-weight: 300; }
-  .hero .sub { display: grid; gap: 22px; }
-  @media (min-width: 900px) { .hero .sub { grid-template-columns: 1fr 1fr; align-items: end; } }
-  .trio { display: grid; gap: 14px; grid-template-columns: 1fr; }
-  @media (min-width: 760px) { .trio { grid-template-columns: repeat(3, 1fr); } }
-  .trio a { position: relative; aspect-ratio: 4 / 3.1; border-radius: var(--r); display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; padding: 15% 16% 22%; text-decoration: none; overflow: hidden; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
-  .trio a:hover { transform: translateY(-4px); }
-  .trio a .lg { max-height: 100%; }
-  .trio a span { position: absolute; left: 18px; right: 18px; bottom: 14px; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .cta-row .btn { padding: 15px 22px; }
+  body { background: var(--bg); }
+  .mbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: var(--navy); color: var(--ivory); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+  @media (min-width: 720px) { .mbar { padding: 14px 40px; } }
+  .mbar a { color: inherit; text-decoration: none; }
+  .mbar .acts { display: flex; gap: 8px; }
+  .mbar .acts a { font-size: 10.5px; letter-spacing: .12em; border: 1px solid rgba(248,245,240,.35); border-radius: 99px; padding: 8px 14px; white-space: nowrap; }
+  .mbar .acts a.pdf { background: var(--lime); color: var(--navy); border-color: var(--lime); }
+  .mbar .lbl { display: none; } @media (min-width: 760px) { .mbar .lbl { display: inline; } }
 
-  .letter { display: grid; gap: 40px; }
-  @media (min-width: 900px) { .letter { grid-template-columns: 1.1fr 1fr; gap: 90px; } }
-  .letter p { margin: 0 0 1em; max-width: 58ch; }
-  .steps { display: grid; gap: 12px; counter-reset: s; }
-  .steps li { list-style: none; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 18px 0; border-top: 1px solid var(--line); }
-  .steps li::before { counter-increment: s; content: counter(s, decimal-leading-zero); font-family: 'Sora'; font-size: 22px; font-weight: 300; }
-  .steps ul { margin: 0; padding: 0; }
-
-  .route { display: grid; gap: 0; border-radius: var(--r); overflow: hidden; }
-  @media (min-width: 900px) { .route { grid-template-columns: 1.15fr 1fr; min-height: 520px; } }
-  .route .art { display: grid; place-items: center; padding: 12% 14%; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 300px; }
-  .route .art .lg { max-height: 100%; }
-  .route .txt { padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; gap: 18px; }
-  .route .n { font-family: 'Sora'; font-weight: 300; font-size: 64px; line-height: .8; letter-spacing: -.04em; }
-  .route h3 { font-family: 'Sora'; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); line-height: 1; letter-spacing: -.035em; margin: 0; }
-  .route p { margin: 0; opacity: .82; max-width: 44ch; }
-  .route .dots { display: flex; gap: 8px; margin-top: auto; }
-  .route .dots i { width: 30px; height: 30px; border-radius: 50%; box-shadow: 0 0 0 1.5px rgba(255,255,255,.45); }
-  .route .btn { align-self: flex-start; }
-
-  .cmp { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 720px; }
-  .cmp-m { display: none; gap: 14px; }
-  .cmp-m .card { padding: 20px; }
-  .cmp-m h4 { margin: 0 0 2px; font-family: Sora; font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
-  .cmp-m .q { color: var(--muted); font-size: 13.5px; margin-bottom: 12px; }
-  .cmp-m .r { display: grid; grid-template-columns: 26px 1fr; gap: 4px 10px; padding: 10px 0; border-top: 1px solid var(--line); align-items: center; }
-  .cmp-m .r .lg { width: 26px; height: auto; }
-  .cmp-m .r .note { grid-column: 2; margin: 0; }
-  @media (max-width: 759px) { .cmp-wrap { display: none; } .cmp-m { display: grid; } }
-  .cmp-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--line); background: var(--card); }
-  .cmp th, .cmp td { padding: 16px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .cmp thead th { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
-  .cmp thead th .lg { height: 34px; width: auto; margin-bottom: 10px; }
-  .cmp tbody th { font-weight: 600; width: 26%; }
-  .cmp tbody th small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
-  .cmp tr:last-child td, .cmp tr:last-child th { border-bottom: 0; }
-  .cmp tfoot td, .cmp tfoot th { border-top: 2px solid var(--fg); font-family: 'Sora'; font-weight: 600; font-size: 20px; }
-  .score { display: inline-flex; gap: 5px; vertical-align: middle; }
-  .score i { width: 12px; height: 12px; border-radius: 50%; background: var(--line); }
-  .score i.on { background: var(--c); }
-  .note { display: block; color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.45; }
-
-  .sw3 { display: grid; gap: 16px; }
-  @media (min-width: 900px) { .sw3 { grid-template-columns: repeat(3, 1fr); } }
-  .sw3 .card { display: flex; flex-direction: column; }
-  .sw3 .top { padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; }
-  .sw3 .top .lg { height: 30px; width: auto; }
-  .sw3 dl { margin: 0; padding: 4px 24px 24px; display: grid; gap: 14px; font-size: 14.5px; }
-  .sw3 dt { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
-  .sw3 dd { margin: 4px 0 0; }
-
-  .reco { display: grid; gap: 0; border-radius: var(--r); overflow: hidden; background: #0B1B3B; color: #F8F5F0; }
-  @media (min-width: 900px) { .reco { grid-template-columns: 1fr 1.25fr; } }
-  .reco .art { background: #F8F5F0; display: grid; place-items: center; padding: 14%; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 320px; }
-  .reco .art .lg { max-height: 100%; }
-  .reco .txt { padding: clamp(28px, 4.5vw, 60px); display: grid; gap: 18px; align-content: start; }
-  .reco h3 { font-family: 'Sora'; font-weight: 600; font-size: clamp(30px, 4vw, 52px); line-height: 1; letter-spacing: -.04em; margin: 0; }
-  .reco ol { margin: 0; padding-left: 1.2em; display: grid; gap: 10px; }
-  .reco ol li::marker { color: #C6FF3D; font-weight: 700; }
-  .reco .btn { background: #C6FF3D; border-color: #C6FF3D; color: #0B1B3B; justify-self: start; }
-  .reco .alt { border-top: 1px solid rgba(248,245,240,.22); padding-top: 18px; font-size: 15px; opacity: .9; }
-
-  .pick { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
-  .pick label { cursor: pointer; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; background: var(--card); transition: border-color .2s; }
-  .pick label:has(input:checked) { border-color: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
-  .pick input { accent-color: #15171D; }
-  .pick .lg { height: 30px; width: auto; }
-  .next-steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
-  .next-steps .card { padding: 26px; }
-  .next-steps b { font-family: 'Sora'; font-weight: 500; font-size: 22px; letter-spacing: -.02em; display: block; margin: 10px 0 6px; }
+  .doc { width: min(1180px, 100% - 24px); margin: 24px auto 60px; display: grid; gap: 24px; }
+  .pg { position: relative; background: var(--ivory); color: var(--navy); border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 20px 50px -30px rgba(0,0,0,.35); overflow: hidden; padding: clamp(28px, 5vw, 64px); }
+  @media (min-width: 900px), print { .pg { aspect-ratio: 297 / 210; display: flex; flex-direction: column; } }
+  .pg.navy { background: var(--navy); color: var(--ivory); --line: rgba(248,245,240,.16); --muted: #A7B0BA; }
+  .pg.lime { background: var(--lime); color: var(--navy); }
+  .pg .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; opacity: .65; margin-bottom: clamp(18px, 3vw, 34px); }
+  .pg .ft { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; opacity: .5; }
+  .pg h2 { font-family: Sora; font-weight: 500; font-size: clamp(32px, 4.4vw, 60px); line-height: .98; letter-spacing: -.035em; margin: 0 0 14px; }
+  .pg h3 { font-family: Sora; font-weight: 600; font-size: clamp(17px, 1.6vw, 21px); letter-spacing: -.01em; margin: 0 0 6px; }
+  .pg p { margin: 0 0 .8em; max-width: 60ch; font-size: clamp(14.5px, 1.25vw, 16px); }
+  .pg .muted { color: var(--muted); }
+  .cols { display: grid; gap: clamp(18px, 3vw, 40px); flex: 1; min-height: 0; }
+  @media (min-width: 900px), print { .cols.c2 { grid-template-columns: 1fr 1fr; } .cols.c3 { grid-template-columns: repeat(3, 1fr); } .cols.c4 { grid-template-columns: repeat(4, 1fr); } .cols.c12 { grid-template-columns: 1fr 1.6fr; } .cols.c21 { grid-template-columns: 1.6fr 1fr; } }
+  .box { border-radius: 10px; display: grid; place-items: center; padding: 10%; position: relative; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 150px; }
+  .box .lg { max-height: 100%; }
+  .box.edge { box-shadow: inset 0 0 0 1px var(--line); }
+  .cap { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; margin-top: 10px; display: block; }
+  .cap + span { font-size: 13px; color: var(--muted); display: block; margin-top: 2px; }
+  .tag { display: inline-block; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; padding: 6px 10px; border-radius: 99px; background: var(--lime); color: var(--navy); }
+  .num { font-family: Sora; font-weight: 300; font-size: clamp(48px, 6vw, 88px); line-height: .85; letter-spacing: -.04em; opacity: .9; }
+  .toc { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 0 48px; }
+  @media (min-width: 900px), print { .toc { grid-template-columns: 1fr 1fr; } }
+  .toc li { display: flex; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--line); padding: 11px 0; font-size: 17px; padding: 14px 0; }
+  .toc li b { font-family: Sora; font-weight: 400; min-width: 28px; opacity: .55; }
+  .toc a { text-decoration: none; }
+  .sw { border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; box-shadow: inset 0 0 0 1px var(--line); background: #fff; }
+  .sw .chip { flex: 1; min-height: 120px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+  .sw .chip b { font-family: Sora; font-weight: 500; font-size: 22px; letter-spacing: -.02em; }
+  .sw .chip i { font-style: normal; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; opacity: .8; }
+  .sw dl { margin: 0; padding: 12px 16px 14px; display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 12.5px; color: var(--navy); }
+  .sw dt { opacity: .6; font-weight: 600; } .sw dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rules { display: grid; gap: 10px; }
+  .rules li { margin-left: 1.1em; font-size: 14.5px; }
+  .ok, .no { position: relative; }
+  .ok::after, .no::after { content: ""; position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%; background: center / 14px no-repeat; }
+  .ok::after { background-color: #1F9D55; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' stroke='white' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+  .no::after { background-color: #E5383B; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7l10 10M17 7L7 17' stroke='white' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E"); }
+  .mk { position: relative; border-radius: 10px; overflow: hidden; container-type: size; min-height: 200px; background: var(--surf, #DCD7CD); isolation: isolate; }
+  @media (min-width: 900px), print { .mk { min-height: 0; } }
+  .mk > .lbl { position: absolute; left: 14px; top: 12px; z-index: 6; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--mlbl, rgba(11,27,59,.55)); }
+  .grid-mk { display: grid; gap: 14px; flex: 1; min-height: 0; }
+  @media (min-width: 900px), print { .grid-mk { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; } .grid-mk .wide { grid-column: span 2; } .grid-mk .tall { grid-row: span 2; } }
+  @media screen and (max-width: 899px) { .mk { aspect-ratio: 4 / 3.2; } .mk.port { aspect-ratio: 3 / 3.9; } }
+  .hier .row { display: grid; gap: 4px; border-bottom: 1px solid var(--line); padding: 10px 0; }
+  @media (min-width: 900px), print { .hier .row { grid-template-columns: 170px 1fr; align-items: baseline; gap: 20px; } }
+  .hier .t { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--muted); line-height: 1.5; }
+  .say { display: grid; gap: 8px; }
+  .say div { padding: 12px 14px; border-radius: 10px; font-size: 14.5px; }
+  .say .y { background: rgba(198,255,61,.35); } .say .n { background: rgba(229,56,59,.1); text-decoration: line-through; text-decoration-color: rgba(229,56,59,.6); }
+  .draft { position: absolute; top: clamp(18px, 3vw, 30px); right: clamp(18px, 3vw, 30px); }
+  .kicker { display: block; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: #5A6475; margin-bottom: 10px; }
+  .pg.navy .kicker { color: var(--lime); }
+  .sub { font-size: 13px; color: var(--muted); display: block; margin-top: 2px; }
+  .pin { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--lime); font-size: 12px; }
+  .trait { border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 30px; min-height: 200px; box-shadow: inset 0 0 0 1px var(--line); }
+  .hero-logo { flex: 1; display: grid; place-items: center; padding: 3% 14%; min-height: 180px; }
+  .hero-logo .lg { max-height: 100%; width: min(760px, 100%); }
+  .ratio { display: flex; height: 120px; border-radius: 12px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+  .ratio div { display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; font-size: 11px; min-width: 0; }
+  .ratio b { font-family: Sora; font-size: 20px; font-weight: 500; } .ratio span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: .8; }
+  .pair { position: relative; border-radius: 12px; padding: 18px; display: flex; gap: 16px; align-items: center; min-height: 104px; box-shadow: inset 0 0 0 1px var(--line); }
+  .pair > b { font-family: Sora; font-weight: 600; font-size: 40px; letter-spacing: -.03em; line-height: 1; }
+  .pair > div { display: grid; gap: 2px; }
+  .pair i { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; border-radius: 50%; }
+  .pair i::after { top: 0; right: 0; width: 22px; height: 22px; }
+  .cob { display: flex; align-items: center; justify-content: center; gap: 7%; width: 100%; }
+  .cob .client { width: 30%; aspect-ratio: 2.6; border: 1.5px dashed rgba(11,27,59,.35); border-radius: 8px; display: grid; place-items: center; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: rgba(11,27,59,.55); line-height: 1.3; }
+  .cob i { width: 1.5px; align-self: stretch; background: rgba(11,27,59,.25); }
+  .crop { position: relative; overflow: hidden; border-radius: 10px; aspect-ratio: 3 / 4; }
+  .spec { background: #fff; border-radius: 10px; padding: 22px; box-shadow: inset 0 0 0 1px var(--line); }
+  .spec .abc { font-size: 15px; margin-top: 10px; word-break: break-all; }
+  .spec .weights { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 16px; }
+  .sw .use { padding: 0 16px 14px; font-size: 12.5px; color: #5A6475; }
+  .toc2 { display: grid; gap: 22px 40px; margin-top: 14px; }
+  @media (min-width: 900px), print { .toc2 { grid-template-columns: repeat(4, 1fr); } }
+  .toc2 > div { display: grid; align-content: start; }
+  .toc2 a { text-decoration: none; display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; padding: 5px 0; border-bottom: 1px solid var(--line); }
+  .toc2 a i { font-style: normal; opacity: .45; font-variant-numeric: tabular-nums; }
+  .toc2 a.th { font-family: Sora; font-weight: 600; font-size: 16px; border-bottom: 2px solid var(--navy); padding-bottom: 8px; margin-bottom: 4px; justify-content: flex-start; }
+  .toc2 a.th b { font-weight: 300; opacity: .5; margin-right: 10px; }
+  .toc li span { margin-left: auto; font-family: Sora; opacity: .5; font-size: 14px; }
+  .pg.cover { padding-bottom: clamp(28px, 4vw, 48px); }
+  @media print { .noprint { display: none !important; } }
+  @media print {
+    @page { size: 297mm 210mm; margin: 0; }
+    html, body { background: #fff; }
+    .mbar { display: none; }
+    .doc { width: auto; margin: 0; gap: 0; display: block; }
+    .pg { width: 297mm; height: 210mm; aspect-ratio: auto; border-radius: 0; box-shadow: none; page-break-after: always; break-after: page; display: flex; flex-direction: column; padding: 16mm 18mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .rv { opacity: 1 !important; transform: none !important; }
+  }
 </style>
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="index.html"><span>Latidos</span><span class="lbl">· Propuesta de identidad</span></a>
-  <nav aria-label="Propuestas"><a href="propuesta-01-pulso.html">01</a><a href="propuesta-02-cumbre.html">02</a><a href="propuesta-03-sello.html">03</a><a href="#comparativa">⇆<span class="lbl">&nbsp;Comparar</span></a></nav>
-</header>
-
-<main>
-  <section class="wrap hero">
-    <div class="sub rv">
-      <h1>Latidos<br><em>tres propuestas para su marca</em></h1>
-      <div style="display:grid;gap:18px;justify-items:start">
-        <p class="lead" style="font-size:clamp(19px,1.9vw,24px)">Tomamos sus comentarios: la A ahora se lee como una A. Estas son las tres formas de lograrlo.</p>
-        <div class="cta-row">
-          <a class="btn" href="propuesta-01-pulso.html">Ver propuesta 01</a>
-          <a class="btn" href="propuesta-02-cumbre.html">Ver propuesta 02</a>
-          <a class="btn" href="propuesta-03-sello.html">Ver propuesta 03</a>
-          <a class="btn ghost" href="#comparativa">Comparar →</a>
-        </div>
-      </div>
-    </div>
-    <div class="trio rv" id="trio"></div>
-  </section>
-
-  <section class="sec alt" id="carta"><div class="wrap">
-    <div class="sec-head rv"><div class="sec-num"><b>00</b> / Introducción</div><h2 class="sec-title">Una A que se lee</h2><p class="sec-desc">Sus comentarios, convertidos en tres propuestas.</p></div>
-    <div class="letter">
-      <div class="rv">
-        <p class="lead">Hola, equipo Latidos.</p><div style="height:24px"></div>
-        <p>Gracias por sus comentarios sobre la primera propuesta. El más importante fue claro: la A tenía que parecer más una A.</p>
-        <p>Conservamos lo que les gustó —la L que se convierte en onda, el azul profundo y el verde lima— y trabajamos tres caminos para que la A se lea a primera vista:</p>
-        <p><b>01 Pulso</b>, la onda sube y forma una A suave. <b>02 Cumbre</b>, la A con un vértice marcado, la más clara. <b>03 Sello</b>, la L y la A dentro de un círculo, como un emblema.</p>
-        <p>Además, adelantamos el <a href="manual.html">manual de marca</a> para que vean cómo se usará la identidad en el día a día. Lo construimos sobre la propuesta 01 y se adapta en cuanto elijan.</p>
-        <p style="margin-top:28px"><b>David Higuera</b><br><span class="muted">Dirección creativa · We Rock Agencia</span></p>
-      </div>
-      <div class="rv">
-        <div class="eyebrow" style="margin-bottom:8px">Cómo revisar</div>
-        <ol class="steps" style="margin:0;padding:0">
-          <li><div><b>Miren las tres A.</b><br><span class="muted">¿Cuál se lee mejor? ¿Cuál se siente más Latidos?</span></div></li>
-          <li><div><b>Recorran cada propuesta.</b><br><span class="muted">La idea, el logo, los colores y cómo se vería en un evento.</span></div></li>
-          <li><div><b>Comparen.</b><br><span class="muted">Fortalezas y para qué sirve mejor cada una.</span></div></li>
-          <li><div><b>Envíennos su elección.</b><br><span class="muted">Al final de esta página la mandan por WhatsApp en un toque.</span></div></li>
-        </ol>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="sec" id="rutas"><div class="wrap">
-    <div class="sec-head rv"><div class="sec-num"><b>01</b> / Propuestas</div><h2 class="sec-title">Tres propuestas</h2><p class="sec-desc">Toquen “Ver propuesta” para conocer cada una en detalle.</p></div>
-    <div class="grid" id="routes" style="gap:24px"></div>
-  </div></section>
-
-  <section class="sec alt" id="comparativa"><div class="wrap">
-    <div class="sec-head rv"><div class="sec-num"><b>02</b> / Comparación</div><h2 class="sec-title">Cómo se comparan</h2><p class="sec-desc">Nuestra valoración de 1 a 5 en lo que más importa para una marca de experiencias.</p></div>
-    <div class="cmp-wrap rv"><table class="cmp" id="cmp"></table></div>
-    <div class="cmp-m rv" id="cmp-m"></div>
-    <div style="height:28px"></div>
-    <div class="sw3" id="sw3"></div>
-  </div></section>
-
-  <section class="sec" id="recomendacion"><div class="wrap">
-    <div class="sec-head rv"><div class="sec-num"><b>03</b> / Recomendación</div><h2 class="sec-title">Nuestra recomendación</h2><p class="sec-desc">La propuesta que, en nuestra experiencia, construye la marca más fuerte y memorable.</p></div>
-    <div class="reco rv">
-      <div class="art" id="reco-art"></div>
-      <div class="txt">
-        <div class="eyebrow" style="color:inherit;opacity:.75">Propuesta 01</div>
-        <h3>Pulso</h3>
-        <ol>
-          <li><b>Resuelve la A sin perder la esencia.</b> La onda sube y forma una A completa, con la cinta verde como su trazo central. Se lee “Latidos” y sigue siendo el gesto que les gustó.</li>
-          <li><b>Es la más memorable.</b> El pulso vive dentro del nombre. Nadie más escribe “Latidos” así.</li>
-          <li><b>Nació para moverse.</b> La onda cobra vida en pantallas, videos, aperturas de evento y redes.</li>
-          <li><b>Sus colores se notan en cualquier lugar.</b> Azul profundo para la confianza, verde lima para la energía.</li>
-          <li><b>Ya tiene su manual.</b> Adelantamos el manual de marca sobre esta propuesta, lista para producir.</li>
-        </ol>
-        <p class="alt"><b>Alternativas:</b> la propuesta 02 si quieren la A más clara y firme posible; la 03 si buscan un emblema que funcione solo, como un sello o una medalla.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="propuesta-01-pulso.html">Ver la propuesta 01 →</a><a class="btn ghost" href="manual.html" style="color:inherit;border-color:currentColor">Ver el manual de marca</a></div>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="sec alt" id="feedback"><div class="wrap">
-    <div class="sec-head rv"><div class="sec-num"><b>04</b> / Decisión</div><h2 class="sec-title">¿Cuál es Latidos?</h2><p class="sec-desc">Elijan una propuesta y cuéntennos qué ajustarían. El mensaje llega directo a nuestro WhatsApp.</p></div>
-    <div class="fb rv">
-      <div><p class="lead">La propuesta elegida pasa al manual de marca definitivo.</p><p class="muted">También pueden mezclar ideas: “la 01, pero con la A de la 02” es un comentario perfecto.</p></div>
-      <div>
-        <div class="pick" id="pick"></div>
-        <textarea class="note" id="note" placeholder="Lo que más nos gusta… lo que cambiaríamos…"></textarea>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn wa" type="button" id="send">Enviar elección por WhatsApp</button><button class="btn ghost" type="button" id="copy">Copiar texto</button></div>
-        <div class="saved" id="saved"></div>
-      </div>
-    </div>
-    <div style="height:clamp(56px,8vw,100px)"></div>
-    <div class="eyebrow rv" style="margin-bottom:16px">Próximos pasos</div>
-    <div class="next-steps rv">
-      <div class="card"><span class="eyebrow">Paso 1</span><b>Elección</b><span class="muted small">Ustedes eligen una propuesta y nos cuentan sus comentarios.</span></div>
-      <div class="card"><span class="eyebrow">Paso 2</span><b>Ajustes finales</b><span class="muted small">Afinamos los últimos detalles de la propuesta elegida.</span></div>
-      <div class="card"><span class="eyebrow">Paso 3</span><b><a href="manual.html" style="text-decoration:none">Manual de marca →</a></b><span class="muted small">Ya está adelantado: lo completamos con la propuesta elegida y entregamos los logos finales.</span></div>
-      <div class="card"><span class="eyebrow">Recomendado</span><b>Registro de marca</b><span class="muted small">Antes de registrarla, conviene revisar que no exista una marca parecida. Ninguna de estas propuestas está registrada todavía.</span></div>
-    </div>
-  </div></section>
-
-  <div class="wrap"><div class="foot"><span>Latidos · Propuesta de identidad · Ronda 02</span><span>We Rock Agencia · Octubre 2026</span></div></div>
-</main>
-
+<div class="mbar">
+  <a href="#p1">Latidos <span class="lbl">· Manual de marca</span></a>
+  <div class="acts"><a href="descargas/Latidos_Logos.zip" download>Logos<span class="lbl">&nbsp;· descargar</span></a><a class="pdf" href="descargas/Latidos_Manual_de_Marca.pdf" target="_blank" rel="noopener">PDF</a></div>
+</div>
+<main class="doc" id="doc"></main>
 <script src="assets/logos.js"></script>
-<script src="assets/latidos.js"></script>
-<script>
-(function () {
-  const { logo, mono, store, toast, WA } = LAT;
-  const R = [
-    { k: 'r1', n: '01', name: 'Pulso', href: 'propuesta-01-pulso.html', bg: '#0B1B3B', fg: '#F8F5F0', c: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0' }, cl: { p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B' }, pal: ['#0B1B3B', '#C6FF3D', '#F8F5F0', '#A7B0BA'], dot: '#0B1B3B',
-      line: 'La onda sube y forma una A suave y continua. La más fluida y cercana.', btn: { bg: '#C6FF3D', fg: '#0B1B3B' }, artBg: '#F8F5F0' },
-    { k: 'r2', n: '02', name: 'Cumbre', href: 'propuesta-02-cumbre.html', bg: '#132650', fg: '#F8F5F0', c: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0' }, cl: { p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B' }, pal: ['#0B1B3B', '#C6FF3D', '#F8F5F0', '#A7B0BA'], dot: '#5B6B8C',
-      line: 'La A con un vértice marcado: el punto más alto de una experiencia. La más clara.', btn: { bg: '#F8F5F0', fg: '#0B1B3B' }, artBg: '#F8F5F0' },
-    { k: 'r3', n: '03', name: 'Sello', href: 'propuesta-03-sello.html', bg: '#3C1C4C', fg: '#F4F2F8', c: { p: '#F4F2F8', k: '#3C1C4C', w: '#F4F2F8', a: '#C6FF3D', d: '#F4F2F8' }, cl: { p: '#3C1C4C', k: '#F4F2F8', w: '#3C1C4C', a: '#C6FF3D', d: '#3C1C4C' }, pal: ['#3C1C4C', '#C6FF3D', '#F4F2F8', '#0B1B3B'], dot: '#3C1C4C',
-      line: 'La L y la A dentro de un círculo: una huella, un emblema que funciona solo.', btn: { bg: '#C6FF3D', fg: '#1F1428' }, artBg: '#F4F2F8' },
-  ];
-
-  document.getElementById('trio').innerHTML = R.map((r) => `<a href="${r.href}" style="background:${r.bg};color:${r.fg}">${logo(r.k, 'primary', r.c)}<span><b>Propuesta ${r.n}</b><b>${r.name} →</b></span></a>`).join('');
-
-  document.getElementById('routes').innerHTML = R.map((r) => `<article class="route rv" style="background:${r.bg};color:${r.fg}">
-      <div class="art" style="background:${r.artBg}">${logo(r.k, 'primary', r.cl)}</div>
-      <div class="txt"><div class="n">${r.n}</div><h3>${r.name}</h3><p>${r.line}</p>
-        <div class="dots">${r.pal.map((c) => `<i style="background:${c}"></i>`).join('')}</div>
-        <a class="btn" href="${r.href}" style="background:${r.btn.bg};border-color:${r.btn.bg};color:${r.btn.fg}">Ver propuesta ${r.n} →</a></div>
-    </article>`).join('');
-
-  // comparativa
-  const C = [
-    ['Se lee como A', '¿Se lee “Latidos” a primera vista?', [4, 5, 4], ['La A ya se reconoce, con trazo suave.', 'La A más clara de las tres.', 'Se lee bien en el nombre; en el sello la A es calada.']],
-    ['Energía y movimiento', 'Experiencias memorables', [5, 4, 3], ['El pulso fluye dentro del nombre.', 'Movimiento con un punto de llegada.', 'El movimiento queda dentro del círculo.']],
-    ['Se recuerda', '¿Queda en la memoria después de verla una vez?', [5, 4, 4], ['La firma más propia.', 'Muy reconocible por su cumbre.', 'Un emblema fácil de recordar.']],
-    ['Funciona sin el nombre', '¿Se reconoce solo con el ícono?', [3, 3, 5], ['La L con la onda funciona como ícono.', 'La L con la cumbre funciona como ícono.', 'El sello vive solo con mucha fuerza.']],
-    ['Se ve bien en pequeño', 'Credenciales, íconos, bordados', [3, 4, 5], ['La cinta pide un tamaño mínimo.', 'Muy firme en tamaños pequeños.', 'El círculo se reconoce incluso muy pequeño.']],
-    ['Seriedad', 'Confianza ante gerentes y compradores', [4, 5, 4], ['Azul profundo, cercano.', 'La más firme y corporativa.', 'Moderna y distinta.']],
-  ];
-
-  const dots = (n, col) => `<span class="score" style="--c:${col}" aria-label="${n} de 5">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span>`;
-  const fit = ['<b>Recomendada.</b> Resuelve la A y conserva la esencia de la marca.', 'La A más clara y firme.', 'Un emblema que funciona solo.'];
-  document.getElementById('cmp-m').innerHTML = C.map(([n, sq, v, notes]) => `<div class="card"><h4>${n}</h4><div class="q">${sq}</div>${v.map((x, i) => `<div class="r">${logo(R[i].k, 'symbol', R[i].cl)}<div>${dots(x, R[i].dot)} <b style="font-size:13px;margin-left:6px">Propuesta ${R[i].n}</b></div><p class="note">${notes[i]}</p></div>`).join('')}</div>`).join('') + `<div class="card"><h4>En resumen</h4>${fit.map((t, i) => `<div class="r">${logo(R[i].k, 'symbol', R[i].cl)}<div style="font-size:14.5px">${t}</div></div>`).join('')}</div>`;
-  document.getElementById('cmp').innerHTML = `<thead><tr><th>Criterio</th>${R.map((r) => `<th>${logo(r.k, 'symbol', r.cl)}Propuesta ${r.n} · ${r.name}</th>`).join('')}</tr></thead>
-    <tbody>${C.map(([n, s, v, notes]) => `<tr><th>${n}<small>${s}</small></th>${v.map((x, i) => `<td>${dots(x, R[i].dot)}<span class="note">${notes[i]}</span></td>`).join('')}</tr>`).join('')}</tbody>
-    <tfoot><tr><th>En resumen</th>${fit.map((t) => `<td style="font-family:Manrope;font-weight:400;font-size:14.5px">${t}</td>`).join('')}</tr></tfoot>`;
-
-  const SW = [
-    { best: 'Una marca cercana y creativa, con movimiento propio.', plus: 'La más fluida y memorable. Conserva el gesto que les gustó.', risk: 'La cinta verde pide un tamaño mínimo para leerse bien.' },
-    { best: 'Una marca firme y clara, que se lee de lejos.', plus: 'La A más legible. Muy fuerte en pantallas y vallas.', risk: 'Un poco menos suave que la 01.' },
-    { best: 'Una marca que se lleva puesta: credenciales, pines, medallas.', plus: 'Emblema propio, funciona solo. Colores modernos.', risk: 'Es la que más se aleja de la primera propuesta.' },
-  ];
-
-  document.getElementById('sw3').innerHTML = R.map((r, i) => `<div class="card rv"><div class="top" style="background:${r.bg};color:${r.fg}"><b class="sora" style="font-weight:500;font-size:20px;letter-spacing:-.02em">${r.n} · ${r.name}</b>${logo(r.k, 'symbol', r.c)}</div>
-    <dl><div><dt>Mejor para</dt><dd>${SW[i].best}</dd></div><div><dt>Fortalezas</dt><dd>${SW[i].plus}</dd></div><div><dt>Riesgos</dt><dd>${SW[i].risk}</dd></div></dl></div>`).join('');
-
-  document.getElementById('reco-art').innerHTML = logo('r1', 'primary', R[0].cl);
-
-  // decisión
-  const key = 'latidos-decision-r2';
-  const data = store.get(key) || { pick: '', note: '' };
-  const pick = document.getElementById('pick');
-  pick.innerHTML = R.map((r) => `<label><input type="radio" name="pick" value="${r.n}" ${data.pick === r.n ? 'checked' : ''}>${logo(r.k, 'symbol', r.cl)}<span><b>Propuesta ${r.n}</b><br><span class="muted small">${r.name}</span></span></label>`).join('');
-  const note = document.getElementById('note'), saved = document.getElementById('saved');
-  note.value = data.note || '';
-  const save = () => { saved.textContent = store.set(key, data) ? 'Guardado en este dispositivo ✓' : ''; };
-  pick.addEventListener('change', (e) => { data.pick = e.target.value; save(); });
-  let tm; note.addEventListener('input', () => { data.note = note.value; clearTimeout(tm); tm = setTimeout(save, 350); });
-  const ruta = (n) => R.find((r) => r.n === n);
-  const per = () => R.map((r) => { const f = store.get(`latidos-fb2-${r.k}`); return f && (f.r || f.note) ? `\nPropuesta ${r.n}: ${f.r || ''}${f.note ? ` — ${f.note}` : ''}` : ''; }).join('');
-  const text = () => `*Latidos — Elección de identidad*\nPropuesta elegida: ${data.pick ? `${data.pick} · ${ruta(data.pick).name}` : '—'}${data.note ? `\nComentarios: ${data.note}` : ''}${per()}`;
-  document.getElementById('send').addEventListener('click', () => window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text())}`, '_blank', 'noopener'));
-  document.getElementById('copy').addEventListener('click', () => navigator.clipboard && navigator.clipboard.writeText(text()).then(() => toast('Texto copiado'), () => {}));
-
-  LAT.wireCommon();
-})();
-</script>
+<script src="assets/brand.js"></script>
+<script src="assets/manual.js"></script>
 </body>
 </html>

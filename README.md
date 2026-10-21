@@ -1,19 +1,18 @@
-# Latidos · Propuesta de identidad — Ronda 02
+# Latidos · Manual de marca
 
-Presentación web de las tres rutas creativas aprobadas para **Latidos · Experiencias corporativas**, preparada por **We Rock Agencia**.
+Manual de marca de **Latidos · Experiencias corporativas**, elaborado por **We Rock Agencia**.
 
-- `index.html` — portada, introducción, rutas, comparativa estratégica, recomendación, archivos y decisión
-- `propuesta-01-pulso.html`, `propuesta-02-cumbre.html`, `propuesta-03-sello.html` — las tres propuestas (mesas de trabajo de 01.ai)
-- `manual.html` — manual de marca preliminar sobre la propuesta 01 (PDF en `descargas/`)
-- `descargas/` — maestros SVG (16 por ruta), PDF vectoriales y paquetes ZIP
-
-Cada ruta incluye racional, logotipo principal, horizontal, símbolo, monocromo/negativo, área de seguridad, tamaños mínimos, fondos permitidos, paleta, tipografía, usos incorrectos y aplicaciones.
+- `index.html` — el manual (31 páginas, también imprimible)
+- `descargas/Latidos_Manual_de_Marca.pdf` — el manual en PDF
+- `descargas/Latidos_Logos.zip` — todas las versiones del logo (SVG + PDF) y el manual
+- `descargas/svg/` — logo principal, horizontal, ícono y nombre, a color, en claro y a una tinta
 
 ## Desarrollo
 - `cd src && npm i`
-- `node trace.js` — vectoriza las referencias aprobadas (requiere `src/ref/`, no versionado)
-- `node build.js` — genera `assets/logos.js` y `descargas/svg/*.svg`
-- `node pack.js` — favicons y PDF vectoriales (Chrome)
+- `node build.js` — genera `assets/logos.js` y `descargas/svg/` desde `src/vector/latidos.svg` (exportado de 01.ai)
 - `node serve.js` — sitio local en http://localhost:8766
+- `node manualpdf.js` — imprime el manual a PDF
+- `node pack.js` — favicon, PDF de logos y ZIP de entrega
 
-Tipografías: Sora y Manrope (SIL Open Font License 1.1). Las propuestas no constituyen registro de marca.
+Las rondas de propuestas quedan en las etiquetas de git `ronda-01` y `ronda-02`.
+Tipografías: Sora y Manrope (licencia libre, Google Fonts).
