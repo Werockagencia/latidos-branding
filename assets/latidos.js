@@ -13,7 +13,7 @@
   const defs = [];
   for (const [r, vs] of Object.entries(LOGOS)) {
     for (const [v, L] of Object.entries(vs)) {
-      const paths = L.layers.map((l) => `<path fill="var(--l-${l.role}, var(--l-p, #000))" d="${l.d}"/>`).join('');
+      const paths = L.layers.map((l) => `<path fill="var(--l-${l.role}, var(--l-p, #000))"${l.eo ? ' fill-rule="evenodd"' : ''} d="${l.d}"/>`).join('');
       defs.push(`<symbol id="${r}-${v}" viewBox="0 0 ${L.box[2]} ${L.box[3]}">${paths}</symbol>`);
     }
   }
@@ -166,7 +166,7 @@
 
     // portada
     h += `<header class="cover" id="top"><div class="art">${logo(r, 'primary', C.cover.c)}</div>
-      <div class="wrap meta rv"><div class="num">${C.num}</div><div><div class="eyebrow" style="color:inherit;opacity:.7">Opción ${C.num} · Latidos</div><h1>${C.name}</h1></div>
+      <div class="wrap meta rv"><div class="num">${C.num}</div><div><div class="eyebrow" style="color:inherit;opacity:.7">${C.kind || 'Opción'} ${C.num} · Latidos</div><h1>${C.name}</h1></div>
       <div style="display:grid;gap:14px"><p>${C.tagline}</p><span class="scroll">Desliza para conocerla ↓</span></div></div></header>`;
 
     // 01 la idea
@@ -174,7 +174,7 @@
       <div class="concept"><div class="rv">${C.concept.text.map((p, i) => (i === 0 ? `<p class="lead">${p}</p><div style="height:30px"></div>` : `<p>${p}</p>`)).join('')}
         <div class="kw">${C.concept.keywords.map((w) => `<span>${w}</span>`).join('')}</div>
         <div class="adjust"><div class="eyebrow">En qué se inspira</div><ul>${C.concept.inspired.map((x) => `<li>${x}</li>`).join('')}</ul>
-          <div class="ref-vs"><figure><div class="box"><img src="${C.concept.ref}" alt="Boceto aprobado" loading="lazy"></div>Boceto aprobado</figure><figure><div class="box" style="background:${P.bg}">${logo(r, 'primary', C.light)}</div>Versión final</figure></div></div>
+          ${C.concept.ref ? `<div class="ref-vs"><figure><div class="box"><img src="${C.concept.ref}" alt="Boceto aprobado" loading="lazy"></div>Boceto aprobado</figure><figure><div class="box" style="background:${P.bg}">${logo(r, 'primary', C.light)}</div>Versión final</figure></div>` : ''}</div>
       </div><div class="stage rv" style="background:${C.concept.stage.bg}">${logo(r, C.concept.stage.v || 'symbol', C.concept.stage.c)}</div></div></div></section>`;
 
     // 02 el logo
@@ -262,11 +262,11 @@
       </div></section>`;
 
     // 09 opinión
-    h += `<section class="sec" id="opinion"><div class="wrap">${head('09', 'Tu opinión', 'Cuéntanos qué sientes con esta opción y envíanoslo por WhatsApp en un toque.')}
+    h += `<section class="sec" id="opinion"><div class="wrap">${head('09', 'Tu opinión', 'Cuéntanos qué sientes con esta propuesta y envíanoslo por WhatsApp en un toque.')}
       <div class="fb rv"><div><p class="lead">¿Latidos se siente así?</p><p class="muted">“Me gusta el símbolo pero no el color” es justo el tipo de comentario que nos ayuda a definir la dirección final.</p></div>
         <div><div class="react" role="group" aria-label="Reacción">${['💛 Me encanta', '✏️ Con ajustes', '🤔 No me convence'].map((x) => `<button type="button" aria-pressed="false" data-r="${x}">${x}</button>`).join('')}</div>
           <textarea class="note" id="note" placeholder="Lo que más me gusta… lo que cambiaría…"></textarea>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn wa" type="button" id="wa1">Enviar mi opinión por WhatsApp</button><a class="btn ghost" href="index.html#comparativa">Comparar las 3 opciones →</a></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="btn wa" type="button" id="wa1">Enviar mi opinión por WhatsApp</button><a class="btn ghost" href="index.html#comparativa">Comparar las 3 propuestas →</a></div>
           <div class="saved" id="saved"></div></div></div></div></section>`;
 
     h += `<div class="wrap"><div class="next">${C.nav.map((n) => `<a href="${n.href}" style="background:${n.bg};color:${n.fg}"><small>${n.small}</small><strong>${n.title}</strong></a>`).join('')}</div>
@@ -310,7 +310,7 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } },
   };
   function wireFeedback(r) {
-    const key = `latidos-fb-${r}`;
+    const key = `latidos-fb2-${r}`;
     const data = store.get(key) || { r: '', note: '' };
     const btns = document.querySelectorAll('.react button');
     const note = $('#note'), saved = $('#saved');
@@ -320,7 +320,7 @@
     btns.forEach((b) => b.addEventListener('click', () => { data.r = data.r === b.dataset.r ? '' : b.dataset.r; paint(); save(); }));
     let tm; note.addEventListener('input', () => { data.note = note.value; clearTimeout(tm); tm = setTimeout(save, 350); });
     $('#wa1').addEventListener('click', () => {
-      const txt = `*Latidos — Opción ${CUR.num} · ${CUR.name}*\nReacción: ${data.r || '—'}${data.note ? `\n${data.note}` : ''}`;
+      const txt = `*Latidos — ${CUR.kind || 'Opción'} ${CUR.num} · ${CUR.name}*\nReacción: ${data.r || '—'}${data.note ? `\n${data.note}` : ''}`;
       window.open(`https://wa.me/${WA}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
     });
   }

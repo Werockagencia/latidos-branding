@@ -1,11 +1,10 @@
-# Latidos · Propuesta de identidad — Ronda 01
+# Latidos · Propuesta de identidad — Ronda 02
 
 Presentación web de las tres rutas creativas aprobadas para **Latidos · Experiencias corporativas**, preparada por **We Rock Agencia**.
 
 - `index.html` — portada, introducción, rutas, comparativa estratégica, recomendación, archivos y decisión
-- `ruta-01-pulso-creativo.html` — Pulso creativo (azul profundo · lima)
-- `ruta-02-conexion.html` — Conexión (petróleo · albaricoque)
-- `ruta-03-personas-en-movimiento.html` — Personas en movimiento (cobalto · coral)
+- `propuesta-01-pulso.html`, `propuesta-02-cumbre.html`, `propuesta-03-sello.html` — las tres propuestas (mesas de trabajo de 01.ai)
+- `manual.html` — manual de marca preliminar sobre la propuesta 01 (PDF en `descargas/`)
 - `descargas/` — maestros SVG (16 por ruta), PDF vectoriales y paquetes ZIP
 
 Cada ruta incluye racional, logotipo principal, horizontal, símbolo, monocromo/negativo, área de seguridad, tamaños mínimos, fondos permitidos, paleta, tipografía, usos incorrectos y aplicaciones.

@@ -8,16 +8,16 @@ require(path.join(ROOT, 'assets/logos.js'));
 const L = window.LATIDOS_LOGOS;
 
 // favicons: símbolo en negativo sobre el color principal
-const FAV = { r1: ['#0B1B3B', { a: '#C6FF3D', w: '#F8F5F0', p: '#F8F5F0' }], r2: ['#3A1B4F', { p: '#F4F2F8', a: '#4DF0C1' }], r3: ['#3046C5', { p: '#F7F8FA', a: '#FF6B63' }] };
+const FAV = { r1: ['#0B1B3B', { a: '#C6FF3D', w: '#F8F5F0', p: '#F8F5F0' }], r2: ['#0B1B3B', { a: '#C6FF3D', w: '#F8F5F0', p: '#F8F5F0' }], r3: ['#F4F2F8', { p: '#3C1C4C', k: '#F4F2F8', a: '#C6FF3D' }] };
 for (const [r, [bg, c]] of Object.entries(FAV)) {
   const s = L[r].symbol, [, , w, h] = s.box, S = Math.max(w, h) * 1.42;
   const tx = (S - w) / 2, ty = (S - h) / 2;
-  fs.writeFileSync(path.join(ROOT, `assets/fav-${r}.svg`), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S.toFixed(1)} ${S.toFixed(1)}"><rect width="${S.toFixed(1)}" height="${S.toFixed(1)}" rx="${(S * 0.22).toFixed(1)}" fill="${bg}"/><g transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)})">${s.layers.map((l) => `<path fill="${c[l.role] || c.p}" d="${l.d}"/>`).join('')}</g></svg>`);
+  fs.writeFileSync(path.join(ROOT, `assets/fav-${r}.svg`), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S.toFixed(1)} ${S.toFixed(1)}"><rect width="${S.toFixed(1)}" height="${S.toFixed(1)}" rx="${(S * 0.22).toFixed(1)}" fill="${bg}"/><g transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)})">${s.layers.map((l) => `<path fill="${c[l.role] || c.p}"${l.eo ? ' fill-rule="evenodd"' : ''} d="${l.d}"/>`).join('')}</g></svg>`);
 }
 
 // PDF de maestros por ruta: una versión por página, SVG en línea (vectorial)
-const SLUG = { r1: 'Ruta01_PulsoCreativo', r2: 'Ruta02_Conexion', r3: 'Ruta03_PersonasEnMovimiento' };
-const NAME = { r1: 'Ruta 01 · Pulso creativo', r2: 'Ruta 02 · Conexión', r3: 'Ruta 03 · Personas en movimiento' };
+const SLUG = { r1: 'Propuesta01_Pulso', r2: 'Propuesta02_Cumbre', r3: 'Propuesta03_Sello' };
+const NAME = { r1: 'Propuesta 01 · Pulso', r2: 'Propuesta 02 · Cumbre', r3: 'Propuesta 03 · Sello' };
 const svgDir = path.join(ROOT, 'descargas/svg'), pdfDir = path.join(ROOT, 'descargas/pdf');
 fs.mkdirSync(pdfDir, { recursive: true });
 const tmp = path.join(__dirname, 'traced');

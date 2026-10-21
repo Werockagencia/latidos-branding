@@ -2,7 +2,7 @@
 const fs = require('fs'), sharp = require('sharp'), path = require('path');
 const dir = path.join(__dirname, '../descargas/svg');
 (async () => {
-  for (const r of ['Ruta01', 'Ruta02', 'Ruta03']) {
+  for (const r of ['Propuesta01', 'Propuesta02', 'Propuesta03']) {
     const files = fs.readdirSync(dir).filter((f) => f.includes(r) && f.endsWith('.svg')).sort();
     const tiles = await Promise.all(files.map((f) => sharp(path.join(dir, f), { density: 150 }).resize(560, 300, { fit: 'contain', background: '#e6e6e6' }).flatten({ background: '#e6e6e6' }).png().toBuffer()));
     const cols = 4, W = 580, H = 320;

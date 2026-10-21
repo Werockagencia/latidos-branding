@@ -195,7 +195,7 @@ function masterSvg(v, colors, title, pad = 0.08) {
   const b = v.box, m = Math.max(b[2], b[3]) * pad;
   const groups = {};
   for (const l of v.layers) (groups[l.g || 'logotipo'] ||= []).push(l);
-  const body = Object.entries(groups).map(([g, ls]) => `  <g id="${NAMES[g] || g}">\n${ls.map((l) => `    <path id="${l.id}" fill="${colors[l.role]}" fill-rule="nonzero" d="${l.d}"/>`).join('\n')}\n  </g>`).join('\n');
+  const body = Object.entries(groups).map(([g, ls]) => `  <g id="${NAMES[g] || g}">\n${ls.map((l) => `    <path id="${l.id}" fill="${colors[l.role]}" fill-rule="${l.eo ? 'evenodd' : 'nonzero'}" d="${l.d}"/>`).join('\n')}\n  </g>`).join('\n');
   const vb = [b[0] - m, b[1] - m, b[2] + 2 * m, b[3] + 2 * m].map(n2);
   return `<?xml version="1.0" encoding="UTF-8"?>
 <!-- Latidos · ${title} · We Rock Agencia · Propuesta de identidad (no constituye registro de marca) -->
@@ -206,59 +206,99 @@ ${colors.bg ? `  <rect id="Fondo" x="${vb[0]}" y="${vb[1]}" width="${vb[2]}" hei
 `;
 }
 
-// ------------------------------------------------------------------ main
+// ------------------------------------------------------------------ main · ronda 02 (tres mesas de trabajo de We Rock)
+const { mesa1, mesa2, mesa3 } = require('./mesas');
+
+/** Calado a una tinta: base menos huecos, con una línea de aire entre huecos vecinos. */
+async function knockout(baseDs, holeDs, gapRatio = 0.006) {
+  const b = unionBox(baseDs);
+  const PX = 4000, sc = PX / b[2], H = Math.round(b[3] * sc) + 40, W = PX + 40;
+  const vb = `${b[0] - 20 / sc} ${b[1] - 20 / sc} ${W / sc} ${H / sc}`;
+  const gapU = (gapRatio * PX) / sc;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="${vb}"><rect x="-1e5" y="-1e5" width="2e5" height="2e5" fill="#fff"/>${baseDs.map((d) => `<path d="${d}" fill="#000"/>`).join('')}${holeDs.map((d) => `<path d="${d}" fill="#fff" stroke="#000" stroke-width="${gapU}"/>`).join('')}</svg>`;
+  const png = await sharp(Buffer.from(svg)).flatten({ background: '#fff' }).greyscale().threshold(128).png().toBuffer();
+  const d = await new Promise((ok, ko) => {
+    const t = new potrace.Potrace({ turdSize: 300, alphaMax: 1.0, optCurve: true, optTolerance: 0.25 });
+    t.loadImage(png, (e) => (e ? ko(e) : ok(t.getPathTag().match(/ d="([^"]+)"/)[1])));
+  });
+  return xform(d, 1 / sc, b[0] - 20 / sc, b[1] - 20 / sc);
+}
+
+/** Logotipo con la onda (mesas 01 y 02): versiones a color y a una tinta. */
+function waveMark(M) {
+  const word = { layers: [
+    { id: 'cinta', role: 'a', d: M.ribbon },
+    { id: 'asta-l', role: 'w', d: M.stem },
+    { id: 'onda-a', role: 'w', d: M.wave },
+    { id: 'letras', role: 'w', d: M.letters },
+    { id: 'punto-i', role: 'a', d: M.dot },
+  ] };
+  word.box = unionBox(word.layers.map((l) => l.d));
+  const wordMono = { layers: word.layers.map((l) => ({ ...l, role: 'm' })), box: word.box };
+  const sym = { layers: word.layers.slice(0, 3), box: unionBox([M.ribbon, M.stem, M.wave]) };
+  const symMono = { layers: wordMono.layers.slice(0, 3), box: sym.box };
+  return { word, wordMono, sym, symMono };
+}
+function waveVersions(M, P) {
+  const a = waveMark(M);
+  const v = {
+    primary: wordOnly(a.word, P), horizontal: wordH(a.word, P), symbol: group([['simbolo', a.sym]]), wordmark: wordOnly(a.word, P, false),
+    primaryM: wordOnly(a.wordMono, P), horizontalM: wordH(a.wordMono, P), symbolM: group([['simbolo', a.symMono]]), wordmarkM: wordOnly(a.wordMono, P, false),
+  };
+  for (const k of ['primaryM', 'horizontalM', 'wordmarkM']) v[k].layers.forEach((l) => (l.role = 'm'));
+  return v;
+}
+
 (async () => {
   const R = {};
-  // 01
-  const a = await ruta01();
-  const P1 = { desc: (w) => descriptor(w, 22.4, 'manrope-500'), descGap: 0.027, descW: 0.807, descDx: -0.016 };
-  R.r1 = {
-    primary: wordOnly(a.word, P1), horizontal: wordH(a.word, P1), symbol: group([['simbolo', a.sym]]), wordmark: wordOnly(a.word, P1, false),
-    primaryM: wordOnly(a.wordMono, P1), horizontalM: wordH(a.wordMono, P1), symbolM: group([['simbolo', a.symMono]]), wordmarkM: wordOnly(a.wordMono, P1, false),
+  const P1 = { desc: (w) => descriptor(w, 22.4, 'manrope-500'), descGap: 0.03, descW: 0.82, descDx: -0.01 };
+  R.r1 = waveVersions(mesa1, P1);
+  R.r2 = waveVersions(mesa2, P1);
+
+  // mesa 03 · sello sobre el nombre, en la composición original de la mesa de trabajo
+  const sym3 = { layers: [
+    { id: 'circulo', role: 'p', d: mesa3.circle },
+    { id: 'cinta', role: 'a', d: mesa3.ribbon },
+    { id: 'l', role: 'k', d: mesa3.ell },
+  ] };
+  sym3.box = unionBox([mesa3.circle]);
+  const symMono3 = { layers: [{ id: 'sello', role: 'm', eo: 1, d: await knockout([mesa3.circle], [mesa3.ell, mesa3.ribbon], 0.012) }], box: sym3.box };
+  const word3 = { layers: [{ id: 'logotipo', role: 'w', d: mesa3.letters }], box: unionBox([mesa3.letters]) };
+  const stacked3 = (sym, word, desc) => {
+    const wb = word.box, dw = wb[2] * 0.96;
+    const D = place(desc(dw), wb[0] + (wb[2] - dw) / 2, wb[1] + wb[3] + wb[2] * 0.045, { w: dw });
+    return group([['simbolo', sym], ['logotipo', word], ['descriptor', D]]);
   };
-  // 02
-  const s2 = symbolComp('1');
-  const w2 = drawnWord(r02w.word); // logotipo dibujado como en la referencia
-  const P2 = { desc: (w) => descriptor(w, 29), symH: 0.399, gap: 0.03, descGap: 0.032, descW: 0.963, descDx: 0.002, hSym: 1.18, hGap: 0.30 };
-  R.r2 = {
-    primary: stacked(s2.sym, w2, P2), horizontal: horizontal(s2.sym, w2, P2), symbol: group([['simbolo', s2.sym]]), wordmark: wordOnly(w2, P2),
-    primaryM: stacked(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 29)) }), horizontalM: horizontal(s2.symMono, mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 29)) }), symbolM: group([['simbolo', s2.symMono]]), wordmarkM: wordOnly(mono(w2), { ...P2, desc: (w) => mono(descriptor(w, 29)) }),
-  };
-  // 03
-  // símbolo redibujado a mano (curvas pulidas) en lugar del trazado automático
-  const s3 = { sym: { layers: [{ id: 'simbolo-acento', role: 'a', d: r03.formAcc }, { id: 'forma-1', role: 'p', d: r03.formA }, { id: 'forma-2', role: 'p', d: r03.formB }] } };
-  s3.sym.box = unionBox([r03.formA, r03.formAcc, r03.formB]);
-  s3.symMono = { layers: [{ id: 'simbolo', role: 'm', d: await monoFrom([r03.formA, r03.formB], [r03.formAcc], 0.012) }], box: s3.sym.box };
-  const w3 = drawnWord(r02w.word3); // logotipo dibujado como en la referencia
-  const P3 = { desc: (w) => descriptor(w, 21.2), symH: 0.467, gap: 0.063, descGap: 0.046, descW: 0.99, hSym: 1.15, hGap: 0.22, symDx: -0.008 };
+  const d3 = (w) => descriptor(w, w * 0.0225);
+  const P3 = { desc: d3, descGap: 0.045, descW: 0.96, hSym: 1.15, hGap: 0.24 };
+  const m = (c) => ({ ...c, layers: c.layers.map((l) => ({ ...l, role: 'm' })) });
   R.r3 = {
-    primary: stacked(s3.sym, w3, P3), horizontal: horizontal(s3.sym, w3, P3), symbol: group([['simbolo', s3.sym]]), wordmark: wordOnly(w3, P3),
-    primaryM: stacked(s3.symMono, mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 21.2)) }), horizontalM: horizontal(s3.symMono, mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 21.2)) }), symbolM: group([['simbolo', s3.symMono]]), wordmarkM: wordOnly(mono(w3), { ...P3, desc: (w) => mono(descriptor(w, 21.2)) }),
+    primary: stacked3(sym3, word3, d3), horizontal: horizontal(sym3, word3, P3), symbol: group([['simbolo', sym3]]), wordmark: wordOnly(word3, P3),
+    primaryM: stacked3(symMono3, m(word3), (w) => m(d3(w))), horizontalM: horizontal(symMono3, m(word3), { ...P3, desc: (w) => m(d3(w)) }),
+    symbolM: group([['simbolo', symMono3]]), wordmarkM: wordOnly(m(word3), { ...P3, desc: (w) => m(d3(w)) }),
   };
-  // r1 mono: descriptor también a una tinta
-  for (const k of ['primaryM', 'horizontalM', 'wordmarkM']) R.r1[k].layers.forEach((l) => (l.role = 'm'));
 
   for (const r of Object.values(R)) for (const k of Object.keys(r)) r[k] = normalize(r[k]);
-  fs.writeFileSync(path.join(ROOT, 'assets/logos.js'), `/* Latidos · maestros vectoriales (generado por src/build.js) */\nwindow.LATIDOS_LOGOS=${JSON.stringify(R)};\n`);
+  fs.writeFileSync(path.join(ROOT, 'assets/logos.js'), `/* Latidos · logos (generado por src/build.js) */\nwindow.LATIDOS_LOGOS=${JSON.stringify(R)};\n`);
 
-  // archivos maestros
   const PAL = {
-    r1: { slug: 'Ruta01_PulsoCreativo', p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B', bg: '#F8F5F0', inv: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0', bg: '#0B1B3B' }, mono: '#0B1B3B', neg: '#F8F5F0', negBg: '#0B1B3B' },
-    r2: { slug: 'Ruta02_Conexion', p: '#3A1B4F', w: '#3A1B4F', a: '#4DF0C1', d: '#3A1B4F', bg: '#F4F2F8', inv: { p: '#F4F2F8', w: '#F4F2F8', a: '#4DF0C1', d: '#F4F2F8', bg: '#3A1B4F' }, mono: '#3A1B4F', neg: '#F4F2F8', negBg: '#1C1426' },
-    r3: { slug: 'Ruta03_PersonasEnMovimiento', p: '#3046C5', w: '#171923', a: '#FF6B63', d: '#171923', bg: '#F7F8FA', inv: { p: '#F7F8FA', w: '#F7F8FA', a: '#FF6B63', d: '#F7F8FA', bg: '#3046C5' }, mono: '#171923', neg: '#F7F8FA', negBg: '#171923' },
+    r1: { slug: 'Propuesta01_Pulso', p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B', inv: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0', bg: '#0B1B3B' }, mono: '#0B1B3B', neg: '#F8F5F0', negBg: '#0B1B3B' },
+    r2: { slug: 'Propuesta02_Cumbre', p: '#0B1B3B', w: '#0B1B3B', a: '#C6FF3D', d: '#0B1B3B', inv: { p: '#F8F5F0', w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0', bg: '#0B1B3B' }, mono: '#0B1B3B', neg: '#F8F5F0', negBg: '#0B1B3B' },
+    r3: { slug: 'Propuesta03_Sello', p: '#3C1C4C', k: '#F4F2F8', w: '#3C1C4C', a: '#C6FF3D', d: '#3C1C4C', inv: { p: '#F4F2F8', k: '#3C1C4C', w: '#F4F2F8', a: '#C6FF3D', d: '#F4F2F8', bg: '#3C1C4C' }, mono: '#3C1C4C', neg: '#F4F2F8', negBg: '#3C1C4C' },
   };
   const LBL = { primary: 'Principal', horizontal: 'Horizontal', symbol: 'Simbolo', wordmark: 'Logotipo' };
   const out = path.join(ROOT, 'descargas/svg');
+  fs.rmSync(out, { recursive: true, force: true });
   fs.mkdirSync(out, { recursive: true });
   const index = [];
   for (const [rk, r] of Object.entries(R)) {
     const C = PAL[rk];
     for (const v of ['primary', 'horizontal', 'symbol', 'wordmark']) {
       const files = [
-        [`Color`, r[v], { p: C.p, w: C.w, a: C.a, d: C.d }],
-        [`Color-Negativo`, r[v], { ...C.inv }],
-        [`Monocromo`, r[v + 'M'], { m: C.mono }],
-        [`Monocromo-Negativo`, r[v + 'M'], { m: C.neg, bg: C.negBg }],
+        ['Color', r[v], { p: C.p, k: C.k, w: C.w, a: C.a, d: C.d }],
+        ['Color-Negativo', r[v], { ...C.inv }],
+        ['Monocromo', r[v + 'M'], { m: C.mono }],
+        ['Monocromo-Negativo', r[v + 'M'], { m: C.neg, bg: C.negBg }],
       ];
       for (const [variant, ver, colors] of files) {
         const name = `Latidos_${C.slug}_${LBL[v]}_${variant}.svg`;

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual de marca — Latidos</title>
+<meta name="description" content="Manual de marca de Latidos · Experiencias corporativas. Logo, colores, tipografía, reglas de uso y aplicaciones.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/fav-r1.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/core.css">
+<style>
+  :root {
+    --navy: #0B1B3B; --lime: #C6FF3D; --ivory: #F8F5F0; --steel: #A7B0BA;
+    --bg: #E9E6E0; --bg2: #EFEBE3; --fg: #0B1B3B; --muted: #5A6475; --line: rgba(11, 27, 59, .13); --card: #FFFFFF;
+    --acc: #C6FF3D; --acc-ink: #0B1B3B; --on-acc: #0B1B3B; --r: 14px;
+  }
+  body { background: var(--bg); }
+  .mbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: var(--navy); color: var(--ivory); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+  @media (min-width: 720px) { .mbar { padding: 14px 40px; } }
+  .mbar a { color: inherit; text-decoration: none; }
+  .mbar .acts { display: flex; gap: 8px; }
+  .mbar .acts a { font-size: 10.5px; letter-spacing: .12em; border: 1px solid rgba(248,245,240,.35); border-radius: 99px; padding: 8px 14px; white-space: nowrap; }
+  .mbar .acts a.pdf { background: var(--lime); color: var(--navy); border-color: var(--lime); }
+  .mbar .lbl { display: none; } @media (min-width: 760px) { .mbar .lbl { display: inline; } }
+
+  .doc { width: min(1180px, 100% - 24px); margin: 24px auto 60px; display: grid; gap: 24px; }
+  .pg { position: relative; background: var(--ivory); color: var(--navy); border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 20px 50px -30px rgba(0,0,0,.35); overflow: hidden; padding: clamp(28px, 5vw, 64px); }
+  @media (min-width: 900px), print { .pg { aspect-ratio: 297 / 210; display: flex; flex-direction: column; } }
+  .pg.navy { background: var(--navy); color: var(--ivory); --line: rgba(248,245,240,.16); --muted: #A7B0BA; }
+  .pg.lime { background: var(--lime); color: var(--navy); }
+  .pg .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; opacity: .65; margin-bottom: clamp(18px, 3vw, 34px); }
+  .pg .ft { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; opacity: .5; }
+  .pg h2 { font-family: Sora; font-weight: 500; font-size: clamp(32px, 4.4vw, 60px); line-height: .98; letter-spacing: -.035em; margin: 0 0 14px; }
+  .pg h3 { font-family: Sora; font-weight: 600; font-size: clamp(17px, 1.6vw, 21px); letter-spacing: -.01em; margin: 0 0 6px; }
+  .pg p { margin: 0 0 .8em; max-width: 60ch; font-size: clamp(14.5px, 1.25vw, 16px); }
+  .pg .muted { color: var(--muted); }
+  .cols { display: grid; gap: clamp(18px, 3vw, 40px); flex: 1; min-height: 0; }
+  @media (min-width: 900px), print { .cols.c2 { grid-template-columns: 1fr 1fr; } .cols.c3 { grid-template-columns: repeat(3, 1fr); } .cols.c4 { grid-template-columns: repeat(4, 1fr); } .cols.c12 { grid-template-columns: 1fr 1.6fr; } .cols.c21 { grid-template-columns: 1.6fr 1fr; } }
+  .box { border-radius: 10px; display: grid; place-items: center; padding: 10%; position: relative; grid-template: minmax(0, 1fr) / minmax(0, 1fr); min-height: 150px; }
+  .box .lg { max-height: 100%; }
+  .box.edge { box-shadow: inset 0 0 0 1px var(--line); }
+  .cap { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; margin-top: 10px; display: block; }
+  .cap + span { font-size: 13px; color: var(--muted); display: block; margin-top: 2px; }
+  .tag { display: inline-block; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; padding: 6px 10px; border-radius: 99px; background: var(--lime); color: var(--navy); }
+  .num { font-family: Sora; font-weight: 300; font-size: clamp(48px, 6vw, 88px); line-height: .85; letter-spacing: -.04em; opacity: .9; }
+  .toc { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 40px; }
+  @media (min-width: 900px), print { .toc { grid-template-columns: 1fr 1fr; } }
+  .toc li { display: flex; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--line); padding: 11px 0; font-size: 15.5px; }
+  .toc li b { font-family: Sora; font-weight: 400; min-width: 28px; opacity: .55; }
+  .toc a { text-decoration: none; }
+  .sw { border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; box-shadow: inset 0 0 0 1px var(--line); background: #fff; }
+  .sw .chip { flex: 1; min-height: 120px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+  .sw .chip b { font-family: Sora; font-weight: 500; font-size: 22px; letter-spacing: -.02em; }
+  .sw .chip i { font-style: normal; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; opacity: .8; }
+  .sw dl { margin: 0; padding: 12px 16px 14px; display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 12.5px; color: var(--navy); }
+  .sw dt { opacity: .6; font-weight: 600; } .sw dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rules { display: grid; gap: 10px; }
+  .rules li { margin-left: 1.1em; font-size: 14.5px; }
+  .ok, .no { position: relative; }
+  .ok::after, .no::after { content: ""; position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%; background: center / 14px no-repeat; }
+  .ok::after { background-color: #1F9D55; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' stroke='white' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+  .no::after { background-color: #E5383B; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7l10 10M17 7L7 17' stroke='white' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E"); }
+  .mk { position: relative; border-radius: 10px; overflow: hidden; container-type: size; min-height: 200px; background: var(--surf, #DCD7CD); isolation: isolate; }
+  @media (min-width: 900px), print { .mk { min-height: 0; } }
+  .mk > .lbl { position: absolute; left: 14px; top: 12px; z-index: 6; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--mlbl, rgba(11,27,59,.55)); }
+  .grid-mk { display: grid; gap: 14px; flex: 1; min-height: 0; }
+  @media (min-width: 900px), print { .grid-mk { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; } .grid-mk .wide { grid-column: span 2; } .grid-mk .tall { grid-row: span 2; } }
+  @media screen and (max-width: 899px) { .mk { aspect-ratio: 4 / 3.2; } .mk.port { aspect-ratio: 3 / 3.9; } }
+  .hier .row { display: grid; gap: 4px; border-bottom: 1px solid var(--line); padding: 10px 0; }
+  @media (min-width: 900px), print { .hier .row { grid-template-columns: 170px 1fr; align-items: baseline; gap: 20px; } }
+  .hier .t { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--muted); line-height: 1.5; }
+  .say { display: grid; gap: 8px; }
+  .say div { padding: 12px 14px; border-radius: 10px; font-size: 14.5px; }
+  .say .y { background: rgba(198,255,61,.35); } .say .n { background: rgba(229,56,59,.1); text-decoration: line-through; text-decoration-color: rgba(229,56,59,.6); }
+  .draft { position: absolute; top: clamp(18px, 3vw, 30px); right: clamp(18px, 3vw, 30px); }
+  @media print {
+    @page { size: 297mm 210mm; margin: 0; }
+    html, body { background: #fff; }
+    .mbar { display: none; }
+    .doc { width: auto; margin: 0; gap: 0; display: block; }
+    .pg { width: 297mm; height: 210mm; aspect-ratio: auto; border-radius: 0; box-shadow: none; page-break-after: always; break-after: page; display: flex; flex-direction: column; padding: 16mm 18mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .rv { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="mbar">
+  <a href="index.html">Latidos <span class="lbl">· Manual de marca · versión preliminar</span></a>
+  <div class="acts"><a href="index.html">←<span class="lbl">&nbsp;Propuestas</span></a><a class="pdf" href="descargas/Latidos_Manual_de_Marca.pdf" target="_blank" rel="noopener">Descargar PDF</a></div>
+</div>
+<main class="doc" id="doc"></main>
+<script src="assets/logos.js"></script>
+<script src="assets/latidos.js"></script>
+<script src="assets/manual.js"></script>
+</body>
+</html>
