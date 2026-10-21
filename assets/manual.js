@@ -50,11 +50,77 @@
         <div style="display:flex;justify-content:space-between;gap:8px"><div><div style="font-family:Sora;font-weight:600;font-size:clamp(8px,2.6cqw,16px)">Nombre Apellido</div><div style="font-size:clamp(5px,1.4cqw,9px);letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:2px">Director de experiencias</div></div><div style="width:20%">${logo(R, 'symbol', light)}</div></div>
         <div style="font-size:clamp(5px,1.4cqw,9.5px);line-height:1.6;opacity:.85">hola@latidos.co<br>+57 000 000 0000<br>latidos.co</div>
       </div>`,
+    // hoja carta: logo, datos en columna, cuerpo con fecha y saludo, ícono de agua y pie con onda
+    sheet: (rot = 0) => `<div style="position:absolute;inset:0;background:#fff;transform:rotate(${rot}deg);box-shadow:${shadow};overflow:hidden;color:${C.navy};container-type:inline-size">
+        <div class="abs" style="left:0;top:0;bottom:0;width:2.2%;background:${C.navy}"></div>
+        <div class="abs" style="left:2.2%;top:0;height:9%;width:.9%;background:${C.lime}"></div>
+        <div class="abs" style="left:11%;top:6%;width:40%">${logo(R, 'primary', light)}</div>
+        <div class="abs" style="right:9%;top:6.4%;text-align:right;font-size:2.15cqw;line-height:1.75;opacity:.75">hola@latidos.co<br>+57 000 000 0000<br>latidos.co</div>
+        <div class="abs" style="left:11%;right:9%;top:17.5%;height:.35cqw;background:${C.navy};opacity:.12"></div>
+        <div class="abs" style="left:11%;right:9%;top:21%;font-size:2.3cqw;line-height:1.7">
+          <div style="opacity:.6">Bogotá, 21 de octubre de 2026</div>
+          <div style="margin-top:5cqw;font-weight:700">Señores<br>Empresa Cliente S.A.S.</div>
+          <div style="margin-top:4cqw;font-family:Sora;font-weight:600;font-size:3.4cqw;letter-spacing:-.02em">Propuesta: Encuentro anual 2027</div>
+          <div style="margin-top:3cqw;display:grid;gap:1.8cqw">${[96, 92, 98, 74, 0, 95, 90, 97, 88, 60].map((w) => w ? `<i style="display:block;height:1.1cqw;border-radius:1cqw;background:${C.navy};opacity:.13;width:${w}%"></i>` : '<i style="display:block;height:1.4cqw"></i>').join('')}</div>
+          <div style="margin-top:5cqw">Cordialmente,</div>
+          <div style="margin-top:6cqw;font-family:Sora;font-weight:600">Nombre Apellido</div><div style="opacity:.6;font-size:2cqw">Director de experiencias</div>
+        </div>
+        <div class="abs" style="right:-14%;bottom:7%;width:56%;opacity:.05">${logo(R, 'symbolM', mono(C.navy))}</div>
+        <div class="abs" style="left:0;right:0;bottom:0;height:6.5%;overflow:hidden">${waves(C.navy, C.ivory, C.lime, 6, 10)}</div>
+      </div>`,
+    envelope: () => `<div style="position:absolute;inset:0;background:${C.navy};box-shadow:${shadow};overflow:hidden;container-type:inline-size">
+        <div class="abs" style="left:6%;top:12%;width:30%">${logo(R, 'primary', dark)}</div>
+        <div class="abs" style="left:0;right:0;bottom:0;height:34%;opacity:.7">${waves(C.navy, C.ivory, C.lime, 5, 12)}</div>
+        <div class="abs" style="right:7%;top:12%;font-size:1.8cqw;color:${C.ivory};opacity:.7;text-align:right;line-height:1.6">latidos.co</div>
+      </div>`,
     letter: () => `<div class="abs" style="inset:0;background:#D9D4CA"></div>
-      <div class="abs" style="left:18%;right:18%;top:7%;bottom:-6%;transform:rotate(-2deg);background:#fff;box-shadow:${shadow};padding:9% 9%;color:${C.navy};display:flex;flex-direction:column;gap:6%">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="width:50%">${logo(R, 'primary', light)}</div><div style="font-size:clamp(4px,1.6cqw,8px);text-align:right;line-height:1.6;opacity:.7">latidos.co<br>Colombia</div></div>
-        <div style="display:grid;gap:6px">${[60, 95, 92, 88, 96, 70, 94, 90, 50].map((w) => `<i style="display:block;height:clamp(2px,.9cqw,5px);border-radius:2px;background:${C.navy};opacity:.14;width:${w}%"></i>`).join('')}</div>
-        <div style="margin-top:auto;height:5px;background:${C.lime};width:30%;border-radius:2px"></div>
+      <div class="abs" style="left:17%;right:17%;top:7%;aspect-ratio:216/279">${MK.sheet(-2)}</div>`,
+    // digital
+    laptop: () => `<div class="abs" style="inset:0;background:linear-gradient(160deg,#E7E3DC,#CFC9BE)"></div>
+      <div class="abs" style="left:8%;width:min(60%,calc(66cqh * 1.6));top:14%;display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 18px 24px rgba(0,0,0,.28))">
+        <div style="width:100%;aspect-ratio:16/10;background:#111;border-radius:1.6cqw 1.6cqw 0 0;padding:1.6%">
+          <div style="position:relative;width:100%;height:100%;overflow:hidden;border-radius:.4cqw;background:${C.ivory};container-type:inline-size">${webScreen()}</div>
+        </div>
+        <div style="width:116%;height:2.4cqw;background:linear-gradient(180deg,#d4d7dc,#8d9198);border-radius:0 0 2cqw 2cqw"></div>
+      </div>
+      <div class="abs" style="right:9%;bottom:7%;height:80%;aspect-ratio:9/19;background:#111;border-radius:3.4cqw;padding:.9%;box-shadow:${shadow}">
+        <div style="position:relative;width:100%;height:100%;overflow:hidden;border-radius:2.6cqw;background:${C.navy};container-type:inline-size">${phoneScreen()}</div>
+      </div>`,
+    feed: () => `<div class="abs" style="inset:0;background:#E7E3DC"></div>
+      <div class="abs" style="left:50%;top:7%;bottom:7%;aspect-ratio:9/19;transform:translateX(-50%);background:#111;border-radius:5cqw;padding:1.6%;box-shadow:${shadow}">
+        <div style="position:relative;width:100%;height:100%;overflow:hidden;border-radius:4cqw;background:#fff;color:#111;container-type:inline-size;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;padding:10cqw 7cqw 3cqw;font-size:5cqw;font-weight:700">latidos.co<span>···</span></div>
+          <div style="display:flex;align-items:center;gap:6cqw;padding:0 7cqw">
+            <div style="width:24cqw;aspect-ratio:1;border-radius:50%;background:${C.navy};display:grid;place-items:center;padding:4cqw;box-shadow:0 0 0 1.2cqw #fff,0 0 0 2.2cqw ${C.lime}">${logo(R, 'symbol', dark)}</div>
+            <div style="flex:1;display:flex;justify-content:space-around;text-align:center;font-size:3.6cqw;line-height:1.2"><div><b style="font-size:4.6cqw">86</b><br>posts</div><div><b style="font-size:4.6cqw">3,2 mil</b><br>seguidores</div></div>
+          </div>
+          <div style="padding:3cqw 7cqw;font-size:3.6cqw;line-height:1.35"><b>Latidos · Experiencias corporativas</b><br>Encuentros con pulso propio ✦</div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:33cqw;gap:.6cqw">
+            ${[[C.navy, 'w'], [C.lime, 't'], ['ph1', ''], [C.ivory, 's'], ['wave', ''], [C.navy, 'q'], ['ph2', ''], [C.lime, 's2'], [C.navy, 'w']].map(([bg, k]) => {
+              const ph = { ph1: 'linear-gradient(140deg,#c9a77c,#7a5b46 55%,#2b2320)', ph2: 'radial-gradient(70% 70% at 30% 30%,#ffd58a,#9c4a2d 50%,#1b1022)' };
+              if (bg === 'wave') return `<div style="position:relative;overflow:hidden">${waves(C.navy, C.ivory, C.lime, 5, 18)}</div>`;
+              if (ph[bg]) return `<div style="background:${ph[bg]};position:relative"><div style="position:absolute;left:8%;bottom:8%;width:46%">${logo(R, 'wordmark', dark)}</div></div>`;
+              const fg = bg === C.navy ? C.ivory : C.navy;
+              const inner = k === 'w' ? `<div style="width:70%">${logo(R, 'symbol', bg === C.navy ? dark : light)}</div>`
+                : k === 't' ? `<div style="font-family:Sora;font-weight:600;font-size:5cqw;line-height:1;color:${fg};padding:10%">Pulso<br>propio.</div>`
+                  : k === 'q' ? `<div style="font-family:Sora;font-weight:300;font-size:9cqw;color:${C.lime}">+1.200</div>`
+                    : `<div style="width:78%">${logo(R, 'wordmark', bg === C.navy ? dark : k === 's2' ? mono(C.navy) : light)}</div>`;
+              return `<div style="background:${bg};display:grid;place-items:center">${inner}</div>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>`,
+    linkedin: () => `<div class="abs" style="inset:0;background:#E7E3DC"></div>
+      <div class="abs" style="left:6%;right:6%;top:14%;bottom:14%;background:#fff;border-radius:1.6cqw;box-shadow:${shadow};overflow:hidden">
+        <div style="position:relative;height:46%;overflow:hidden">${waves(C.navy, C.ivory, C.lime, 6, 14)}<div style="position:absolute;right:5%;top:50%;transform:translateY(-50%);width:34%">${logo(R, 'horizontal', dark)}</div></div>
+        <div class="abs" style="left:5%;top:30%;width:15%;aspect-ratio:1;border-radius:1.2cqw;background:${C.navy};border:.6cqw solid #fff;display:grid;place-items:center;padding:2.4%">${logo(R, 'symbol', dark)}</div>
+        <div style="padding:9% 5% 0;color:#111"><div style="font-family:Sora;font-weight:600;font-size:clamp(9px,3cqw,18px)">Latidos · Experiencias corporativas</div><div style="font-size:clamp(6px,1.8cqw,11px);opacity:.6;margin-top:1%">Diseñamos encuentros que conectan personas y dejan huella</div></div>
+      </div>`,
+    newsletter: () => `<div class="abs" style="inset:0;background:${C.lime}"></div>
+      <div class="abs" style="left:18%;right:18%;top:8%;bottom:-4%;background:#fff;border-radius:1.2cqw 1.2cqw 0 0;box-shadow:${shadow};overflow:hidden;color:${C.navy};container-type:inline-size">
+        <div style="background:${C.navy};padding:7cqw 8cqw 6cqw"><div style="width:52%">${logo(R, 'primary', dark)}</div></div>
+        <div style="height:24cqw;position:relative;overflow:hidden;background:radial-gradient(70% 70% at 30% 30%,#ffd58a,#9c4a2d 50%,#1b1022)"></div>
+        <div style="padding:6cqw 8cqw;display:grid;gap:3cqw"><div style="font-family:Sora;font-weight:600;font-size:7cqw;line-height:1.05;letter-spacing:-.03em">Así se vivió el Encuentro 2026</div>${[96, 88, 70].map((w) => `<i style="display:block;height:1.6cqw;border-radius:1cqw;background:${C.navy};opacity:.12;width:${w}%"></i>`).join('')}<span style="justify-self:start;background:${C.lime};padding:2.4cqw 5cqw;border-radius:99px;font-weight:700;font-size:3.4cqw">Ver la galería</span></div>
       </div>`,
     email: () => `<div class="abs" style="inset:0;background:#E7E3DC"></div>
       <div class="abs" style="left:7%;right:7%;top:16%;bottom:14%;background:#fff;border-radius:10px;box-shadow:${shadow};padding:5% 6%;color:${C.navy};display:flex;flex-direction:column;gap:6%">
@@ -125,6 +191,20 @@
         <div class="abs" style="left:50%;top:50%;width:38%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:${C.ivory};display:grid;place-items:center;padding:7%">${logo(R, 'symbol', light)}</div>
       </div>`,
   };
+
+  // pantallas para las maquetas de dispositivos (miden en unidades del contenedor)
+  function webScreen() {
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:2.6cqw 5cqw;font-size:1.3cqw;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:${C.navy}"><div style="width:15cqw">${logo(R, 'wordmark', light)}</div><div style="display:flex;gap:3cqw">Experiencias<span>Clientes</span><span>Contacto</span><span style="background:${C.navy};color:${C.ivory};padding:.8cqw 2cqw;border-radius:99px">Cotizar</span></div></div>
+      <div style="position:absolute;left:0;right:0;top:9cqw;bottom:0;display:grid;grid-template-columns:1.05fr 1fr;color:${C.navy}">
+        <div style="padding:4cqw 3cqw 0 5cqw;display:flex;flex-direction:column;gap:2.4cqw"><div style="font-size:1.2cqw;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.6">Experiencias corporativas</div><div style="font-family:Sora;font-weight:500;font-size:5.6cqw;line-height:.98;letter-spacing:-.04em">Encuentros con pulso propio.</div><div style="font-size:1.6cqw;line-height:1.5;opacity:.7">Lanzamientos, convenciones e integraciones que tu equipo va a recordar.</div><div><span style="display:inline-block;background:${C.lime};padding:1.2cqw 2.6cqw;border-radius:99px;font-weight:700;font-size:1.5cqw">Agenda tu experiencia</span></div></div>
+        <div style="position:relative;margin:2cqw 4cqw 4cqw 0;border-radius:1.4cqw;overflow:hidden">${waves(C.navy, C.ivory, C.lime, 6, 16)}<div style="position:absolute;right:8%;bottom:10%;width:38%">${logo(R, 'symbol', dark)}</div></div>
+      </div>`;
+  }
+  function phoneScreen() {
+    return `<div style="position:absolute;inset:0;opacity:.8">${waves(C.navy, C.ivory, C.lime, 7, 22)}</div>
+      <div style="position:absolute;left:10cqw;top:16cqw;width:56cqw">${logo(R, 'wordmark', dark)}</div>
+      <div style="position:absolute;left:10cqw;right:10cqw;bottom:16cqw;color:${C.ivory}"><div style="font-family:Sora;font-weight:600;font-size:11cqw;line-height:1;letter-spacing:-.03em">Tu próximo encuentro empieza aquí</div><div style="margin-top:7cqw;background:${C.lime};color:${C.navy};text-align:center;padding:4cqw;border-radius:99px;font-weight:700;font-size:5cqw">Cotizar</div></div>`;
+  }
 
   // ---------------------------------------------------------------- contenido
   // portada
@@ -253,17 +333,29 @@
   const T = { r: R, pri: C.navy, acc: C.lime, bg: C.ivory, bg2: '#EFEBE3', ink: C.navy, dk: C.navy, c: light, ci: dark, surf: '#DCD7CD', stageW: 62, accC: mono(C.navy), badgeLogoW: 92, badgeV: 'wordmark', strap: C.lime };
   const mk = (cls, lbl, html, lc) => `<div class="mk ${cls}" style="--mlbl:${lc || 'rgba(11,27,59,.55)'}"><span class="lbl">${lbl}</span>${html}</div>`;
   pg('', 'Papelería', `<span class="kicker">07 · Aplicaciones</span><h2>Papelería</h2><div class="grid-mk">${mk('wide', 'Tarjetas de presentación', MK.card())}${mk('tall port', 'Hoja membretada', MK.letter())}${mk('', 'Firma de correo', MK.email())}${mk('', 'Bolsa', MK.tote())}</div>`);
+  pg('', 'Hoja membretada', `<div class="cols c12"><div><h2>Hoja membretada y sobre</h2><p>Para cartas, propuestas y cotizaciones. El logo va arriba a la izquierda, los datos de contacto a la derecha y la onda cierra la hoja en el pie.</p>
+      <ul class="rules"><li>Tamaño carta (21,6 × 27,9 cm) o A4.</li><li>Textos en Manrope Regular, 10–11 pt, en azul profundo.</li><li>Márgenes amplios: el aire también es parte de la marca.</li><li>El ícono de fondo va muy suave, casi imperceptible.</li></ul></div>
+    <div class="letter-stage"><div class="lt-sheet">${MK.sheet(0)}</div><div class="lt-env">${MK.envelope()}</div></div></div>`);
   pg('', 'Digital', `<h2>Digital</h2><div class="grid-mk">${mk('', 'Publicación', MK.post(), 'rgba(248,245,240,.65)')}${mk('', 'Foto de perfil', M.avatar(T))}${mk('tall port', 'Historia', MK.story())}${mk('wide', 'Página web', MK.web())}</div>`);
+  pg('', 'Digital en pantalla', `<h2>En pantalla</h2><div class="grid-mk">${mk('wide', 'Página web y móvil', MK.laptop())}${mk('tall port', 'Perfil de Instagram', MK.feed())}${mk('', 'Portada de LinkedIn', MK.linkedin())}${mk('', 'Boletín por correo', MK.newsletter())}</div>`);
   pg('', 'Presentaciones', `<div class="cols c12"><div><h2>Presentaciones</h2><p>La portada lleva el logo horizontal arriba a la izquierda, un título corto en Sora y el ícono grande como recurso.</p><ul class="rules"><li>Fondo azul para portadas y cierres.</li><li>Fondo marfil para el contenido.</li><li>Una sola idea por diapositiva.</li></ul></div>${mk('', 'Portada de presentación', MK.deck())}</div>`);
   pg('', 'Eventos', `<h2>Eventos</h2><div class="grid-mk">${mk('wide', 'Pantalla de escenario', M.stage(T), 'rgba(255,255,255,.6)')}${mk('tall port', 'Credencial', M.badge(T))}${mk('', 'Photocall', MK.photocall(), 'rgba(255,255,255,.6)')}${mk('', 'Señalización', MK.sign())}</div>`);
   pg('', 'Regalos de marca', `<h2>Regalos de marca</h2><div class="grid-mk">${mk('', 'Camiseta', MK.shirt())}${mk('', 'Gorra', MK.cap())}${mk('tall port', 'Termo', MK.bottle())}${mk('wide', 'Caja de regalo', MK.gift())}</div>`);
 
   // cierre
-  sec('Archivos');
-  pg('navy', 'Archivos y contacto', `<div class="cols c2"><div><span class="kicker" style="color:${C.lime}">Archivos</span><h2>Archivos del logo</h2><p>Usen siempre los archivos originales. El paquete incluye todas las versiones en color, en claro y a un solo color, listas para impresión, pantallas, bordado y corte.</p>
-      <ul class="rules" style="opacity:.85"><li>Principal · Horizontal · Ícono · Solo el nombre</li><li>A color · En claro · Un color · Un color sobre oscuro</li><li>Formatos para diseñadores, imprentas y web</li></ul>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px" class="noprint"><a class="btn" href="descargas/Latidos_Logos.zip" download style="background:${C.lime};border-color:${C.lime};color:${C.navy}">Descargar logos</a><a class="btn ghost" href="descargas/Latidos_Manual_de_Marca.pdf" target="_blank" rel="noopener" style="color:${C.ivory};border-color:${C.ivory}">Manual en PDF</a></div></div>
-    <div style="display:grid;place-items:center;align-content:center;gap:28px"><div style="width:78%">${logo(R, 'primary', dark)}</div><p style="text-align:center;opacity:.7;margin:0">¿Dudas sobre el uso de la marca?<br>Escríbannos: <b>We Rock Agencia</b> · werock.space</p></div></div>`);
+  sec('Descargas');
+  const BASE = 'https://werockagencia.github.io/latidos-branding/';
+  const DLS = [
+    ['Kit de marca completo', 'Todo en un solo archivo: logos PNG y vector, tipografías y este manual, ordenado en carpetas.', 'descargas/Latidos_Kit_de_Marca.zip', 'ZIP · todo', true],
+    ['Logos en PNG', '16 versiones con fondo transparente. Para Word, PowerPoint, redes sociales y uso diario.', 'descargas/Latidos_Logos_PNG.zip', 'ZIP · PNG'],
+    ['Logos en vector', '16 versiones en SVG + PDF. Para diseñadores, imprentas, vallas, corte y bordado.', 'descargas/Latidos_Logos_Vector.zip', 'ZIP · SVG + PDF'],
+    ['Tipografías', 'Sora y Manrope, listas para instalar. Gratuitas y de uso comercial libre.', 'descargas/Latidos_Tipografias.zip', 'ZIP · TTF'],
+    ['Manual de marca', 'Este manual en PDF, para compartir o imprimir.', 'descargas/Latidos_Manual_de_Marca.pdf', 'PDF'],
+  ];
+  pg('navy', 'Descargas', `<span id="descargas"></span><span class="kicker">08 · Descargas</span><h2>Descargas</h2><p style="opacity:.8">Todo lo necesario para usar la marca, a un clic. Si no saben cuál elegir, descarguen el <b style="color:${C.lime}">kit completo</b>.</p>
+    <div class="dlgrid">${DLS.map(([t, d, href, tag, main]) => `<a class="dl ${main ? 'main' : ''}" href="${href}" ${href.endsWith('.pdf') ? 'target="_blank" rel="noopener"' : 'download'}><span class="tag2">${tag}</span><b>${t}</b><span class="d">${d}</span><span class="go">Descargar ↓</span><span class="url">${BASE}${href}</span></a>`).join('')}</div>
+    <p style="opacity:.6;font-size:13px;margin-top:14px">PNG: para pantallas y documentos de oficina · Vector (SVG/PDF): para imprimir en cualquier tamaño sin perder calidad · “Negativo”: versión para fondos oscuros.</p>`);
+  pg('navy', 'Contacto', `<div style="flex:1;display:grid;place-items:center;align-content:center;gap:30px;text-align:center"><div style="width:min(560px,80%)">${logo(R, 'primary', dark)}</div><p style="opacity:.75;margin:0">¿Dudas sobre el uso de la marca o necesitan otra versión del logo?<br>Escríbannos: <b>We Rock Agencia</b> · werock.space</p><div class="noprint"><a class="btn" href="descargas/Latidos_Kit_de_Marca.zip" download style="background:${C.lime};border-color:${C.lime};color:${C.navy}">Descargar el kit de marca</a></div></div>`);
 
   // ---------------------------------------------------------------- render con numeración
   const TOTAL = pages.length;

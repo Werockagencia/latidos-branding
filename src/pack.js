@@ -30,8 +30,49 @@ fs.writeFileSync(hp, html);
 const pdf = path.join(ROOT, 'descargas/Latidos_Logos.pdf');
 execFileSync('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--no-pdf-header-footer', `--print-to-pdf=${pdf}`, require('url').pathToFileURL(hp).href], { stdio: 'ignore' });
 
-// ZIP: SVG + PDF de logos + manual
-const zip = path.join(ROOT, 'descargas/Latidos_Logos.zip');
-const ps = `$d='${path.join(ROOT, 'descargas')}'; Remove-Item -ErrorAction SilentlyContinue "$d\\Latidos_Logos.zip"; Compress-Archive -Path "$d\\svg\\*.svg", "$d\\Latidos_Logos.pdf", "$d\\Latidos_Manual_de_Marca.pdf" -DestinationPath "${zip}" -Force`;
-execFileSync('powershell', ['-NoProfile', '-Command', ps], { stdio: 'inherit' });
-console.log('ok', files.length, 'versiones · favicon · PDF · ZIP');
+// PNG con fondo transparente (alta resolución) de cada versión, y paquetes ZIP organizados por carpetas
+const sharp = require('sharp');
+const DL = path.join(ROOT, 'descargas');
+const pngDir = path.join(DL, 'png');
+fs.rmSync(pngDir, { recursive: true, force: true });
+fs.mkdirSync(pngDir, { recursive: true });
+const zipOf = (zipName, folder) => execFileSync('powershell', ['-NoProfile', '-Command',
+  `Remove-Item -ErrorAction SilentlyContinue '${path.join(DL, zipName)}'; Compress-Archive -Path '${folder}\\*' -DestinationPath '${path.join(DL, zipName)}' -Force`], { stdio: 'inherit' });
+
+(async () => {
+  for (const f of files) {
+    const svg = fs.readFileSync(path.join(svgDir, f), 'utf8').replace(/\s*<rect id="Fondo"[^>]*\/>/, '');
+    const width = f.includes('_Icono_') ? 2000 : 3000;
+    await sharp(Buffer.from(svg), { density: 600 }).resize({ width }).png().toFile(path.join(pngDir, f.replace('.svg', '.png')));
+  }
+
+  // carpeta de entrega
+  const ST = path.join(tmp, 'entrega');
+  fs.rmSync(ST, { recursive: true, force: true });
+  const dir = (p) => { fs.mkdirSync(p, { recursive: true }); return p; };
+  const cp = (src, dst) => fs.copyFileSync(src, dst);
+  const pngs = fs.readdirSync(pngDir);
+  const svgs = files;
+  const fonts = fs.readdirSync(path.join(__dirname, 'fonts'));
+  const fontNote = `Tipografías de Latidos\r\n\r\nSora (títulos) y Manrope (textos).\r\nAmbas son gratuitas y de uso comercial libre (licencia SIL Open Font License).\r\n\r\nCómo instalarlas: abran cada archivo .ttf y pulsen "Instalar".\r\nTambién se pueden descargar o usar en web desde Google Fonts:\r\n  https://fonts.google.com/specimen/Sora\r\n  https://fonts.google.com/specimen/Manrope\r\n`;
+  const readme = `LATIDOS · KIT DE MARCA\r\n\r\n01_Logos_PNG     → para Word, PowerPoint, redes y uso diario (fondo transparente)\r\n02_Logos_Vector  → para diseñadores, imprenta, vallas, corte y bordado (SVG y PDF)\r\n03_Tipografias   → Sora y Manrope, listas para instalar\r\n04_Manual        → Manual de marca en PDF\r\n\r\nVersiones: Principal · Horizontal · Icono · Nombre\r\nColores:   Color · Color-Negativo (para fondos oscuros) · Una-tinta · Una-tinta-Negativo\r\n\r\nWe Rock Agencia · werock.space\r\n`;
+
+  // paquetes individuales
+  const pP = dir(path.join(ST, 'png')); pngs.forEach((f) => cp(path.join(pngDir, f), path.join(pP, f)));
+  const pV = dir(path.join(ST, 'vector')); svgs.forEach((f) => cp(path.join(svgDir, f), path.join(pV, f))); cp(path.join(DL, 'Latidos_Logos.pdf'), path.join(pV, 'Latidos_Logos_todas-las-versiones.pdf'));
+  const pT = dir(path.join(ST, 'tipos')); fonts.forEach((f) => cp(path.join(__dirname, 'fonts', f), path.join(pT, f))); fs.writeFileSync(path.join(pT, 'LEEME.txt'), fontNote);
+  // kit completo
+  const K = dir(path.join(ST, 'kit'));
+  fs.writeFileSync(path.join(K, 'LEEME.txt'), readme);
+  const k1 = dir(path.join(K, '01_Logos_PNG')); pngs.forEach((f) => cp(path.join(pngDir, f), path.join(k1, f)));
+  const k2 = dir(path.join(K, '02_Logos_Vector')); fs.readdirSync(pV).forEach((f) => cp(path.join(pV, f), path.join(k2, f)));
+  const k3 = dir(path.join(K, '03_Tipografias')); fs.readdirSync(pT).forEach((f) => cp(path.join(pT, f), path.join(k3, f)));
+  const k4 = dir(path.join(K, '04_Manual')); cp(path.join(DL, 'Latidos_Manual_de_Marca.pdf'), path.join(k4, 'Latidos_Manual_de_Marca.pdf'));
+
+  for (const old of fs.readdirSync(DL).filter((f) => f.endsWith('.zip'))) fs.unlinkSync(path.join(DL, old));
+  zipOf('Latidos_Logos_PNG.zip', pP);
+  zipOf('Latidos_Logos_Vector.zip', pV);
+  zipOf('Latidos_Tipografias.zip', pT);
+  zipOf('Latidos_Kit_de_Marca.zip', K);
+  console.log('ok', files.length, 'SVG ·', pngs.length, 'PNG · tipografías · 4 ZIP');
+})();
