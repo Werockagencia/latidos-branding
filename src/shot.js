@@ -9,7 +9,7 @@ execFileSync('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headle
   const n = Math.ceil(meta.height / 1800);
   for (let i = 0; i < n; i++) {
     const h = Math.min(1800, meta.height - i * 1800);
-    await sharp(out).extract({ left: 0, top: i * 1800, width: meta.width, height: h }).resize(Math.round(meta.width * 0.6)).png().toFile(path.join(__dirname, 'traced', `shot-${page.replace('.html', '')}-${i}.png`));
+    await sharp(out).extract({ left: 0, top: i * 1800, width: meta.width, height: h }).resize(Math.round(meta.width * 0.6)).png().toFile(path.join(__dirname, 'traced', `shot-${page.replace('.html', '').split('/').join('_')}-${i}.png`));
   }
   console.log(n, 'cortes');
 })();

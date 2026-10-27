@@ -1,0 +1,124 @@
+﻿LATIDOS · CATÁLOGO WHATSAPP BUSINESS
+Copien cada campo en el artículo del catálogo. Precio: dejar vacío.
+
+=== LAT-01 · imagen: Latidos_01-catering.jpg ===
+Nombre: Catering y alimentación
+Descripción: Sabores que acompañan cada momento del encuentro. Desde una pausa de café hasta un almuerzo ejecutivo: menús pensados para el tipo de evento, el horario y el número de invitados.
+
+Incluye: refrigerios, coffee break, desayunos empresariales, almuerzos ejecutivos, brunch, BBQ, catering gourmet.
+Ideal para: convenciones comerciales, relacionamiento con clientes y canales, celebración de logros.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-catering
+Código: LAT-01
+
+=== LAT-02 · imagen: Latidos_02-transporte.jpg ===
+Nombre: Transporte
+Descripción: Llegar también es parte de la experiencia. Movemos a sus equipos e invitados con puntualidad y comodidad, desde la oficina, el aeropuerto o entre sedes.
+
+Incluye: vans, busetas, buses empresariales, transporte VIP, traslados al aeropuerto.
+Ideal para: integración de equipos, convenciones comerciales, turismo corporativo.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-transporte
+Código: LAT-02
+
+=== LAT-03 · imagen: Latidos_03-locaciones.jpg ===
+Nombre: Locaciones
+Descripción: El lugar correcto para cada encuentro. Buscamos y gestionamos el espacio ideal según el objetivo, el número de personas y el estilo del evento.
+
+Incluye: hoteles, haciendas, salones de eventos, clubes, restaurantes, centros de convenciones.
+Ideal para: convenciones comerciales, lanzamiento de productos, celebración de logros.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-locaciones
+Código: LAT-03
+
+=== LAT-04 · imagen: Latidos_04-teambuilding.jpg ===
+Nombre: Integración y team building
+Descripción: Equipos que juegan juntos, trabajan mejor juntos. Dinámicas que rompen el hielo, fortalecen la confianza y ponen a prueba la colaboración de forma divertida.
+
+Incluye: rally empresarial, escape room, juegos corporativos, actividades de integración.
+Ideal para: integración de equipos, cultura organizacional, gestión del cambio.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-teambuilding
+Código: LAT-04
+
+=== LAT-05 · imagen: Latidos_05-gastronomia.jpg ===
+Nombre: Experiencias gastronómicas
+Descripción: Cocinar, probar y compartir en equipo. Talleres y catas guiadas donde los participantes aprenden, se divierten y se conectan alrededor de la mesa.
+
+Incluye: preparación de pizza, sushi, cocina temática, catas de vino, cerveza, café y chocolate, mixología, maridajes.
+Ideal para: integración de equipos, relacionamiento con clientes y canales, reconocimiento de colaboradores.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-gastronomia
+Código: LAT-05
+
+=== LAT-06 · imagen: Latidos_06-bienestar.jpg ===
+Nombre: Bienestar
+Descripción: Equipos que se sienten bien, rinden mejor. Espacios para bajar el ritmo, cuidar el cuerpo y la mente, y recuperar energía dentro de la jornada laboral.
+
+Incluye: yoga, mindfulness, pausas activas, actividades de bienestar laboral.
+Ideal para: bienestar corporativo, cultura organizacional, gestión del cambio.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-bienestar
+Código: LAT-06
+
+=== LAT-07 · imagen: Latidos_07-formacion.jpg ===
+Nombre: Formación empresarial
+Descripción: Aprender también puede ser una experiencia. Conferencias y talleres prácticos para fortalecer habilidades clave de los equipos.
+
+Incluye: conferencias, coaching, liderazgo, comunicación, servicio al cliente, ventas.
+Ideal para: formación y desarrollo, motivación comercial, comunicación organizacional.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-formacion
+Código: LAT-07
+
+=== LAT-08 · imagen: Latidos_08-reconocimiento.jpg ===
+Nombre: Eventos de reconocimiento
+Descripción: Celebrar a las personas que hacen la diferencia. Momentos que reconocen el esfuerzo, celebran los logros y refuerzan el orgullo de pertenecer.
+
+Incluye: convenciones, aniversarios, fin de año, bonos, día de la familia, quinquenios.
+Ideal para: reconocimiento de colaboradores, celebración de logros, cultura organizacional.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-reconocimiento
+Código: LAT-08
+
+=== LAT-09 · imagen: Latidos_09-turismo.jpg ===
+Nombre: Turismo corporativo
+Descripción: Salir de la oficina para volver con más energía. Planes fuera de la ciudad para integrar, descansar o premiar, con toda la logística resuelta.
+
+Incluye: pasadías, hospedaje.
+Ideal para: integración de equipos, reconocimiento de colaboradores, bienestar corporativo.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-turismo
+Código: LAT-09
+
+=== LAT-10 · imagen: Latidos_10-deportes.jpg ===
+Nombre: Eventos deportivos
+Descripción: Movimiento, competencia sana y mucha energía. Jornadas deportivas y recreativas que activan a los equipos y promueven hábitos saludables.
+
+Incluye: campeonatos, actividades recreativas, rodadas, running, zumba.
+Ideal para: bienestar corporativo, integración de equipos, celebración de logros.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-deportes
+Código: LAT-10
+
+=== LAT-11 · imagen: Latidos_11-btl.jpg ===
+Nombre: Marketing experiencial y BTL
+Descripción: Marcas que se viven, no solo se ven. Experiencias de marca que conectan con clientes, canales y público en el momento y el lugar indicados.
+
+Incluye: activaciones de marca, lanzamientos, experiencias en punto de venta, stands y ferias.
+Ideal para: lanzamiento de productos, relacionamiento con clientes y canales, motivación comercial.
+
+Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
+Enlace: https://werockagencia.github.io/latidos-branding/comercial/portafolio.html#linea-btl
+Código: LAT-11
+

@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#0B1B3B}.lg{display:block;width:100%;height:auto;overflow:visible}.ico{display:block;width:100%;height:auto}*{box-sizing:border-box}</style>
+</head><body><div id="c"></div>
+<script src="../assets/logos.js"></script><script src="../assets/brand.js"></script><script src="data.js"></script><script src="cards.js"></script>
+<script>const id=new URLSearchParams(location.search).get('c');const k=LATIDOS_CARDS.find(x=>x.id===id)||LATIDOS_CARDS[0];document.getElementById('c').innerHTML=k.html;</script>
+</body></html>
