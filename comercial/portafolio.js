@@ -21,7 +21,8 @@
   // foto a sangre con degradado azul para que el texto se lea
   const photo = (k, grad = 'linear-gradient(90deg,rgba(11,27,59,.92) 0%,rgba(11,27,59,.55) 55%,rgba(11,27,59,.15) 100%)', pos = 'center') =>
     `<div class="bleed"><img src="fotos/${PH[k] || k}.jpg" alt="" style="object-position:${pos}"><i style="background:${grad}"></i></div>`;
-  const pic = (k, pos = 'center', extra = '') => `<div class="pic" style="${extra}"><img src="fotos/${PH[k] || k}.jpg" alt="" style="object-position:${pos}"></div>`;
+  const POS = { transporte: '42% 55%', turismo: '50% 70%' };
+  const pic = (k, pos = 'center', extra = '') => `<div class="pic" style="${extra}"><img src="fotos/${PH[k] || k}.jpg" alt="" style="object-position:${POS[k] || pos}"></div>`;
   const badge = (k, cls = '') => `<span class="badge ${cls}">${ic(k)}</span>`;
 
   // ---------------------------------------------------------------- 1 portada
