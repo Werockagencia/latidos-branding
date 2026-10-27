@@ -1,0 +1,2 @@
+Fotografías de Unsplash (unsplash.com), licencia Unsplash: uso comercial gratuito, sin atribución obligatoria.
+Cada archivo corresponde a https://unsplash.com/photos/<id> según fuentes.json.

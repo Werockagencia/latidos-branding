@@ -83,4 +83,30 @@ window.LATIDOS_ICONS = {
   deportes: '<circle cx="24" cy="24" r="16"/><path d="M24 8v32M8 24h32"/><path d="M12.5 12.5c6 5 6 18 0 23M35.5 12.5c-6 5-6 18 0 23"/>',
   btl: '<path d="M8 21v6a2 2 0 0 0 2 2h4l14 9V10L14 19h-4a2 2 0 0 0-2 2z"/><path d="M34 18a8 8 0 0 1 0 12"/><path d="M38 13a14 14 0 0 1 0 22"/>',
 };
+
+// proceso, objetivos y atributos
+Object.assign(window.LATIDOS_ICONS, {
+  planeacion: '<rect x="11" y="8" width="26" height="34" rx="3"/><path d="M18 8V5h12v3"/><path d="M17 22l3 3 6-6"/><path d="M17 33h14"/>',
+  operacion: '<circle cx="24" cy="24" r="6"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11.3 11.3l4.2 4.2M32.5 32.5l4.2 4.2M11.3 36.7l4.2-4.2M32.5 15.5l4.2-4.2"/>',
+  produccion: '<path d="M10 10l9 9"/><path d="M6 14l8-8 9 9-8 8z"/><path d="M19 23l4 19M27 23l-4 19"/><path d="M14 42h20"/><path d="M30 8h10M35 3v10"/>',
+  ejecucion: '<path d="M12 42V6"/><path d="M12 8h22l-5 7 5 7H12"/>',
+  seguimiento: '<path d="M6 40h36"/><path d="M10 32l9-9 7 6 12-14"/><path d="M31 15h7v7"/>',
+  conectar: '<circle cx="12" cy="24" r="5"/><circle cx="36" cy="12" r="5"/><circle cx="36" cy="36" r="5"/><path d="M16.5 21.5l15-7M16.5 26.5l15 7"/>',
+  estrella: '<path d="M24 6l5.5 11.2 12.3 1.8-8.9 8.7 2.1 12.3L24 34.2 13 40l2.1-12.3-8.9-8.7 12.3-1.8z"/>',
+  llama: '<path d="M24 42c-8 0-13-5.5-13-12.5 0-6 4-9.5 6-14 1 4 3 6 5 7 0-6 2-12 8-17 0 7 9 11 9 23 0 8-6 13.5-15 13.5z"/><path d="M24 42c-3.5 0-6-2.5-6-6 0-3.5 3-5 4-8 2 2.5 7 4 7 8.5 0 3-2 5.5-5 5.5z"/>',
+  libro: '<path d="M6 10c6-2 12-2 18 2 6-4 12-4 18-2v28c-6-2-12-2-18 2-6-4-12-4-18-2z"/><path d="M24 12v28"/>',
+  chat: '<path d="M6 10h24v16H16l-6 5v-5H6z"/><path d="M30 18h12v14h-4v5l-6-5h-8v-6"/>',
+  bandera: '<path d="M12 42V6"/><path d="M12 8c8-4 14 4 24 0v18c-10 4-16-4-24 0"/>',
+  cambio: '<path d="M38 18A15 15 0 0 0 10 16"/><path d="M10 8v8h8"/><path d="M10 30a15 15 0 0 0 28 2"/><path d="M38 40v-8h-8"/>',
+  copas: '<path d="M12 6h10l-1 10a4 4 0 0 1-8 0z"/><path d="M17 20v18M12 38h10"/><path d="M28 10h10l-1 10a4 4 0 0 1-8 0z"/><path d="M33 24v14M28 38h10"/>',
+  micro: '<rect x="17" y="5" width="14" height="22" rx="7"/><path d="M11 22a13 13 0 0 0 26 0"/><path d="M24 35v7M17 42h14"/>',
+  cohete: '<path d="M24 4c8 6 10 16 6 26H18C14 20 16 10 24 4z"/><circle cx="24" cy="16" r="3"/><path d="M18 30l-6 6 2-10M30 30l6 6-2-10"/><path d="M21 34l3 8 3-8"/>',
+  enlace: '<path d="M20 28l8-8"/><path d="M22 14l3-3a7 7 0 0 1 10 10l-3 3"/><path d="M26 34l-3 3a7 7 0 0 1-10-10l3-3"/>',
+  reloj: '<circle cx="24" cy="24" r="17"/><path d="M24 14v10l7 5"/>',
+});
+window.LATIDOS_DATA.objectiveIcons = ['teambuilding', 'estrella', 'llama', 'bienestar', 'libro', 'chat', 'bandera', 'cambio', 'copas', 'micro', 'cohete', 'enlace'];
+window.LATIDOS_DATA.processIcons = ['planeacion', 'operacion', 'produccion', 'ejecucion', 'seguimiento'];
+window.LATIDOS_DATA.photos = { portada: 'portada2', nosotros: 'nosotros', proposito: 'celebracion', proceso: 'proceso', objetivos: 'objetivos', contacto: 'contacto',
+  catering: 'catering', transporte: 'transporte', locaciones: 'locaciones', teambuilding: 'teambuilding', gastronomia: 'gastronomia', bienestar: 'bienestar',
+  formacion: 'formacion', reconocimiento: 'reconocimiento', turismo: 'turismo', deportes: 'deportes', btl: 'btl' };
 window.latIcon = (k, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${window.LATIDOS_ICONS[k]}</svg>`;
