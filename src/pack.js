@@ -55,7 +55,7 @@ const zipOf = (zipName, folder) => execFileSync('powershell', ['-NoProfile', '-C
   const svgs = files;
   const fonts = fs.readdirSync(path.join(__dirname, 'fonts'));
   const fontNote = `Tipografías de Latidos\r\n\r\nSora (títulos) y Manrope (textos).\r\nAmbas son gratuitas y de uso comercial libre (licencia SIL Open Font License).\r\n\r\nCómo instalarlas: abran cada archivo .ttf y pulsen "Instalar".\r\nTambién se pueden descargar o usar en web desde Google Fonts:\r\n  https://fonts.google.com/specimen/Sora\r\n  https://fonts.google.com/specimen/Manrope\r\n`;
-  const readme = `LATIDOS · KIT DE MARCA\r\n\r\n01_Logos_PNG     → para Word, PowerPoint, redes y uso diario (fondo transparente)\r\n02_Logos_Vector  → para diseñadores, imprenta, vallas, corte y bordado (SVG y PDF)\r\n03_Tipografias   → Sora y Manrope, listas para instalar\r\n04_Manual        → Manual de marca en PDF\r\n\r\nVersiones: Principal · Horizontal · Icono · Nombre\r\nColores:   Color · Color-Negativo (para fondos oscuros) · Una-tinta · Una-tinta-Negativo\r\n\r\nWe Rock Agencia · werock.space\r\n`;
+  const readme = `LATIDOS · KIT DE MARCA\r\n\r\n01_Logos_PNG     → para Word, PowerPoint, redes y uso diario (fondo transparente)\r\n02_Logos_Vector  → para diseñadores, imprenta, vallas, corte y bordado (SVG y PDF)\r\n03_Tipografias   → Sora y Manrope, listas para instalar\r\n04_Manual        → Manual de marca en PDF\r\n05_Papeleria     → Impresion_CMYK: tarjeta y membrete para la imprenta (sangrado y marcas de corte)\r\n                   Digital_RGB: tarjeta y membrete para pantalla, correo y Word\r\n06_Patrones      → ondas de la marca en azul, marfil y lima (SVG, PNG y PDF)\r\n\r\nVersiones: Principal · Horizontal · Icono · Nombre\r\nColores:   Color · Color-Negativo (para fondos oscuros) · Una-tinta · Una-tinta-Negativo\r\n\r\nWe Rock Agencia · werock.space\r\n`;
 
   // paquetes individuales
   const pP = dir(path.join(ST, 'png')); pngs.forEach((f) => cp(path.join(pngDir, f), path.join(pP, f)));
@@ -68,11 +68,15 @@ const zipOf = (zipName, folder) => execFileSync('powershell', ['-NoProfile', '-C
   const k2 = dir(path.join(K, '02_Logos_Vector')); fs.readdirSync(pV).forEach((f) => cp(path.join(pV, f), path.join(k2, f)));
   const k3 = dir(path.join(K, '03_Tipografias')); fs.readdirSync(pT).forEach((f) => cp(path.join(pT, f), path.join(k3, f)));
   const k4 = dir(path.join(K, '04_Manual')); cp(path.join(DL, 'Latidos_Manual_de_Marca.pdf'), path.join(k4, 'Latidos_Manual_de_Marca.pdf'));
+  fs.cpSync(path.join(DL, 'papeleria'), path.join(K, '05_Papeleria'), { recursive: true });
+  fs.cpSync(path.join(DL, 'patrones'), path.join(K, '06_Patrones'), { recursive: true });
 
   for (const old of fs.readdirSync(DL).filter((f) => f.endsWith('.zip'))) fs.unlinkSync(path.join(DL, old));
   zipOf('Latidos_Logos_PNG.zip', pP);
   zipOf('Latidos_Logos_Vector.zip', pV);
   zipOf('Latidos_Tipografias.zip', pT);
+  zipOf('Latidos_Papeleria.zip', path.join(DL, 'papeleria'));
+  zipOf('Latidos_Patrones.zip', path.join(DL, 'patrones'));
   zipOf('Latidos_Kit_de_Marca.zip', K);
   console.log('ok', files.length, 'SVG ·', pngs.length, 'PNG · tipografías · 4 ZIP');
 })();
