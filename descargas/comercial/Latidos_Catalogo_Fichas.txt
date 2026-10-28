@@ -25,7 +25,7 @@ Código: LAT-02
 
 === LAT-03 · imagen: Latidos_03-locaciones.jpg ===
 Nombre: Locaciones
-Descripción: El lugar correcto para cada encuentro. Buscamos y gestionamos el espacio ideal según el objetivo, el número de personas y el estilo del evento.
+Descripción: El lugar correcto para cada encuentro. Gestionamos el espacio ideal según el objetivo, el número de personas y el estilo del evento.
 
 Incluye: hoteles, haciendas, salones de eventos, clubes, restaurantes, centros de convenciones.
 Ideal para: convenciones comerciales, lanzamiento de productos, celebración de logros.
@@ -49,7 +49,7 @@ Código: LAT-04
 Nombre: Experiencias gastronómicas
 Descripción: Cocinar, probar y compartir en equipo. Talleres y catas guiadas donde los participantes aprenden, se divierten y se conectan alrededor de la mesa.
 
-Incluye: preparación de pizza, sushi, cocina temática, catas de vino, cerveza, café y chocolate, mixología, maridajes.
+Incluye: preparación de pizza y sushi, cocina temática, catas de vino, cerveza, café y chocolate, mixología, maridajes.
 Ideal para: integración de equipos, relacionamiento con clientes y canales, reconocimiento de colaboradores.
 
 Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
@@ -60,7 +60,7 @@ Código: LAT-05
 Nombre: Bienestar
 Descripción: Equipos que se sienten bien, rinden mejor. Espacios para bajar el ritmo, cuidar el cuerpo y la mente, y recuperar energía dentro de la jornada laboral.
 
-Incluye: yoga, mindfulness, pausas activas, actividades de bienestar laboral.
+Incluye: yoga, mindfulness, pausas activas, masajes, membresías fitness, actividades de bienestar laboral.
 Ideal para: bienestar corporativo, cultura organizacional, gestión del cambio.
 
 Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.
@@ -82,7 +82,7 @@ Código: LAT-07
 Nombre: Eventos de reconocimiento
 Descripción: Celebrar a las personas que hacen la diferencia. Momentos que reconocen el esfuerzo, celebran los logros y refuerzan el orgullo de pertenecer.
 
-Incluye: convenciones, aniversarios, fin de año, bonos, día de la familia, quinquenios.
+Incluye: convenciones, aniversarios, fin de año, incentivos, día de la familia, quinquenios.
 Ideal para: reconocimiento de colaboradores, celebración de logros, cultura organizacional.
 
 Precio según número de personas, ciudad y fecha. Escríbenos para cotizar.

@@ -42,29 +42,33 @@
       <div style="display:flex;flex-direction:column;justify-content:center;gap:14px">
         <span class="kicker" style="margin:0">Quiénes somos</span>
         <h2 class="h2" style="margin:0">Diseñamos experiencias corporativas que dejan huella.</h2>
-        <p class="lead" style="margin:0">${D.intro}</p>
         <p class="muted" style="margin:0">${D.about}</p>
         <div class="attrs">${ATTR.map(([k, t]) => `<div>${badge(k)}<b>${t}</b></div>`).join('')}</div>
       </div></div>`);
 
   // ---------------------------------------------------------------- 3 propósito y promesa
-  pg('navy photo', 'Propósito y promesa', `${photo('proposito', 'linear-gradient(180deg,rgba(11,27,59,.6),rgba(11,27,59,.9))')}
+  pg('navy photo', 'Propósito y promesa', `${photo('proposito', 'linear-gradient(180deg,rgba(11,27,59,.88),rgba(11,27,59,.96))')}
     <div class="cols c2 z" style="align-items:center">
-      <div>${badge('bandera', 'lime')}<span class="kicker" style="margin-top:16px">Nuestro propósito</span><p class="lead" style="font-size:clamp(22px,2.6vw,34px)">${D.purpose}</p></div>
-      <div style="border-left:2px solid var(--lime);padding-left:clamp(18px,3vw,36px)">${badge('reloj', 'lime')}<span class="kicker" style="margin-top:16px">Nuestra promesa</span><p class="lead" style="font-size:clamp(19px,2.1vw,27px)">“${D.promise}”</p></div>
+      <div><div class="ptitle">${badge('bandera', 'lime')}<span>Nuestro propósito</span></div><p class="lead" style="font-size:clamp(22px,2.6vw,34px)">${D.purpose}</p></div>
+      <div style="border-left:2px solid var(--lime);padding-left:clamp(18px,3vw,36px)"><div class="ptitle">${badge('reloj', 'lime')}<span>Nuestra promesa</span></div><p class="lead" style="font-size:clamp(19px,2.1vw,27px)">“${D.promise}”</p></div>
     </div>`);
 
   // ---------------------------------------------------------------- 4 más que eventos
   pg('lime', 'Cómo trabajamos', `<div class="cols c21" style="flex:0 0 auto;align-items:end"><div><span class="kicker">Soluciones integrales para empresas</span><h2 class="h2" style="margin:0">Más que eventos, creamos experiencias.</h2></div><p class="lead" style="margin:0;font-size:clamp(16px,1.6vw,20px)">${D.integral}</p></div>
     <div class="steps">${D.process.map(([t, d], i) => `<div class="step"><div style="display:flex;justify-content:space-between;align-items:flex-start">${badge(D.processIcons[i], 'lime')}<b>${two(i + 1)}</b></div><div><div class="h3" style="color:var(--ivory)">${t}</div><span>${d}</span></div></div>`).join('')}</div>`);
 
+  // ---------------------------------------------------------------- 18 objetivos
+  pg('navy photo', 'Objetivos empresariales', `${photo('objetivos', 'linear-gradient(180deg,rgba(11,27,59,.78),rgba(11,27,59,.95))')}
+    <div class="z" style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap"><div><span class="kicker">Objetivos que podemos atender</span><h2 class="h2" style="margin:0">Cada experiencia empieza con un para qué.</h2></div><p style="max-width:36ch;margin:0;opacity:.8">Partimos del objetivo de su empresa y diseñamos la experiencia que lo hace posible.</p></div>
+    <div class="objs z" style="margin-top:16px">${D.objectives.map((o, i) => `<div class="obj">${badge(D.objectiveIcons[i], 'lime')}<span>${o}</span></div>`).join('')}</div>`);
+
   // ---------------------------------------------------------------- 5 niveles
   const TI = ['catering', 'gastronomia', 'formacion'];
-  pg('', 'Portafolio de servicios', `<div class="cols c12" style="flex:0 0 auto;align-items:end;margin-bottom:14px"><div><span class="kicker">Portafolio de servicios</span><h2 class="h2" style="margin:0">Todo lo que su evento necesita, en un solo aliado.</h2></div></div>
+  pg('', 'Portafolio de servicios', `<div class="cols c12" style="flex:0 0 auto;align-items:end;margin-bottom:14px"><div><h2 class="h2" style="margin:0">Todo lo que su evento necesita, en un solo aliado.</h2></div></div>
     <div class="cols c3">${D.tiers.map(([t, d, items], i) => `<div class="tier ${['', 'mid', 'top'][i]}">${pic(TI[i], 'center', 'height:84px;min-height:0;border-radius:10px;flex:none')}<div style="display:flex;align-items:center;gap:10px;margin-top:4px">${badge(['catering', 'estrella', 'libro'][i], i === 1 ? 'lime' : i === 2 ? 'navy' : '')}<div class="h3" style="font-size:clamp(19px,1.9vw,25px)">${t}</div></div><span style="font-size:13.5px;opacity:.75">${d}</span><ul>${items.map((x) => `<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>`);
 
   // ---------------------------------------------------------------- 6 líneas (mosaico de fotos)
-  pg('', 'Líneas de negocio', `<div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap" class="z"><div><span class="kicker">Líneas de negocio</span><h2 class="h2" style="margin:0">11 formas de crear una experiencia.</h2></div><p class="muted" style="max-width:34ch;margin:0">Combínenlas como quieran: diseñamos el plan completo o la pieza que les haga falta.</p></div>
+  pg('', 'Líneas de negocio', `<div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap" class="z"><div><h2 class="h2" style="margin:0">11 formas de crear una experiencia.</h2></div><p class="muted" style="max-width:34ch;margin:0">Combínalas a tu medida: diseñamos el plan completo o solo la pieza que te haga falta.</p></div>
     <div class="mosaic">${D.lines.map((l) => `<a href="#linea-${l.id}" class="tile">${pic(l.id)}<i></i><span class="tb">${badge(l.icon, 'lime')}</span><span class="tt"><small>${two(l.n)}</small>${l.name}</span></a>`).join('')}<a href="#contacto" class="tile cta"><span class="tb">${badge('enlace', 'navy')}</span><span class="tt" style="color:var(--navy)"><small>Hablemos</small>Cotiza tu experiencia →</span></a></div>`);
 
   // ---------------------------------------------------------------- 7–17 una página por línea
@@ -83,11 +87,6 @@
         <div><span class="kicker">Ideal para</span><div class="goals">${l.goals.map((g) => `<div>${badge(D.objectiveIcons[D.objectives.indexOf(g)] || 'estrella', navy ? 'ghost-d' : 'ghost')}${g}</div>`).join('')}</div></div>
       </div></div>`);
   });
-
-  // ---------------------------------------------------------------- 18 objetivos
-  pg('navy photo', 'Objetivos empresariales', `${photo('objetivos', 'linear-gradient(180deg,rgba(11,27,59,.78),rgba(11,27,59,.95))')}
-    <div class="z" style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap"><div><span class="kicker">Objetivos que podemos atender</span><h2 class="h2" style="margin:0">Cada experiencia empieza con un para qué.</h2></div><p style="max-width:36ch;margin:0;opacity:.8">Partimos del objetivo de su empresa y diseñamos la experiencia que lo hace posible.</p></div>
-    <div class="objs z" style="margin-top:16px">${D.objectives.map((o, i) => `<div class="obj">${badge(D.objectiveIcons[i], 'lime')}<span>${o}</span></div>`).join('')}</div>`);
 
   // ---------------------------------------------------------------- 19 antes, durante, después
   const MO = [['Antes', 'Diseñamos', 'planeacion', ['Escuchamos el objetivo y al público.', 'Proponemos el concepto y el plan.', 'Coordinamos proveedores, lugar y logística.'], 'proceso'],

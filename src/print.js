@@ -16,7 +16,7 @@ require(path.join(ROOT, 'assets/logos.js'));
 const LOGO = window.LATIDOS_LOGOS.r1;
 
 // ------------------------------------------------------------------ datos (cliente, 26/10/2026)
-const DATA = { email: 'latidos.jhe.sas@hotmail.com', phones: ['301 471 3208', '314 399 1439'] };
+const DATA = { email: 'latidos.jhe.sas@hotmail.com', phones: ['318 986 0324', '323 282 2041'] };
 
 // ------------------------------------------------------------------ color: cada tinta lleva su valor CMYK de imprenta y su RGB de pantalla
 const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255);

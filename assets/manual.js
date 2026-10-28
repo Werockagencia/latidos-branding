@@ -108,7 +108,7 @@
         <div style="display:grid;gap:5px">${[80, 96, 64].map((w) => `<i style="display:block;height:5px;border-radius:3px;background:${C.navy};opacity:.12;width:${w}%"></i>`).join('')}</div>
         <div style="display:flex;align-items:center;gap:5%;border-top:1px solid rgba(11,27,59,.12);padding-top:6%">
           <div style="width:28%">${logo(R, 'primary', light)}</div>
-          <div style="border-left:2px solid ${C.lime};padding-left:5%;font-size:clamp(6px,1.7cqw,11px);line-height:1.5"><b style="font-family:Sora">Nombre Apellido</b><br><span style="opacity:.65">latidos.jhe.sas@hotmail.com · 301 471 3208</span></div>
+          <div style="border-left:2px solid ${C.lime};padding-left:5%;font-size:clamp(6px,1.7cqw,11px);line-height:1.5"><b style="font-family:Sora">Nombre Apellido</b><br><span style="opacity:.65">latidos.jhe.sas@hotmail.com · 318 986 0324</span></div>
         </div>
       </div>`,
     tote: () => `<div class="abs" style="inset:0;background:#D9D4CA"></div>
