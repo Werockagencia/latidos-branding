@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latidos · Propuesta comercial</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .app { display: grid; gap: 20px; padding: 20px 0 60px; }
+  @media (min-width: 1100px) { .app { grid-template-columns: 420px 1fr; align-items: start; } }
+  .panel { background: #fff; border-radius: 18px; box-shadow: inset 0 0 0 1px var(--line); padding: 18px; display: grid; gap: 14px; }
+  @media (min-width: 1100px) { .panel { position: sticky; top: 70px; max-height: calc(100vh - 90px); overflow: auto; } }
+  .panel h2 { font-family: Sora; font-weight: 600; font-size: 18px; letter-spacing: -.01em; }
+  .sec { border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 10px; }
+  .sec > b { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; }
+  label.f input, label.f textarea, label.f select, .rows input { font: inherit; font-size: 14px; font-weight: 500; padding: 9px 11px; border-radius: 10px; border: 1px solid rgba(11,27,59,.2); background: var(--ivory); color: var(--navy); width: 100%; }
+  label.f textarea { resize: vertical; min-height: 70px; line-height: 1.45; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lines-pick { display: grid; gap: 6px; }
+  .lines-pick label { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; background: var(--ivory); font-size: 13.5px; font-weight: 600; cursor: pointer; }
+  .lines-pick label .ico { width: 22px; flex: none; }
+  .lines-pick input { accent-color: var(--navy); width: 17px; height: 17px; }
+  .rows { display: grid; gap: 6px; }
+  .rows .r { display: grid; grid-template-columns: 1fr 54px 104px 28px; gap: 6px; align-items: center; }
+  .rows .r.ag { grid-template-columns: 74px 1fr 28px; }
+  .rows input { padding: 7px 8px; font-size: 13px; }
+  .x { border: 0; background: rgba(229,56,59,.12); color: #c0392b; border-radius: 8px; height: 30px; cursor: pointer; font-weight: 800; }
+  .add { justify-self: start; }
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hint { font-size: 12.5px; color: var(--muted); }
+  .chk { display: flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 600; }
+
+  /* documento */
+  .doc { display: grid; gap: 18px; container-type: inline-size; min-width: 0; }
+  .pg { position: relative; overflow: hidden; background: var(--ivory); color: var(--navy); border-radius: 6px; aspect-ratio: 297 / 210; padding: 4.5% 5%; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 20px 50px -30px rgba(0,0,0,.35); font-size: 1.45cqw; }
+  .pg.navy { background: var(--navy); color: var(--ivory); }
+  .pg .hd, .pg .ft { position: relative; z-index: 2; display: flex; justify-content: space-between; font-size: .72em; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; opacity: .6; }
+  .pg .hd { margin-bottom: 3%; } .pg .ft { margin-top: auto; padding-top: 2%; }
+  .pg .k { display: block; font-size: .78em; letter-spacing: .22em; text-transform: uppercase; font-weight: 800; color: #5A6475; margin-bottom: .7em; }
+  .pg.navy .k { color: var(--lime); }
+  .pg h1 { font-family: Sora; font-weight: 500; font-size: 3.6em; line-height: .98; letter-spacing: -.04em; }
+  .pg h2 { font-family: Sora; font-weight: 500; font-size: 2.6em; line-height: 1; letter-spacing: -.035em; margin-bottom: .5em; }
+  .pg h3 { font-family: Sora; font-weight: 600; font-size: 1.15em; letter-spacing: -.01em; }
+  .pg p { font-size: 1em; line-height: 1.5; white-space: pre-line; }
+  .pg .z { position: relative; z-index: 2; }
+  .pg .bleed { position: absolute; inset: 0; } .pg .bleed img { width: 100%; height: 100%; object-fit: cover; }
+  .pg .bleed i { position: absolute; inset: 0; }
+  .pg .wv { position: absolute; left: 0; right: 0; bottom: 0; height: 26%; }
+  .pg .cols { position: relative; z-index: 2; display: grid; gap: 4%; flex: 1; min-height: 0; }
+  .pg .c2 { grid-template-columns: 1fr 1fr; } .pg .c12 { grid-template-columns: 1fr 1.35fr; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: .8em; }
+  .fact { background: #fff; border-radius: .8em; padding: .9em 1em; display: flex; gap: .8em; align-items: center; box-shadow: inset 0 0 0 1px var(--line); }
+  .fact .bd { width: 2.6em; height: 2.6em; border-radius: .7em; background: var(--navy); color: var(--lime); padding: .55em; flex: none; }
+  .fact small { display: block; font-size: .7em; letter-spacing: .16em; text-transform: uppercase; font-weight: 800; color: #5A6475; }
+  .fact b { font-family: Sora; font-weight: 600; font-size: 1.05em; }
+  .objbox { background: var(--navy); color: var(--ivory); border-radius: 1em; padding: 1.4em; }
+  .objbox { align-self: start; }
+  .objbox .bd { display: grid; width: 2.8em; height: 2.8em; border-radius: .7em; background: var(--lime); color: var(--navy); padding: .55em; margin-bottom: .8em; }
+  .lcards { display: grid; gap: .8em; grid-template-columns: repeat(var(--n, 3), 1fr); flex: 1; min-height: 0; }
+  .lcard { position: relative; overflow: hidden; border-radius: 1em; color: var(--ivory); min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 1em; }
+  .lcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .lcard i { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,27,59,.15), rgba(11,27,59,.93) 62%); }
+  .lcard > div { position: relative; }
+  .lcard .bd { position: absolute; left: 1em; top: 1em; width: 2.4em; height: 2.4em; border-radius: .6em; background: var(--lime); color: var(--navy); padding: .5em; }
+  .lcard ul { margin: .5em 0 0; padding-left: 1.1em; font-size: .86em; line-height: 1.45; }
+  .agenda { display: grid; gap: .4em; }
+  .agenda div { display: grid; grid-template-columns: 6em 1fr; gap: 1em; padding: .7em 1em; border-radius: .7em; background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+  .agenda b { font-family: Sora; font-weight: 600; color: var(--navy); }
+  table.inv { width: 100%; border-collapse: collapse; font-size: .95em; }
+  table.inv th { text-align: left; font-size: .72em; letter-spacing: .16em; text-transform: uppercase; color: #5A6475; padding: .6em .8em; border-bottom: 2px solid var(--navy); }
+  table.inv td { padding: .65em .8em; border-bottom: 1px solid var(--line); }
+  table.inv td.n, table.inv th.n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .totals { margin-left: auto; width: 46%; display: grid; gap: .3em; margin-top: .8em; }
+  .totals div { display: flex; justify-content: space-between; padding: .4em .8em; font-variant-numeric: tabular-nums; }
+  .totals .t { background: var(--navy); color: var(--ivory); border-radius: .7em; font-family: Sora; font-weight: 600; font-size: 1.25em; padding: .6em .9em; }
+  .totals .t span:last-child { color: var(--lime); }
+  .conds { display: grid; gap: .5em; }
+  .conds div { display: flex; gap: .7em; align-items: flex-start; }
+  .conds div::before { content: ""; width: .55em; height: .55em; border-radius: 50%; background: var(--lime); margin-top: .45em; flex: none; box-shadow: 0 0 0 .15em rgba(11,27,59,.15); }
+  .steps2 { display: grid; gap: .6em; }
+  .steps2 div { display: flex; gap: .9em; align-items: center; background: rgba(248,245,240,.08); box-shadow: inset 0 0 0 1px rgba(248,245,240,.16); border-radius: .8em; padding: .8em 1em; }
+  .steps2 b { font-family: Sora; font-weight: 300; font-size: 1.7em; color: var(--lime); line-height: 1; }
+  .sign { display: flex; gap: 1em; align-items: center; margin-top: 1em; }
+  .sign .bd { display: grid; flex: none; width: 2.6em; height: 2.6em; border-radius: 50%; background: var(--lime); color: var(--navy); padding: .55em; }
+
+  @media print {
+    @page { size: 297mm 210mm; margin: 0; }
+    html, body { background: #fff; margin: 0 !important; }
+    .bar, .panel, .hero, .foot, .noprint { display: none !important; }
+    .wrap, .app { width: auto; margin: 0; padding: 0; display: block; }
+    .doc { display: block; container-type: normal; }
+    .pg { width: 297mm; height: 210mm; aspect-ratio: auto; border-radius: 0; box-shadow: none; break-after: page; font-size: 4.3mm; container-type: normal; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body data-page="propuesta">
+<main class="wrap">
+  <section class="hero noprint"><div><span class="kicker">Kit comercial · Herramienta</span><h1 class="h1">Propuesta comercial</h1></div>
+    <p class="lead">Llenen los datos del cliente, elijan las líneas y escriban los valores. La propuesta se arma sola con el diseño de Latidos; al final, “Descargar PDF”. Todo se guarda en este navegador.</p>
+    <div class="row" style="margin-top:12px"><a class="btn sm ghost" href="propuesta.html?ejemplo">Ver un ejemplo lleno</a><a class="btn sm ghost" href="../descargas/comercial/Latidos_Plantilla_Propuesta.pptx" download>Plantilla PowerPoint ↓</a></div></section>
+  <div class="app">
+    <form class="panel" id="form" autocomplete="off">
+      <div class="tools"><button type="button" class="btn lime sm" id="pdf">Descargar PDF</button><button type="button" class="btn sm ghost" id="save">Guardar archivo</button><label class="btn sm ghost" style="cursor:pointer">Abrir archivo<input type="file" id="open" accept=".json,application/json" hidden></label><button type="button" class="btn sm ghost" id="reset">Nueva</button></div>
+      <p class="hint" id="status">Los cambios se guardan automáticamente en este navegador.</p>
+
+      <div class="sec"><b>Cliente y evento</b>
+        <label class="f">Empresa cliente<input name="cliente" placeholder="Ej. Empresa S.A.S."></label>
+        <div class="two"><label class="f">Contacto<input name="contacto" placeholder="Nombre de la persona"></label><label class="f">Cargo<input name="cargo" placeholder="Ej. Directora de Talento Humano"></label></div>
+        <label class="f">Nombre del evento<input name="evento" placeholder="Ej. Encuentro anual 2027"></label>
+        <div class="two"><label class="f">Fecha del evento<input name="fecha" placeholder="Ej. 14 de marzo de 2027"></label><label class="f">Ciudad / lugar<input name="ciudad" placeholder="Ej. Bogotá"></label></div>
+        <div class="two"><label class="f">Número de personas<input name="personas" placeholder="Ej. 120"></label><label class="f">Duración<input name="duracion" placeholder="Ej. 1 día · 8 horas"></label></div>
+      </div>
+
+      <div class="sec"><b>La necesidad</b>
+        <label class="f">Objetivo principal<select name="objetivo"></select></label>
+        <label class="f">Lo que nos contaron<textarea name="contexto" placeholder="Contexto del cliente: qué quieren lograr, a quién va dirigido, qué esperan."></textarea></label>
+        <label class="f">Nuestra propuesta en una frase<textarea name="concepto" rows="2" placeholder="Ej. Un día para celebrar los logros del año y reconectar al equipo."></textarea></label>
+      </div>
+
+      <div class="sec"><b>Líneas de servicio incluidas</b><div class="lines-pick" id="lines"></div><p class="hint">Se muestran hasta 6 en la página de la experiencia.</p></div>
+
+      <div class="sec"><b>Agenda (opcional)</b><div class="rows" id="agenda"></div><button type="button" class="btn sm ghost add" data-add="agenda">+ Agregar momento</button></div>
+
+      <div class="sec"><b>Inversión</b>
+        <div class="rows" id="items"></div><button type="button" class="btn sm ghost add" data-add="items">+ Agregar concepto</button>
+        <label class="chk"><input type="checkbox" name="iva" checked> Sumar IVA (19 %)</label>
+      </div>
+
+      <div class="sec"><b>Condiciones</b>
+        <div class="two"><label class="f">Propuesta N.º<input name="numero"></label><label class="f">Válida hasta<input name="validez"></label></div>
+        <label class="f">Forma de pago<input name="pago"></label>
+        <label class="f">Notas y condiciones (una por línea)<textarea name="notas" rows="4"></textarea></label>
+        <div class="two"><label class="f">Asesor comercial<input name="asesor" placeholder="Nombre"></label><label class="f">Teléfono del asesor<select name="tel"></select></label></div>
+      </div>
+    </form>
+    <div class="doc" id="doc"></div>
+  </div>
+</main>
+<script src="../assets/logos.js"></script>
+<script src="../assets/brand.js"></script>
+<script src="data.js"></script>
+<script src="cards.js"></script>
+<script src="kit.js"></script>
+<script src="propuesta.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
   const dark = { w: '#F8F5F0', a: '#C6FF3D', d: '#F8F5F0' };
 
   // barra
-  const NAV = [['index.html', 'inicio', 'Kit comercial'], ['portafolio.html', 'portafolio', 'Portafolio'], ['ayudaventas.html', 'ayudaventas', 'Ayudaventas'], ['catalogo.html', 'catalogo', 'Catálogo']];
+  const NAV = [['index.html', 'inicio', 'Kit comercial'], ['portafolio.html', 'portafolio', 'Portafolio'], ['ayudaventas.html', 'ayudaventas', 'Ayudaventas'], ['catalogo.html', 'catalogo', 'Catálogo'], ['propuesta.html', 'propuesta', 'Propuesta']];
   document.body.insertAdjacentHTML('afterbegin', `<div class="bar"><a class="brand" href="index.html">${logo('r1', 'wordmark', dark)}<span class="lbl">· Kit comercial</span></a><nav>${NAV.map(([h, k, t]) => `<a href="${h}"${k === page ? ' aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div>`);
 
   // copiar
